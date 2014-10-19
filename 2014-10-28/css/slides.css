@@ -1,0 +1,19 @@
+
+#paperexamples {background-color: rgba(255, 255, 255, 1);}
+#paperexamples article>div>div>div{margin-bottom:2em}
+#paperexamples core-toolbar{background-color:#0fa758;fill:white;color:white;padding:10px;width:100%}
+#paperexamples paper-tabs{width:400px;background:#4285f4;color:#fff}
+#paperexamples.on paper-button[raisedButton]{background-color:black;color:white}
+#paperexamples.on /deep/ core-icon{fill:white}
+#paperexamples.on /deep/ core-toolbar,#paperexamples.on /deep/ paper-tabs,#paperexamples.on /deep/ paper-fab{background-color:black;color:white}
+#paperexamples.on /deep/ #selectionBar{background-color:#fc0}
+#paperexamples.on /deep/ #activeProgress{background:black}
+#paperexamples.on /deep/ #sliderBar::shadow #activeProgress{background-color:#fc0}
+#paperexamples.on /deep/ #secondaryProgress{background:gray}
+#paperexamples.on /deep/ #onRadio,#paperexamples.on /deep/ #toggleBar[checked],#paperexamples.on /deep/ #sliderKnobInner,#paperexamples.on /deep/ #sliderKnobInner::before{background-color:#fc0}
+#paperexamples.on /deep/ #checkbox.checked{border-color:#fc0}
+#paperexamples.on /deep/ paper-ripple,#paperexamples.on .card paper-ripple,#paperexamples.on /deep/ #ink[checked]{color:#fc0}
+#paperexamples.on /deep/ paper-input::shadow .focusedColor{color:#fc0}
+#paperexamples.on /deep/ paper-input::shadow #underlineHighlight.focusedColor,#paperexamples.on /deep/ paper-input::shadow #caretInner.focusedColor{background-color:#fc0}
+#paperexamples.on /deep/ paper-input::shadow #floatedLabel{color:#fc0}
+#paperexamples .card paper-ripple{top:0;bottom:0;left:0;right:0;position:absolute}
