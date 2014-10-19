@@ -1,0 +1,10 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="packages/polymer/polymer.html">
+
+<polymer-element name="click-counter" attributes="count">
+  <template>
+    <button on-click="{{increment}}">Click me: {{count}}</button>
+  </template>
+  <script type="application/dart" src="click_counter.dart"></script>
+</polymer-element>
+

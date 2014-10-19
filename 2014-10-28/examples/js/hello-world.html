@@ -1,9 +1,9 @@
 <template>
-    <p>Hello World!</p>
+  <p>Hello World!</p>
 </template>
 
 <script>
-(function() {
+  (function() {
     // Refers to the "importee", which is hello-world.html
     var thisDoc =  document.currentScript.ownerDocument;
 
@@ -18,7 +18,7 @@
     };
 
     document.registerElement('hello-world', {
-        prototype: element
+      prototype: element
     });
-})();
+  })();
 </script>

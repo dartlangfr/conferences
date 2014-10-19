@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymer.dart</title>
+
+    <!-- include the web_components polyfills with support for Dart. -->
+    <script src="packages/web_components/platform.js"></script>
+
+    <!-- import the click-counter -->
+    <link rel="import" href="hello_world.html">
+    <link rel="import" href="hello_world_plus.html">
+    <link rel="import" href="click_counter.html">
+
+    <!-- bootstrap polymer -->
+    <script type="application/dart">export 'package:polymer/init.dart';</script>
+    <script src="packages/browser/dart.js"></script>
+  </head>
+  <body>
+    <hello-world></hello-world>
+    <hello-world-plus yourName="John Doe"></hello-world-plus>
+    <click-counter></click-counter>
+  </body>
+</html>
