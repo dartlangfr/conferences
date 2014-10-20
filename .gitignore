@@ -13,3 +13,9 @@ packages/
 
 # Include when developing application packages.
 pubspec.lock
+*.iml
+.idea
+packages
+build
+.pub
+cache
