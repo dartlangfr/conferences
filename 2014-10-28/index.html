@@ -58,24 +58,45 @@
 				</section>
 
         <section>
+          <hello-world/>
+				</section>
+
+        <section>
 					<section id="fragments">
 						<h2>Web components</h2>
             
+            <div>
+              <div class="absolute fill">
+                <img class="fragment current-visible" data-fragment-index="1" src="http://p1.storage.canalblog.com/14/89/1132500/87644482_o.jpg" alt="Custom Element">
+              </div>
+              <div class="absolute fill">
+                <img class="fragment current-visible" data-fragment-index="2" src="http://i00.i.aliimg.com/wsphoto/v0/1123249750/Korea-pawn-metal-seal-stamp-retro-style-mini-stamp-rubber-stamp-DIY-funny-work-Free-shipping.jpg" alt="Template">
+              </div>
+              <div class="absolute fill">
+                <img class="fragment current-visible" data-fragment-index="3" src="http://3.bp.blogspot.com/_cwqjRhpwldY/TTTAL16dBAI/AAAAAAAALRM/VQocHAxFh-M/s1600/fumar_japon.jpg" alt="Shadow Dom">
+              </div>
+              <div class="absolute fill">
+                <img class="fragment current-visible" data-fragment-index="4" src="http://www.franklinparishlibrary.org/MPj04276860000[1].jpg" alt="Html Import">
+              </div>
+            </div>
             <div class="twocolumns">
+              <ul class="absolute blur">
+                <li class="fragment grow-current" data-fragment-index="1">Custom Element</li>
+                <li class="fragment grow-current" data-fragment-index="2">Template</li>
+                <li class="fragment grow-current" data-fragment-index="3">Shadow Dom</li>
+                <li class="fragment grow-current" data-fragment-index="4">Html Import</li>
+              </ul>
               <ul>
                 <li class="fragment grow-current" data-fragment-index="1">Custom Element</li>
                 <li class="fragment grow-current" data-fragment-index="2">Template</li>
                 <li class="fragment grow-current" data-fragment-index="3">Shadow Dom</li>
                 <li class="fragment grow-current" data-fragment-index="4">Html Import</li>
               </ul>
-              <div>
-                <img style="position: absolute; top 0; right: 0;" class="fragment current-visible" data-fragment-index="1" src="http://3.bp.blogspot.com/_cwqjRhpwldY/TTTAL16dBAI/AAAAAAAALRM/VQocHAxFh-M/s1600/fumar_japon.jpg" alt="Shadow Dom">
-                <img style="position: absolute; right: 0;" class="fragment current-visible" data-fragment-index="2" src="http://i00.i.aliimg.com/wsphoto/v0/1123249750/Korea-pawn-metal-seal-stamp-retro-style-mini-stamp-rubber-stamp-DIY-funny-work-Free-shipping.jpg" alt="Template">
-                <img style="position: absolute; right: 0;" class="fragment current-visible" data-fragment-index="3" src="http://3.bp.blogspot.com/_cwqjRhpwldY/TTTAL16dBAI/AAAAAAAALRM/VQocHAxFh-M/s1600/fumar_japon.jpg" alt="Shadow Dom">
-                <img style="position: absolute; right: 0;" class="fragment current-visible" data-fragment-index="4" src="http://3.bp.blogspot.com/_cwqjRhpwldY/TTTAL16dBAI/AAAAAAAALRM/VQocHAxFh-M/s1600/fumar_japon.jpg" alt="Shadow Dom">
-              </div>
             </div>
-						<aside class="notes">
+
+            <p><br><br><br><br><br><br><br></p>
+
+            <aside class="notes">
 							This slide has fragments which are also stepped through in the notes window.
 						</aside>
 					</section>
@@ -481,7 +502,7 @@ function linkify( selector ) {
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
+    
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
 				// parallaxBackgroundSize: '2100px 900px',
