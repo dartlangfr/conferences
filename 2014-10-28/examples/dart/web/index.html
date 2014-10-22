@@ -4,28 +4,36 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polymer.dart</title>
-
+    
     <!-- include the web_components polyfills with support for Dart. -->
     <script src="packages/web_components/platform.js"></script>
 
     <!-- import the click-counter -->
     <link rel="import" href="packages/dart/hello_world.html">
-    <link rel="import" href="packages/dart/hello_world_plus.html">
+    <link rel="import" href="packages/dart/hello_world_binding.html">
+    <link rel="import" href="packages/dart/hello_world_attribute.html">
     <link rel="import" href="packages/dart/hello_world_template_repeat.html">
     <link rel="import" href="packages/dart/click_counter.html">
     <link rel="import" href="packages/dart/click_counter_filter.html">
     <link rel="import" href="packages/dart/click_counter_template_if.html">
+    <link rel="import" href="packages/dart/post_card.html">
 
     <!-- bootstrap polymer -->
     <script type="application/dart">export 'package:polymer/init.dart';</script>
     <script src="packages/browser/dart.js"></script>
   </head>
-  <body>
+  <body unresolved>
     <hello-world></hello-world>
-    <hello-world-plus yourName="John Doe"></hello-world-plus>
+    <hello-world-binding yourName="John Doe"></hello-world-binding>
+    <hello-world-attribute yourName="John Doe"></hello-world-attribute>
     <hello-world-template-repeat></hello-world-template-repeat>
     <click-counter></click-counter>
     <click-counter-filter></click-counter-filter>
     <click-counter-template-if></click-counter-template-if>
+    <post-card>
+      <img src="img/avatar.png">
+      <h2>Crazy Developer</h2>
+      <p>Feels like the future!</p>
+    </post-card>
   </body>
 </html>

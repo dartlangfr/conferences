@@ -1,0 +1,11 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+
+<polymer-element name="hello-world-binding">
+  <template>
+    <label>What is your name?</label>
+    <input type="input" value="{{yourName}}">
+    
+    <p>Hello {{yourName}}!</p>
+  </template>
+  <script type="application/dart" src="hello_world_binding.dart"></script>
+</polymer-element>

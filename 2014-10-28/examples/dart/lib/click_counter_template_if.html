@@ -1,15 +1,13 @@
-<!-- import polymer-element's definition -->
-<link rel="import" href="../packages/polymer/polymer.html">
+<link rel="import" href="../../packages/polymer/polymer.html">
 
 <polymer-element name="click-counter-template-if">
   <template>
     <button on-click="{{increment}}">Click me: {{count}}</button>
     <span>
     	This number is
-    	<template if="{{count%2==0}}">even</template>
-    	<template if="{{count%2!=0}}">odd</template>
+    	<template if="{{count % 2 == 0}}">even</template>
+    	<template if="{{count % 2 != 0}}">odd</template>
     </span>
   </template>
   <script type="application/dart" src="click_counter_template_if.dart"></script>
 </polymer-element>
-

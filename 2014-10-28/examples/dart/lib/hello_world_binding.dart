@@ -1,8 +1,8 @@
 import 'package:polymer/polymer.dart';
 
-@CustomTag('hello-world-plus')
+@CustomTag('hello-world-binding')
 class HelloWorld extends PolymerElement {
-  @published String yourName;
+  @observable String yourName;
 
   HelloWorld.created() : super.created();
 }
