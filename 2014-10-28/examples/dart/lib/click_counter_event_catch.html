@@ -1,0 +1,12 @@
+<!-- import polymer-element's definition -->
+<link rel="import" href="../packages/polymer/polymer.html">
+<link rel="import" href="click_counter_event_fire.html">
+
+<polymer-element name="click-counter-event-catch">
+  <template>
+    <click-counter-event-fire on-count="{{hasCount}}"></click-counter-event-fire>
+    <span>Value {{value}}</span>
+  </template>
+  <script type="application/dart" src="click_counter_event_catch.dart"></script>
+</polymer-element>
+

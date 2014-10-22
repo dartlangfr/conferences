@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polymer.dart</title>
-    
+
     <style>
       post-card.green::shadow * {
         background-color: #86B32D;
@@ -15,7 +15,7 @@
         color: white;
       }
     </style>
-    
+
     <!-- include the web_components polyfills with support for Dart. -->
     <script src="packages/web_components/platform.js"></script>
 
@@ -28,6 +28,7 @@
     <link rel="import" href="packages/dart/click_counter_filter.html">
     <link rel="import" href="packages/dart/click_counter_if.html">
     <link rel="import" href="packages/dart/post_card.html">
+    <link rel="import" href="packages/dart/click_counter_event_catch.html">
 
     <!-- bootstrap polymer -->
     <script type="application/dart">export 'package:polymer/init.dart';</script>
@@ -41,6 +42,7 @@
     <click-counter></click-counter>
     <click-counter-filter></click-counter-filter>
     <click-counter-if></click-counter-if>
+    <click-counter-event-catch></click-counter-event-catch>
     <post-card>
       <img src="img/avatar.png">
       <h2>Crazy Developer</h2>
@@ -61,5 +63,6 @@
       <h2>Crazy Developer</h2>
       <p>Feels like the future!</p>
     </post-card>
+
   </body>
 </html>
