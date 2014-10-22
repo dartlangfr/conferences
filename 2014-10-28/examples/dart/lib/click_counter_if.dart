@@ -3,7 +3,7 @@ import 'package:polymer/polymer.dart';
 /**
  * A Polymer click counter element.
  */
-@CustomTag('click-counter-template-if')
+@CustomTag('click-counter-if')
 class ClickCounter extends PolymerElement {
   @observable int count = 0;
 

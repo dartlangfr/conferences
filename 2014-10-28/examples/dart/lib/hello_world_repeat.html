@@ -1,0 +1,14 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+<link rel="import" href="hello_world_attribute.html">
+
+<polymer-element name="hello-world-repeat">
+  <template>
+    <p>Welcome to my friends:</p>
+    <ul>
+      <template repeat="{{friend in friends}}">
+        <li>{{friend}}</li>
+      </template>
+    </ul>
+  </template>
+  <script type="application/dart" src="hello_world_repeat.dart"></script>
+</polymer-element>
