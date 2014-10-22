@@ -1,7 +1,7 @@
 import 'package:polymer/polymer.dart';
 
 /**
- * A Polymer click counter element.
+ * A Polymer click counter element with a filter fonction.
  */
 @CustomTag('click-counter-filter')
 class ClickCounter extends PolymerElement {
