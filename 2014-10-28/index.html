@@ -357,10 +357,20 @@ class HelloWorld extends PolymerElement {
 						<h2>Conditional template</h2>
 
             <pre><code data-trim class="html">
+&lt;template if="{{number % 2 == 0}}"&gt;{{number}} is even&lt;/template&gt;
+&lt;template if="{{number % 2 != 0}}"&gt;{{number}} is odd&lt;/template&gt;
+            </code></pre>
+            
+            <pre class="fragment"><code data-trim class="dart">
+@CustomTag('even-or-odd')
+class EvenOrOdd extends PolymerElement {
+  @observable int number = 0;
+  // ...
+}
             </code></pre>
 
             <div class="fragment strech result">
-              <hello-world></hello-world>
+              <even-or-odd></even-or-odd>
             </div>
           </section>
 
@@ -368,10 +378,23 @@ class HelloWorld extends PolymerElement {
 						<h2>Loop template</h2>
 
             <pre><code data-trim class="html">
+&lt;ul&gt;
+  &lt;template repeat="{{friend in friends}}"&gt;
+    &lt;li&gt;Hello {{friend}}!&lt;/li&gt;
+  &lt;/template&gt;
+&lt;/ul&gt;
+            </code></pre>
+
+            <pre class="fragment"><code data-trim class="dart">
+@CustomTag('hello-friends')
+class HelloWorldRepeat extends PolymerElement {
+  List<String> friends = ['John Doe', 'Jane Doe', 'Mister X'];
+  // ...
+}
             </code></pre>
 
             <div class="fragment strech result">
-              <hello-world></hello-world>
+              <hello-friends></hello-friends>
             </div>
           </section>
         </section>        
