@@ -1,0 +1,13 @@
+<polymer-element name="hex-number">
+  <template>
+    <input type="number" value="{{number}}"><br>
+    {{number | toHex | toUpperCase}}
+  </template>
+  <script>
+    Polymer({
+      number: 55937,
+      toHex: function(number) { return Number(number).toString(16); },
+      toUpperCase: function(s) { return String(s).toUpperCase(); }
+    });
+  </script>
+</polymer-element>

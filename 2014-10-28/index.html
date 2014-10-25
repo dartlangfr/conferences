@@ -387,7 +387,7 @@ class EvenOrOdd extends PolymerElement {
 
             <pre class="fragment"><code data-trim class="dart">
 @CustomTag('hello-friends')
-class HelloWorldRepeat extends PolymerElement {
+class HelloFriends extends PolymerElement {
   List<String> friends = ['John Doe', 'Jane Doe', 'Mister X'];
   // ...
 }
@@ -395,6 +395,27 @@ class HelloWorldRepeat extends PolymerElement {
 
             <div class="fragment strech result">
               <hello-friends></hello-friends>
+            </div>
+          </section>
+
+					<section>
+						<h2>Filter</h2>
+
+            <pre><code data-trim class="html">
+{{number | toHex | toUpperCase}}
+            </code></pre>
+
+            <pre class="fragment"><code data-trim class="dart">
+@CustomTag('hex-number')
+class HexNumber extends PolymerElement {
+  String toHex(int number) => number.toRadixString(16);
+  String toUpperCase(int number) => number.toUpperCase();
+  // ...
+}
+            </code></pre>
+
+            <div class="fragment strech result">
+              <hex-number></hex-number>
             </div>
           </section>
         </section>        
