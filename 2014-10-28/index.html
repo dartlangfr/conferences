@@ -14,13 +14,15 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+    <link href='http://fonts.googleapis.com/css?family=Asset|Lobster|Monofett|Press+Start+2P' rel='stylesheet' type='text/css'>
+    
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
-    <link rel="stylesheet" href="css/slides.css">
-
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/slides.css">
     
     <!-- Importing Web Component's Polyfill -->
     <script src="bower_components/platform/platform.js"></script>
@@ -62,37 +64,71 @@
 					<section>
 						<h1>Web components</h1>
             
-            TODO: logo web components
+            <img class="stretch" alt="Web Components" src="img/webcomponents.svg">
 
             <aside class="notes">
 							This slide has fragments which are also stepped through in the notes window.
 						</aside>
           </section>
           
-					<section data-background="img/custom.jpg">
-						<h2>Custom Element</h2>
+					<section id="custom_element" data-background="img/custom.jpg">
+						<h1>Custom Element</h1>
           </section>
           
-					<section data-background="img/template.jpg">
-						<h2>Template</h2>
+					<section id="template" data-background="img/template.jpg">
+						<h1>Template</h1>
           </section>          
           
-					<section data-background="img/shadow.jpg">
-						<h2>Shadow Dom</h2>
+					<section id="shadow_dom" data-background="img/shadow.jpg">
+						<h1>Shadow Dom</h1>
           </section>          
           
-					<section data-background="img/reusable.jpg">
-						<h2>Html Import</h2>
+					<section id="html_import" data-background="img/reusable.jpg">
+						<h1>Html Import</h1>
           </section>          
           
 					<section>
 						<h2>Vanilla JS Web Component</h2>
-            Example register
+            <pre><code data-trim class="html">
+&lt;template&gt;
+  &lt;p&gt;Hello World!&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;(function() {
+    var thisDoc =  document.currentScript.ownerDocument;
+
+    var element = Object.create(HTMLElement.prototype);
+
+    element.createdCallback = function() {
+      var template = thisDoc.querySelector('template').content;
+      var clone = document.importNode(template, true);
+      this.createShadowRoot().appendChild(clone);
+    };
+
+    document.registerElement('hello-world', { prototype: element });
+  })();&lt;/script&gt;
+            </code></pre>
           </section>          
 
 					<section>
 						<h2>Vanilla JS Web Component</h2>
-            Example import
+
+            <pre><code data-trim class="html">
+&lt;html&gt;
+  &lt;head&gt;
+    <!-- Importing Custom Elements -->
+    &lt;link rel="import" href="hello-world.html"&gt;
+  &lt;/head&gt;
+
+  &lt;body&gt;
+    <!-- Using Custom Elements -->
+    &lt;hello-world&gt;&lt;/hello-world&gt;
+  &lt;/body&gt;
+&lt;/html>
+            </code></pre>
+
+            <div class="result">
+              <hello-world></hello-world>
+            </div>
           </section>          
 				</section>
 
@@ -114,15 +150,13 @@
           </section>
         </section>
 
-        <section id="bindings">
+        <section id="bindings" data-background="img/binding.jpg">
 					<section>
 						<h1>Bindings</h1>
-            
-            TODO: image???
           </section>
 
 					<section>
-						<h2>Binding</h2>
+						<h1>Binding</h1>
           </section>
 
 					<section>

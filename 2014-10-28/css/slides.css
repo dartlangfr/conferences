@@ -62,3 +62,40 @@ height: 574px;
   margin: -36px -110px !important;
   padding: 36px 110px !important;
 }
+
+.reveal section img {
+  border: 0;
+  box-shadow: none;
+}
+
+#web_components #custom_element h1 {
+  position: absolute;
+  top: -3.5em;
+  font-family: 'Asset', cursive;
+  font-size: 2.4em;
+  color: #eaeaea;
+}
+#web_components #template h1 {
+  /*position: absolute;
+  top: -2.5em;
+  left: -3.5em;*/
+  font-family: 'Lobster', cursive;
+  color: #eaeaea;
+}
+#web_components #shadow_dom h1 {
+  font-family: 'Monofett', cursive;
+  color: #eaeaea;
+  font-size: 6em;
+}
+#web_components #html_import h1 {
+  font-family: 'Press Start 2P', cursive;
+  color: #eaeaea;
+  background: rgba(215, 215, 215, 0.73);
+  padding: 0.4em;
+}
+
+.result {
+  border: black solid 2px;
+}
+
+
