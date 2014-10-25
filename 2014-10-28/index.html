@@ -138,6 +138,94 @@
 					<section>
 						<h1>Polymer</h1>
           </section>
+
+					<section>
+						<h2>Polyfills</h2>
+        
+            <div style="position: relative;">
+              <img class="stretch current-visible hidden" alt="Web Components" src="img/browser-support.png">
+              <img class="fragment stretch current-visible absolute" alt="Web Components" src="img/browser-support.png">
+              <img class="fragment stretch current-visible absolute" alt="Web Components" src="img/browser-support-polyfills.png">
+            </div>
+          </section>
+          
+          <section>
+						<h2>Sugaring</h2>
+          
+            TODO: Image
+          
+            <aside class="notes">
+              declarative, readable
+              meaningful HTML
+              common way to extend → reusable
+						</aside>
+          </section>
+          
+          <section>
+            <h2>Polymer's material design elements</h2>
+            
+            <div id="paperexamples" horizontal="" layout="">
+              <div flex>
+
+                <div>
+                  <paper-tabs selected="0">
+                  <paper-tab class="core-selected" active>paper-tab 1</paper-tab>
+                  <paper-tab>paper-tab 2</paper-tab>
+                  <paper-tab>paper-tab 3</paper-tab>
+                 </paper-tabs>
+                </div>
+
+                <div>
+                  <paper-button label="paper-button" role="button" tabindex="0" aria-label="paper-button"></paper-button>
+                  <paper-button label="raised button" raisedbutton role="button" tabindex="0" aria-label="raised button"></paper-button>
+                </div>
+
+                <p layout horizontal center>
+                  <paper-toggle-button checked style="margin-right:2em;" touch-action="pan-y" role="button" aria-pressed="true" tabindex="0"></paper-toggle-button>
+                  <paper-checkbox label="Check me" role="checkbox" tabindex="0" aria-checked="false" aria-label="Check me"></paper-checkbox>
+                </p>
+
+                <div layout horizontal center>
+                  <paper-radio-group selected="2" style="margin-right:2em;" role="radiogroup">
+                    <paper-radio-button label="Yes" role="radio" tabindex="0" aria-checked="false" aria-label="Yes"></paper-radio-button>
+                    <paper-radio-button label="No" role="radio" tabindex="0" aria-checked="false" aria-label="No"></paper-radio-button>
+                  </paper-radio-group>
+                  <paper-fab focused icon="cloud-upload" role="button" tabindex="0" class="paper-shadow-animate-z-1-z-2"></paper-fab>
+                </div>
+
+                <div layout horizontal center>
+                  <p style="margin-right:2em;">
+                    <paper-progress value="800" min="100" max="1000"></paper-progress><br>
+                    <paper-progress class="pink" value="40" secondaryprogress="80"></paper-progress>
+                  </p>
+                  <paper-slider pin max="10" step="1" value="5"></paper-slider>
+                </div>
+
+                <paper-button label="Toggle batman" style="font-size:20px;" raisedbutton onclick="document.querySelector('#paperexamples').classList.toggle('on');" role="button" tabindex="0" aria-label="Toggle batman"></paper-button>
+
+              </div>
+
+              <div flex>
+
+                <div layout horizontal center>
+                  <core-toolbar layout horizontal center>
+                    <paper-icon-button icon="menu" role="button" tabindex="0"></paper-icon-button>
+                    <span flex style="font-size:25px;">core-toolbar</span>
+                    <paper-icon-button icon="refresh" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="add" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="search" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="cloud-upload" role="button" tabindex="0"></paper-icon-button>
+                  </core-toolbar>
+                </div>
+
+                <div layout horizontal center>
+                  <paper-input floatinglabel label="Type numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
         </section>
 
         <section id="dart">
@@ -172,72 +260,7 @@
 					<section>
 						<h2>Loop template</h2>
           </section>
-        </section>
-
-        <section>
-          <h2>Polymer's material design elements</h2>
-          <div id="paperexamples" horizontal="" layout="">
-            <div flex>
-
-              <div>
-                <paper-tabs selected="0">
-                <paper-tab class="core-selected" active>paper-tab 1</paper-tab>
-                <paper-tab>paper-tab 2</paper-tab>
-                <paper-tab>paper-tab 3</paper-tab>
-               </paper-tabs>
-              </div>
-
-              <div>
-                <paper-button label="paper-button" role="button" tabindex="0" aria-label="paper-button"></paper-button>
-                <paper-button label="raised button" raisedbutton role="button" tabindex="0" aria-label="raised button"></paper-button>
-              </div>
-
-              <p layout horizontal center>
-                <paper-toggle-button checked style="margin-right:2em;" touch-action="pan-y" role="button" aria-pressed="true" tabindex="0"></paper-toggle-button>
-                <paper-checkbox label="Check me" role="checkbox" tabindex="0" aria-checked="false" aria-label="Check me"></paper-checkbox>
-              </p>
-
-              <div layout horizontal center>
-                <paper-radio-group selected="2" style="margin-right:2em;" role="radiogroup">
-                  <paper-radio-button label="Yes" role="radio" tabindex="0" aria-checked="false" aria-label="Yes"></paper-radio-button>
-                  <paper-radio-button label="No" role="radio" tabindex="0" aria-checked="false" aria-label="No"></paper-radio-button>
-                </paper-radio-group>
-                <paper-fab focused icon="cloud-upload" role="button" tabindex="0" class="paper-shadow-animate-z-1-z-2"></paper-fab>
-              </div>
-
-              <div layout horizontal center>
-                <p style="margin-right:2em;">
-                  <paper-progress value="800" min="100" max="1000"></paper-progress><br>
-                  <paper-progress class="pink" value="40" secondaryprogress="80"></paper-progress>
-                </p>
-                <paper-slider pin max="10" step="1" value="5"></paper-slider>
-              </div>
-
-              <paper-button label="Toggle batman" style="font-size:20px;" raisedbutton onclick="document.querySelector('#paperexamples').classList.toggle('on');" role="button" tabindex="0" aria-label="Toggle batman"></paper-button>
-
-            </div>
-
-            <div flex>
-
-              <div layout horizontal center>
-                <core-toolbar layout horizontal center>
-                  <paper-icon-button icon="menu" role="button" tabindex="0"></paper-icon-button>
-                  <span flex style="font-size:25px;">core-toolbar</span>
-                  <paper-icon-button icon="refresh" role="button" tabindex="0"></paper-icon-button>
-                  <paper-icon-button icon="add" role="button" tabindex="0"></paper-icon-button>
-                  <paper-icon-button icon="search" role="button" tabindex="0"></paper-icon-button>
-                  <paper-icon-button icon="cloud-upload" role="button" tabindex="0"></paper-icon-button>
-                </core-toolbar>
-              </div>
-
-              <div layout horizontal center>
-                <paper-input floatinglabel label="Type numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
-              </div>
-            </div>
-
-          </div>
-        </section>
-        
+        </section>        
 
 				<section>
 					<h1>THE END</h1>
