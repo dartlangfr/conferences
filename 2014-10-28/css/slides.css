@@ -94,8 +94,10 @@ height: 574px;
   padding: 0.4em;
 }
 
-.result {
+.reveal div.result {
   border: black solid 2px;
+  width: 90%;
+  margin: 15px auto;
 }
 
 
