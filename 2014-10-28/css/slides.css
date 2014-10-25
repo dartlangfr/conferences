@@ -69,18 +69,29 @@
   background: rgba(215, 215, 215, 0.73);
   padding: 0.4em;
   line-height: 1.2em;
+
+}
+
+#first_element h2 {
+  color: #eaeaea;
+  background: rgba(115, 115, 115, 0.73);
+  width: 87%;
+  margin: 15px auto;
+  padding: 15px;
 }
 
 #first_custom_element h1 {
   position: absolute;
-  top: -3.5em;
+  top: -4em;
   font-family: 'Press Start 2P', cursive;
   color: #eaeaea;
   font-size: 2em;
   line-height: 1.2em;
+  background: rgba(115, 115, 115, 0.73);
 }
 
 .reveal div.result {
+  background: #eaeaea;
   border: black solid 2px;
   width: 90%;
   margin: 15px auto;
@@ -147,10 +158,8 @@ z-index: 2;
 .fill {
 top: 70px;
 right: 0px;
-/* bottom: 0px; */
 left: 0px;
 height: 574px;
-/* width: 500px; */
 }
 
 .blur {
