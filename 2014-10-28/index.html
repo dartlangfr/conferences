@@ -290,19 +290,89 @@
           </section>
 
 					<section>
-						<h1>Binding</h1>
+						<h2>Data binding</h2>
+            
+            <pre><code data-trim class="html">
+&lt;link rel="import" href="../../packages/polymer/polymer.html"&gt;
+
+&lt;polymer-element name="hello-world"&gt;
+  &lt;template&gt;
+    &lt;label&gt;What is your name?&lt;/label&gt;
+    &lt;input type="input" value="{{yourName}}"&gt;
+    
+    &lt;p&gt;Hello {{yourName}}!&lt;/p&gt;
+  &lt;/template&gt;
+  &lt;script type="application/dart" src="hello_world.dart"&gt;&lt;/script&gt;
+&lt;/polymer-element&gt;
+            </code></pre>
+          </section>
+
+					<section>
+						<h2>Data binding</h2>
+            
+            <pre><code data-trim class="dart">
+import 'package:polymer/polymer.dart';
+
+@CustomTag('hello-world')
+class HelloWorld extends PolymerElement {
+  @observable String yourName;
+
+  HelloWorld.created() : super.created();
+}
+            </code></pre>
+
+            <div class="fragment strech result no-transition">
+              <hello-world-binding></hello-world-binding>
+            </div>
+
+            <aside class="notes">
+							Attention ! Ne pas utiliser les raccourcis Reveal.js !
+						</aside>
           </section>
 
 					<section>
 						<h2>Custom attribute</h2>
+
+            <pre><code data-trim class="dart">
+import 'package:polymer/polymer.dart';
+
+@CustomTag('hello-world')
+class HelloWorld extends PolymerElement {
+  @published String yourName;
+
+  HelloWorld.created() : super.created();
+}
+            </code></pre>
+
+            <pre class="fragment"><code data-trim class="html">
+              &lt;hello-world yourName="John"&gt;&lt;/hello-world&gt;
+            </code></pre>
+
+            <div class="fragment strech result no-transition">
+              <hello-world-attribute yourName="John"></hello-world-attribute>
+            </div>
           </section>
 
 					<section>
 						<h2>Conditional template</h2>
+
+            <pre><code data-trim class="html">
+            </code></pre>
+
+            <div class="fragment strech result">
+              <hello-world></hello-world>
+            </div>
           </section>
 
 					<section>
 						<h2>Loop template</h2>
+
+            <pre><code data-trim class="html">
+            </code></pre>
+
+            <div class="fragment strech result">
+              <hello-world></hello-world>
+            </div>
           </section>
         </section>        
 
@@ -331,6 +401,7 @@
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
     
+        //keyboard: false,
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
 				// parallaxBackgroundSize: '2100px 900px',
@@ -345,6 +416,14 @@
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
+      
+      /*Reveal.configure({
+        keyboard: {
+          13: 'next', // go to the next slide when the ENTER key is pressed
+          27: function() {}, // do something custom when ESC is pressed
+          32: null // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+        }
+      });*/
 
 		</script>
 
