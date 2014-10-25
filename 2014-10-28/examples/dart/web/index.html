@@ -16,9 +16,6 @@
       }
     </style>
 
-    <!-- include the web_components polyfills with support for Dart. -->
-    <script src="packages/web_components/platform.js"></script>
-
     <!-- import the click-counter -->
     <link rel="import" href="packages/dart/hello_world.html">
     <link rel="import" href="packages/dart/hello_world_binding.html">
@@ -30,10 +27,6 @@
     <link rel="import" href="packages/dart/post_card.html">
     <link rel="import" href="packages/dart/click_counter_event_catch.html">
     <link rel="import" href="packages/dart/click_counter_ext.html">
-
-    <!-- bootstrap polymer -->
-    <script type="application/dart">export 'package:polymer/init.dart';</script>
-    <script src="packages/browser/dart.js"></script>
   </head>
   <body unresolved>
     <hello-world></hello-world>
@@ -66,5 +59,7 @@
       <p>Feels like the future!</p>
     </post-card>
 
+    <!-- bootstrap polymer -->
+    <script type="application/dart">export 'package:polymer/init.dart';</script>
   </body>
 </html>

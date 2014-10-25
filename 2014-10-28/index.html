@@ -238,6 +238,46 @@
 					<section>
 						<h1>First Custom Element</h1>
           </section>
+          
+          <section>
+						<h2>Register custom element</h2>
+
+            <pre><code data-trim class="html">
+&lt;!-- import polymer-element's definition --&gt;
+&lt;link rel="import" href="../../packages/polymer/polymer.html"&gt;
+
+&lt;polymer-element name="hello-world" noscript&gt;
+  &lt;template&gt;
+    &lt;p&gt;Hello World!&lt;/p&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+            </code></pre>
+          </section>          
+          
+          <section>
+						<h2>Use custom element</h2>
+
+            <pre><code data-trim class="html">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- import the hello-world --&gt;
+    &lt;link rel="import" href="packages/dart/hello_world.html"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- use hello-world element --&gt;
+    &lt;hello-world&gt;&lt;/hello-world&gt;
+
+    &lt;!-- bootstrap polymer --&gt;
+    &lt;script type="application/dart"&gt;export 'package:polymer/init.dart';&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+            </code></pre>
+
+            <div class="fragment strech result">
+              <hello-world></hello-world>
+            </div>
+          </section>          
+
         </section>
 
         <section id="bindings" data-background="img/binding.jpg">
