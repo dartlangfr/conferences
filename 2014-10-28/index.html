@@ -551,10 +551,9 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
             </code></pre>
 
             <pre class="fragment"><code data-trim class="html">
-&lt;polymer-element name="click-counter" extends="button"
-    on-click="{{increment}}"&gt;
+&lt;polymer-element name="click-counter" extends="button" on-click="{{increment}}"&gt;
     &lt;template&gt;Click me: {{count}}&lt;/template>
-    &lt;script type="application/dart" src="click_counter_ext.dart"&gt;&lt;/script&gt;
+    &lt;script type="application/dart" src="click_counter.dart"&gt;&lt;/script&gt;
 &lt;/polymer-element&gt;
             </code></pre>
             
