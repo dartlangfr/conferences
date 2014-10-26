@@ -44,6 +44,10 @@
   box-shadow: none;
 }
 
+.reveal /deep/ input {
+  font-size: 1em;
+}
+
 #web_components #custom_element h1 {
   position: absolute;
   top: -3.5em;
@@ -72,7 +76,9 @@
 
 }
 
-#first_element_js h2, #first_element h2 {
+#first_element_js h2, #first_element h2, 
+  #compose_elements h1, #compose_elements section h2:first-child, 
+  #styling h1, #styling section h2:first-child {
   color: #eaeaea;
   background: rgba(115, 115, 115, 0.73);
   width: 87%;
@@ -88,10 +94,6 @@
   font-size: 2em;
   line-height: 1.2em;
   background: rgba(115, 115, 115, 0.73);
-}
-
-#styling h1, #styling h2 {
-  color: #eaeaea;
 }
 
 .reveal div.result {
