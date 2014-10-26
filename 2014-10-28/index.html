@@ -455,14 +455,27 @@ class HexNumber extends PolymerElement {
 						<h2>Handle event</h2>
             
             <pre><code data-trim class="html">
+&lt;button on-click="{{increment}}"&gt;Click me: {{count}}&lt;/button&gt;          
             </code></pre>
+            <pre class="fragment"><code data-trim class="dart">
+increment() => count++;               
+            </code></pre>            
           </section>
 
 					<section>
 						<h2>Custom event</h2>
             
-            <pre><code data-trim class="html">
+            <pre><code data-trim class="dart">
+dispatchEvent(new CustomEvent('count', detail: count)); 
             </code></pre>
+            <pre class="fragment"><code data-trim class="html">
+&lt;click-counter="{{hasCount}}"&gt;&lt;/click-counter&gt;      
+            </code></pre>
+
+            <pre class="fragment"><code data-trim class="dart">
+hasCount(Event e, int count, Element target) => value = count;    
+            </code></pre>
+
           </section>
         </section>
 
