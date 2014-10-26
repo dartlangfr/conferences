@@ -90,11 +90,28 @@
   background: rgba(115, 115, 115, 0.73);
 }
 
+#styling h1, #styling h2 {
+  color: #eaeaea;
+}
+
 .reveal div.result {
   background: #eaeaea;
   border: black solid 2px;
   width: 90%;
   margin: 15px auto;
+}
+
+#styling_host  post-card {
+  background-color: #FFE25F;
+}
+
+post-card.green::shadow * {
+  background-color: #86B32D;
+  color: white;
+}
+post-card.blue /deep/ * {
+  background-color: #009999;
+  color: white;
 }
 
 /*

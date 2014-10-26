@@ -445,12 +445,33 @@ class HexNumber extends PolymerElement {
 						<h1>Special elements</h1>
           </section>
 
-					<section>
+					<section id="insertion_point">
 						<h2>Insertion point</h2>
             
             <pre><code data-trim class="html">
+&lt;div&gt;
+  &lt;content select="img"&gt;&lt;/content&gt;
+  &lt;content select="h2"&gt;&lt;/content&gt;
+&lt;/div&gt;
+&lt;content&gt;&lt;/content&gt;
+            </code></pre>
+
+            <pre class="fragment"><code data-trim class="html">
+&lt;post-card&gt;
+  &lt;img src="img/avatar.png"&gt;
+  &lt;h2&gt;Crazy Developer&lt;/h2&gt;
+  &lt;p&gt;Feels like the future!&lt;/p&gt;
+&lt;/post-card&gt;
             </code></pre>
             
+            <div class="fragment strech result">
+              <post-card>
+                <img src="img/avatar.png">
+                <h2>Crazy Developer</h2>
+                <p>Feels like the future!</p>
+              </post-card>
+            </div>
+
             <aside class="notes">
 							LightDOM
 						</aside>
@@ -468,37 +489,139 @@ class HexNumber extends PolymerElement {
           </section>
         </section>
 
-        <section>
+        <section id="styling" data-background="img/styling.jpg">
 					<section>
 						<h1>Styling elements</h1>
           </section>
 
-					<section>
+					<section id="styling_host">
 						<h2>:host</h2>
             
             <pre><code data-trim class="html">
+&lt;polymer-element name="post-card" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      :host {
+        background-color: #FFE25F;
+      }
+    &lt;/style&gt;
+    
+    &lt;div&gt;
+      &lt;content select="img"&gt;&lt;/content&gt;
+      &lt;content select="h2"&gt;&lt;/content&gt;
+    &lt;/div&gt;
+    &lt;content&gt;&lt;/content&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
             </code></pre>
+
+            <pre class="fragment"><code data-trim class="html">
+&lt;post-card&gt;...&lt;/post-card&gt;
+            </code></pre>
+
+            <div class="fragment strech result">
+              <post-card>
+                <img src="img/avatar.png">
+                <h2>Crazy Developer</h2>
+                <p>Feels like the future!</p>
+              </post-card>
+            </div>
           </section>
 
 					<section>
 						<h2>:host(.red)</h2>
             
-            <pre><code data-trim class="html">
+            <pre><code data-trim class="css">
+&lt;polymer-element name="post-card" noscript&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+      :host(.red) {
+        background-color: #BF3030;
+      }
+    &lt;/style&gt;
+    
+    ...
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
             </code></pre>
+
+            <pre class="fragment"><code data-trim class="html">
+&lt;post-card class="red"&gt;...&lt;/post-card&gt;
+            </code></pre>
+
+            <div class="fragment strech result">
+              <post-card class="red">
+                <img src="img/avatar.png">
+                <h2>Crazy Developer</h2>
+                <p>Feels like the future!</p>
+              </post-card>
+            </div>
           </section>
 
 					<section>
 						<h2>shadow</h2>
             
             <pre><code data-trim class="html">
+&lt;style&gt;
+  post-card.green::shadow * {
+    background-color: #86B32D;
+  }
+&lt;/style&gt;
+&lt;post-card class="green"&gt;...&lt;/post-card&gt;
             </code></pre>
+
+            <pre class="fragment"><code data-trim class="html">
+&lt;polymer-element name="post-card" noscript&gt;
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;content select="img"&gt;&lt;/content&gt;
+      &lt;content select="h2"&gt;&lt;/content&gt;
+    &lt;/div&gt;
+    &lt;content&gt;&lt;/content&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+            </code></pre>
+
+            <div class="fragment strech result">
+              <post-card class="green">
+                <img src="img/avatar.png">
+                <h2>Crazy Developer</h2>
+                <p>Feels like the future!</p>
+              </post-card>
+            </div>
           </section>
 
 					<section>
 						<h2>deep</h2>
             
             <pre><code data-trim class="html">
+&lt;style&gt;
+  post-card.blue /deep/ * {
+    background-color: #009999;
+  }
+&lt;/style&gt;
+&lt;post-card class="blue"&gt;...&lt;/post-card&gt;
             </code></pre>
+
+            <pre class="fragment"><code data-trim class="html">
+&lt;polymer-element name="post-card" noscript&gt;
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;content select="img"&gt;&lt;/content&gt;
+      &lt;content select="h2"&gt;&lt;/content&gt;
+    &lt;/div&gt;
+    &lt;content&gt;&lt;/content&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
+            </code></pre>
+
+            <div class="fragment strech result">
+              <post-card class="blue">
+                <img src="img/avatar.png">
+                <h2>Crazy Developer</h2>
+                <p>Feels like the future!</p>
+              </post-card>
+            </div>
           </section>
         </section>
 
