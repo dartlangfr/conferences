@@ -241,10 +241,11 @@
             <pre><code data-trim class="html">
 &lt;polymer-element name="hello-world"&gt;
   &lt;template&gt;
-    &lt;p&gt;Hello World!&lt;/p&gt;
+    &lt;p&gt;Hello {{name}}!&lt;/p&gt;
   &lt;/template&gt;
   &lt;script&gt;
     Polymer({
+      name: 'World'
     });
   &lt;/script&gt;
 &lt;/polymer-element&gt;
@@ -442,7 +443,7 @@ class HexNumber extends PolymerElement {
           </section>
         </section>        
 
-        <section>
+        <section data-background="img/event.jpg">
 					<section>
 						<h1>Events</h1>
           </section>
