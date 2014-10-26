@@ -519,9 +519,30 @@ hasCount(Event e, int count, Element target) => value = count;
 					<section>
 						<h2>Extending other elements</h2>
             
-            <pre><code data-trim class="html">
+            <pre><code data-trim class="dart">
+@CustomTag('click-counter-ext')
+class ClickCounter extends ButtonElement with Polymer, Observable {
+  @observable int count = 0;
+
+  ClickCounter.created() : super.created() {
+    polymerCreated();
+  }
+
+  increment() => count++;
+}
+            </code></pre>
+
+            <pre class="fragment"><code data-trim class="html">
+&lt;polymer-element name="click-counter-ext" extends="button"
+    on-click="{{increment}}"&gt;
+    &lt;template&gt;Click me: {{count}}&lt;/template>
+    &lt;script type="application/dart" src="click_counter_ext.dart"&gt;&lt;/script&gt;
+&lt;/polymer-element&gt;
             </code></pre>
             
+            <pre class="fragment"><code data-trim class="html">
+&lt;button is="click-counter-ext"&gt;&lt;/button&gt;
+            </code></pre>
             <aside class="notes">
 							balise shadow
 						</aside>
