@@ -157,7 +157,7 @@
           <section>
 						<h2>Sugaring</h2>
           
-            TODO: Image
+            <img class="stretch" alt="Sugaring" src="img/simple.jpg">
           
             <aside class="notes">
               declarative, readable
@@ -181,8 +181,8 @@
                 </div>
 
                 <div>
-                  <paper-button label="paper-button" role="button" tabindex="0" aria-label="paper-button"></paper-button>
-                  <paper-button label="raised button" raisedbutton role="button" tabindex="0" aria-label="raised button"></paper-button>
+                  <paper-button role="button" tabindex="0" aria-label="paper-button">paper-button</paper-button>
+                  <paper-button raised role="button" tabindex="0" aria-label="raised button">raised button</paper-button>
                 </div>
 
                 <p layout horizontal center>
@@ -206,7 +206,7 @@
                   <paper-slider pin max="10" step="1" value="5"></paper-slider>
                 </div>
 
-                <paper-button label="Toggle batman" style="font-size:20px;" raisedbutton onclick="document.querySelector('#paperexamples').classList.toggle('on');" role="button" tabindex="0" aria-label="Toggle batman"></paper-button>
+                <paper-button style="font-size:20px;" raised onclick="document.querySelector('#paperexamples').classList.toggle('on');" role="button" tabindex="0" aria-label="Toggle batman">Toggle batman</paper-button>
 
               </div>
 
@@ -453,39 +453,45 @@ class HexNumber extends PolymerElement {
 
 					<section>
 						<h2>Handle event</h2>
-            <pre><code data-trim class="dart">
+
+            <pre><code data-trim class="html">
+&lt;button on-click="{{increment}}"&gt; Click me: {{count}}&lt;/button&gt;
+            </code></pre>
+          
+            <pre class="fragment"><code data-trim class="dart">
 @CustomTag('click-counter')
 class ClickCounter extends PolymerElement {
   @observable int count = 0;
 
-  ClickCounter.created() : super.created();
-
   increment() => count++;
+  // ...
 }
             </code></pre>              
-            <pre class="fragment"><code data-trim class="html">
-&lt;polymer-element name="click-counter"&gt;
-  &lt;template&gt;
-    &lt;button on-click="{{increment}}"&gt; Click me: {{count}}&lt;/button&gt;
-  &lt;/template&gt;
-  &lt;script type="application/dart" src="click_counter.dart"&gt; &lt;/script&gt;
-&lt;/polymer-element&gt; 
-            </code></pre>
-          
+
           </section>
 
 					<section>
 						<h2>Custom event</h2>
             
             <pre><code data-trim class="dart">
-dispatchEvent(new CustomEvent('count', detail: count)); 
+@CustomTag('click-counter')
+class ClickCounter extends PolymerElement {
+  @observable int count = 0;
+
+  increment() => dispatchEvent(new CustomEvent('count', detail: ++count)); 
+  // ...
+}
             </code></pre>
             <pre class="fragment"><code data-trim class="html">
-&lt;click-counter="{{hasCount}}"&gt;&lt;/click-counter&gt;      
+&lt;click-counter on-count="{{countHandler}}"&gt;&lt;/click-counter&gt;      
             </code></pre>
 
             <pre class="fragment"><code data-trim class="dart">
-hasCount(Event e, int count, Element target) => value = count;    
+@CustomTag('other-element')
+class OtherElement extends PolymerElement {
+  countHandler(Event e, int count, Element target) => print(count);
+  // ...
+}
             </code></pre>
 
           </section>
@@ -532,7 +538,7 @@ hasCount(Event e, int count, Element target) => value = count;
 						<h2>Extending other elements</h2>
             
             <pre><code data-trim class="dart">
-@CustomTag('click-counter-ext')
+@CustomTag('click-counter')
 class ClickCounter extends ButtonElement with Polymer, Observable {
   @observable int count = 0;
 
@@ -545,7 +551,7 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
             </code></pre>
 
             <pre class="fragment"><code data-trim class="html">
-&lt;polymer-element name="click-counter-ext" extends="button"
+&lt;polymer-element name="click-counter" extends="button"
     on-click="{{increment}}"&gt;
     &lt;template&gt;Click me: {{count}}&lt;/template>
     &lt;script type="application/dart" src="click_counter_ext.dart"&gt;&lt;/script&gt;
@@ -577,7 +583,6 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
         background-color: #FFE25F;
       }
     &lt;/style&gt;
-    
     &lt;div&gt;
       &lt;content select="img"&gt;&lt;/content&gt;
       &lt;content select="h2"&gt;&lt;/content&gt;
