@@ -453,13 +453,25 @@ class HexNumber extends PolymerElement {
 
 					<section>
 						<h2>Handle event</h2>
-            
-            <pre><code data-trim class="html">
-&lt;button on-click="{{increment}}"&gt;Click me: {{count}}&lt;/button&gt;          
+            <pre><code data-trim class="dart">
+@CustomTag('click-counter')
+class ClickCounter extends PolymerElement {
+  @observable int count = 0;
+
+  ClickCounter.created() : super.created();
+
+  increment() => count++;
+}
+            </code></pre>              
+            <pre class="fragment"><code data-trim class="html">
+&lt;polymer-element name="click-counter"&gt;
+  &lt;template&gt;
+    &lt;button on-click="{{increment}}"&gt; Click me: {{count}}&lt;/button&gt;
+  &lt;/template&gt;
+  &lt;script type="application/dart" src="click_counter.dart"&gt; &lt;/script&gt;
+&lt;/polymer-element&gt; 
             </code></pre>
-            <pre class="fragment"><code data-trim class="dart">
-increment() => count++;               
-            </code></pre>            
+          
           </section>
 
 					<section>
