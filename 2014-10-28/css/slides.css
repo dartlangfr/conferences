@@ -96,6 +96,10 @@
   background: rgba(115, 115, 115, 0.73);
 }
 
+#polymer_vs_dart img {
+  margin: 0;
+}
+
 .reveal div.result {
   background: #eaeaea;
   border: black solid 2px;
