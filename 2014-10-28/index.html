@@ -435,7 +435,7 @@ class HelloFriends extends PolymerElement {
 @CustomTag('hex-number')
 class HexNumber extends PolymerElement {
   String toHex(int number) => number.toRadixString(16);
-  String toUpperCase(int number) => number.toUpperCase();
+  String toUpperCase(String s) => s.toUpperCase();
   // ...
 }
             </code></pre>
@@ -510,11 +510,15 @@ class OtherElement extends PolymerElement {
 						<h2>Insertion point</h2>
             
             <pre><code data-trim class="html">
-&lt;div&gt;
-  &lt;content select="img"&gt;&lt;/content&gt;
-  &lt;content select="h2"&gt;&lt;/content&gt;
-&lt;/div&gt;
-&lt;content&gt;&lt;/content&gt;
+&lt;polymer-element name="post-card" noscript&gt;
+  &lt;template&gt;
+    &lt;div&gt;
+      &lt;content select="img"&gt;&lt;/content&gt;
+      &lt;content select="h2"&gt;&lt;/content&gt;
+    &lt;/div&gt;
+    &lt;content&gt;&lt;/content&gt;
+  &lt;/template&gt;
+&lt;/polymer-element&gt;
             </code></pre>
 
             <pre class="fragment"><code data-trim class="html">
@@ -713,8 +717,11 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
 				<section id="polymer_vs_dart">
 					<h1><img alt="Dart" src="img/dart.svg" style="height: 1.1em;"> vs <img alt="Javascript" src="img/javascript.svg" style="height: 1em;"></h1>
           <ul>
+            <li class="fragment">Readability</li>
             <li class="fragment">Class</li>
             <li class="fragment">@nnotation</li>
+            <li class="fragment">IDE</li>
+            <li class="fragment">Performance</li>
           </ul>
         </section>
 
@@ -725,6 +732,9 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
             BY <a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a>
             <br>
 						AND <a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a>
+					</h3>
+					<h3>
+            <img alt="Dart" src="img/dartlangfr.svg" style="height: 1em; margin: 0;"> <a href="http://gplus.to/dartlangfr">gplus.to/dartlangfr</a>
 					</h3>
 				</section>
 
