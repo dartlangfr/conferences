@@ -142,6 +142,10 @@
 						<h1>Polymer</h1>
 
             <img class="stretch" alt="Polymer" src="img/polymer.svg">
+
+            <aside class="notes">
+              Polymer est une bibliothèque de Google qui permet de constuire des WebComponents.
+            </aside>
           </section>
 
 					<section>
@@ -158,6 +162,10 @@
               <img class="fragment stretch current-visible absolute" data-fragment-index="1" alt="Browser Support 2014" src="img/browser-support.png">
               <img class="fragment stretch current-visible absolute" data-fragment-index="2" alt="Browser Support Polyfills" src="img/browser-support-polyfills.png">
             </div>
+            <aside class="notes">
+              En attendant que les navigateurs supportent completement les spécifications, Polymer se base sur des Polyfills, qui sont des implementations javascript qui viennent combler les fonctionnalités natives inexistantes. 
+              Peu à peu, les navigeurs commencent à implémenters ces spécifications
+            </aside>
           </section>
           
           <section>
@@ -166,9 +174,7 @@
             <img class="stretch" alt="Sugaring" src="img/simple.jpg">
           
             <aside class="notes">
-              declarative, readable
-              meaningful HTML
-              common way to extend → reusable
+              L'idée de Polymer, c'est de pouvoir créer et utiliser des WebComponents sans savoir ce qu'il y a sous le capot. 
 						</aside>
           </section>
           
@@ -235,6 +241,12 @@
               </div>
 
             </div>
+
+            <aside class="notes">
+              On retrouve déjà 2 bibliothèques qui se base sur Polymer :
+              - Paper Element, ensemble de composants qui s'inscrit dans la lignée du Material Design.
+              - Core Element, des composants plus basique, et pas que visuel, on retrouve aussi des outils comme router ou appel ajax.
+            </aside>
           </section>
 
         </section>
@@ -274,10 +286,14 @@
             <ul>
               <li>Structured</li>
               <li class="fragment">Flexible</li>
-              <li class="fragment">Improve maintainability</li>
+              <li class="fragment">Improve maintainability of web applications</li>
               <li class="fragment">Open Source</li>
               <li class="fragment">Ecma Standard 408</li>
             </ul>
+            <aside class="notes">
+               Dart est un langage structuré, flexible, qui permet d'améliorer la maintenabilité des applications webs.
+               Le langage est aussi open source, et depuis peu, c'est un standard ECMA.
+            </aside>
           </section>
 
           <section>
@@ -300,7 +316,18 @@ class Point {
   String toString() => "x: $x, y: $y";
 }
             </code></pre>
+            <aside class="notes">
+              1er exemple :
+              On retrouve une syntaxe assez proche du javascript à la différence que le point d'entrée d'exécution est la méthode main.
+              Autre différence majeure : l'inférence de String. La méthode print affichera Hello World car $name est remplacé par sa valeur
 
+              2ème exemple: 
+              Par contre ici, beaucoup de différence avec le js.
+              Class
+              Typage optionnel
+              Contructeur nommé
+              méthode toString
+            </aside>
           </section>
         </section>
         
@@ -438,6 +465,10 @@ class EvenOrOdd extends PolymerElement {
             <div class="fragment strech result">
               <even-or-odd></even-or-odd>
             </div>
+            <aside class="notes">
+                Lorsque l'on souhaite afficher ou non, un morceau de html en fonction d'une condition, on va se servir de template if.
+                Dans cet exemple, on affiche un texte différent en fonction que le nombre soit pair ou impair.
+            </aside>
           </section>
 
 					<section>
@@ -462,6 +493,12 @@ class HelloFriends extends PolymerElement {
             <div class="fragment strech result">
               <hello-friends></hello-friends>
             </div>
+
+            <aside class="notes">
+                Lorsque l'on souhaite répéter, un morceau de html on va se servir des template repeat.
+                Dans cet exemple, on va afficher une puce par personne dans la listes de friends.
+                On remarque que coté Dart, la syntaxe de liste typée, et sa déclaration façon json.
+            </aside>
           </section>
 
 					<section>
@@ -483,6 +520,10 @@ class HexNumber extends PolymerElement {
             <div class="fragment strech result">
               <hex-number></hex-number>
             </div>
+            <aside class="notes">
+                Un filtre est une fonction de transformation qui va prendre un objet A en entrée et le transformer en un objet B.
+                Par exemple, la transformation d'un nombre en sa représentation hexadécimale.
+            </aside>
           </section>
         </section>        
 
@@ -578,8 +619,12 @@ class OtherElement extends PolymerElement {
             </div>
 
             <aside class="notes">
-							LightDOM
-						</aside>
+							Les insertions point, c'est un peu le principe d'injection de html dans un composants pour encore plus le personnaliser avec son propre contenu.
+              Les balises content permettent de spécificier ceux à quoi on va pouvoir toucher.
+              L'attributs select permet d'indiquer ce qui va être insérér.
+
+              La partie de personnalisation lors de l'utilisation est appelée le LightDom.
+            </aside>
           </section>
           
 					<section>
