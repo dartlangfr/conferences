@@ -165,7 +165,7 @@
 
                         <aside class="notes">
                             <ul>
-                                <li>Déclarer en pur JavaScript</li>
+                                <li>Déclaration en pur JavaScript</li>
                                 <li>Exemple simple Hello World</li>
                                 <li>Déclaration complexe</li>
                                 <li>Utilise 3 des Principes</li>
@@ -200,7 +200,6 @@
                         <aside class="notes">
                             <ul>
                                 <li>Utilisation simple</li>
-                                <li>Import du composant</li>
                                 <li>Balise link import</li>
                                 <li>Utilise la balise déclarée</li>
                                 <li>hello-world</li>
@@ -330,6 +329,13 @@
         <section id="first_element_js" data-background="img/first.jpg">
             <section id="first_custom_element_js">
                 <h1>First Custom Element</h1>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Revenons à nos moutons</li>
+                        <li>Cette fois en Dart</li>
+                    </ul>
+                </aside>
             </section>
 
             <section>
@@ -406,14 +412,14 @@
           <section>
             <h1>Samples</h1>
 
-            <pre><code data-trim class="html">
+            <pre><code data-trim class="dart">
 main() {
   var name = "World";
   print("Hello $name");
 }
             </code></pre>
 
-            <pre class="fragment"><code data-trim class="html">
+            <pre class="fragment"><code data-trim class="dart">
 class Point {
   int x, y;
   
@@ -497,6 +503,8 @@ class Point {
                 <aside class="notes">
                     <ul>
                         <li>Proche du standard</li>
+                        <li>Import / Utilisation composant</li>
+                        <li>En plus</li>
                         <li>Import du script Dart Polymer</li>
                         <li>Importe les Polyfills</li>
                         <li>Initialise Polymer</li>
@@ -512,10 +520,11 @@ class Point {
 
                 <aside class="notes">
                     <ul>
-                        <li>Améliorer cet exemple avec Binding</li>
+                        <li>Améliorons cet exemple avec Binding</li>
+                        <li>Data Binding</li>
                         <li>Lier MADAME Vue / Model</li>
                         <li>Mutation Observer</li>
-                        <li>Notifie les changements de données</li>
+                        <li>Polymer notifié les changements de données</li>
                         <li>MàJ de la vue</li>
                     </ul>
                 </aside>
@@ -530,22 +539,25 @@ class Point {
 &lt;polymer-element name="hello-world"&gt;
   &lt;template&gt;
     &lt;label&gt;What is your name?&lt;/label&gt;
-    &lt;input type="input" value="{{yourName}}"&gt;
-    
-    &lt;p&gt;Hello {{yourName}}!&lt;/p&gt;
+
+    &lt;input type="input" value="{{yourName}}"&gt;&lt;!-- TWO-WAY DATA BINDING --&gt;
+
+    &lt;p&gt;Hello {{yourName}}!&lt;/p&gt;&lt;!-- ONE-WAY DATA BINDING --&gt;
   &lt;/template&gt;
   &lt;script type="application/dart" src="hello_world.dart"&gt;&lt;/script&gt;
 &lt;/polymer-element&gt;
             </code></pre>
 
-                <ul>
-                    <li>Reprenons exemple Hello World</li>
-                    <li>Affiche valeur your name</li>
-                    <li>One-way data binding</li>
-                    <li>Modifie valeur your name</li>
-                    <li>Two-way data binding</li>
-                    <li>Associe script Dart</li>
-                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>Reprenons exemple Hello World</li>
+                        <li>Affiche valeur your name</li>
+                        <li>One-way data binding</li>
+                        <li>Modifie valeur your name</li>
+                        <li>Two-way data binding</li>
+                        <li>Associe script Dart</li>
+                    </ul>
+                </aside>
             </section>
 
             <section>
@@ -593,15 +605,24 @@ class HelloWorld extends PolymerElement {
             </code></pre>
 
             <pre class="fragment"><code data-trim class="html">
-              &lt;hello-world yourName="John"&gt;&lt;/hello-world&gt;
+                &lt;hello-world yourName="John"&gt;&lt;/hello-world&gt;
             </code></pre>
 
-            <div class="fragment strech result no-transition">
-              <hello-world-attribute yourName="John"></hello-world-attribute>
-            </div>
-          </section>
+                        <div class="fragment strech result no-transition">
+                            <hello-world-attribute yourName="John"></hello-world-attribute>
+                        </div>
 
-					<section>
+                        <aside class="notes">
+                            <ul>
+                                <li>Expose your name</li>
+                                <li>En attribut du composant</li>
+                                <li>A l'utilisation</li>
+                                <li>Définir sa valeur</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+            <section>
 						<h2>Conditional template</h2>
 
             <pre><code data-trim class="html">
