@@ -55,89 +55,136 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section id="hello">
-					<h1><img alt="Polymer" src="img/polymer.svg" style="height: 1em;"> + <img alt="Dart" src="img/dart.svg" style="height: 1.1em;"></h1>
-					<h1>Polymer.dart</h1>
-					<h3>The future of web development</h3>
-					<p>
-						<small><a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a></small>
-            <br>
-						<small><a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a></small>
-					</p>
-				</section>
+                    <h1><img alt="Polymer" src="img/polymer.svg" style="height: 1em;"> + <img alt="Dart" src="img/dart.svg" style="height: 1.1em;"></h1>
 
-        <section id="web_components">
-					<section>
-						<h1>Web components</h1>
-            
-            <img class="stretch" alt="Web Components" src="img/webcomponents.svg">
+                    <h1>Polymer.dart</h1>
 
-            <aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-          </section>
-          
-					<section id="custom_element" data-background="img/custom.jpg">
-						<h1>Custom Element</h1>
-          </section>
-          
-					<section id="html_import" data-background="img/reusable.jpg">
-						<h1>Html Import</h1>
-          </section>          
-          
-					<section id="template" data-background="img/template.jpg">
-						<h1>Template</h1>
-          </section>          
-          
-					<section id="shadow_dom" data-background="img/shadow.jpg">
-						<h1>Shadow Dom</h1>
-          </section>          
-          
-					<section>
-						<h2>Vanilla JS Web Component</h2>
+                    <h3>The future of web development</h3>
+
+                    <p>
+                        <small><a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a></small>
+                        <br>
+                        <small><a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a></small>
+                    </p>
+                    <aside class="notes">
+                        <ul>
+                            <li>Présenter Polymer.dart</li>
+                            <li>Guillaume, développeur chez Sfeir / Ambassadeur Dart</li>
+                            <li>Nicolas, ...</li>
+                            <li>Avant vif du sujet, rappel Web Components</li>
+                        </ul>
+                    </aside>
+                </section>
+
+                <section id="web_components">
+                    <section>
+                        <h1>Web components</h1>
+
+                        <img class="stretch" alt="Web Components" src="img/webcomponents.svg">
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Standard HTML 5 en Spécification</li>
+                                <li>Créer sa propre balise HTML</li>
+                                <li>4 Grand Principes</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section id="custom_element" data-background="img/custom.jpg">
+                        <h1>Custom Element</h1>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>1er Principe</li>
+                                <li>Déclarer une nouvelle composant</li>
+                                <li>Nouvelle balise HTML</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section id="html_import" data-background="img/reusable.jpg">
+                        <h1>Html Import</h1>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Import de composants</li>
+                                <li>Réutiliser</li>
+                                <li>Bibliothèque de composants</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section id="template" data-background="img/template.jpg">
+                        <h1>Template</h1>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Déclare</li>
+                                <li>Duplique</li>
+                                <li>du code HTML</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section id="shadow_dom" data-background="img/shadow.jpg">
+                        <h1>Shadow Dom</h1>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Isole du code HTML</li>
+                                <li>Style CSS, pas impacter</li>
+                                <li>Cache l'implémentation</li>
+                            </ul>
+                        </aside>
+                    </section>
+
+                    <section>
+                        <h2>Vanilla JS Web Component</h2>
             <pre><code data-trim class="html">
-&lt;template&gt;
-  &lt;p&gt;Hello World!&lt;/p&gt;
-&lt;/template&gt;
-&lt;script&gt;(function() {
-    var thisDoc =  document.currentScript.ownerDocument;
+                &lt;template&gt;
+                &lt;p&gt;Hello World!&lt;/p&gt;
+                &lt;/template&gt;
+                &lt;script&gt;(function() {
+                var thisDoc = document.currentScript.ownerDocument;
 
-    var element = Object.create(HTMLElement.prototype);
+                var element = Object.create(HTMLElement.prototype);
 
-    element.createdCallback = function() {
-      var template = thisDoc.querySelector('template').content;
-      var clone = document.importNode(template, true);
-      this.createShadowRoot().appendChild(clone);
-    };
+                element.createdCallback = function() {
+                var template = thisDoc.querySelector('template').content;
+                var clone = document.importNode(template, true);
+                this.createShadowRoot().appendChild(clone);
+                };
 
-    document.registerElement('hello-world', { prototype: element });
-  })();&lt;/script&gt;
+                document.registerElement('hello-world', { prototype: element });
+                })();&lt;/script&gt;
             </code></pre>
-          </section>          
+                    </section>
 
-					<section>
-						<h2>Vanilla JS Web Component</h2>
+                    <section>
+                        <h2>Vanilla JS Web Component</h2>
 
             <pre><code data-trim class="html">
-&lt;html&gt;
-  &lt;head&gt;
-    <!-- Importing Custom Elements -->
-    &lt;link rel="import" href="hello-world.html"&gt;
-  &lt;/head&gt;
+                &lt;html&gt;
+                &lt;head&gt;
+                <!-- Importing Custom Elements -->
+                &lt;link rel="import" href="hello-world.html"&gt;
+                &lt;/head&gt;
 
-  &lt;body&gt;
-    <!-- Using Custom Elements -->
-    &lt;hello-world&gt;&lt;/hello-world&gt;
-  &lt;/body&gt;
-&lt;/html>
+                &lt;body&gt;
+                <!-- Using Custom Elements -->
+                &lt;hello-world&gt;&lt;/hello-world&gt;
+                &lt;/body&gt;
+                &lt;/html>
             </code></pre>
 
-            <div class="fragment strech result">
-              <hello-world></hello-world>
-            </div>
-          </section>          
-				</section>
+                        <div class="fragment strech result">
+                            <hello-world></hello-world>
+                        </div>
+                    </section>
+                </section>
 
-        <section id="polymer">
+                <section id="polymer">
 					<section>
 						<h1>Polymer</h1>
 
