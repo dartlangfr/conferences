@@ -205,6 +205,9 @@
                                 <li>Utilise la balise déclarée</li>
                                 <li>hello-world</li>
                                 <li>En vrai</li>
+                                <li style="color: red;">2 INCONVENIENTS</li>
+                                <li>Pas ou partiellement implémentée</li>
+                                <li>Déclaration verbeuse</li>
                             </ul>
                         </aside>
                     </section>
@@ -325,12 +328,12 @@
         </section>
 
         <section id="first_element_js" data-background="img/first.jpg">
-					<section id="first_custom_element_js">
-						<h1>First Custom Element</h1>
-          </section>
+            <section id="first_custom_element_js">
+                <h1>First Custom Element</h1>
+            </section>
 
-          <section>
-						<h2>Register custom element</h2>
+            <section>
+                <h2>Register custom element</h2>
 
             <pre><code data-trim class="html">
 &lt;polymer-element name="hello-world"&gt;
@@ -344,7 +347,20 @@
   &lt;/script&gt;
 &lt;/polymer-element&gt;
             </code></pre>
-          </section>          
+
+                <aside class="notes">
+                    <ul>
+                        <li>1er composant Polymer</li>
+                        <li>Import du composant</li>
+                        <li>Définition impérative -> déclarative</li>
+                        <li>Déclaration via balise polymer-element</li>
+                        <li>Attribut name</li>
+                        <li>Contenu - Template</li>
+                        <li>Implicitement 3 Grands Principes</li>
+                        <li>Script JavaScript pour binder</li>
+                    </ul>
+                </aside>
+            </section>
         </section>          
 
         <section id="dart">
@@ -423,12 +439,12 @@ class Point {
         </section>
         
         <section id="first_element" data-background="img/first.jpg">
-					<section id="first_custom_element">
-						<h1>First Custom Element</h1>
-          </section>
-          
-          <section>
-						<h2>Register custom element</h2>
+            <section id="first_custom_element">
+                <h1>First Custom Element</h1>
+            </section>
+
+            <section>
+                <h2>Register custom element</h2>
 
             <pre><code data-trim class="html">
 &lt;!-- import polymer-element's definition --&gt;
@@ -440,10 +456,23 @@ class Point {
   &lt;/template&gt;
 &lt;/polymer-element&gt;
             </code></pre>
-          </section>          
-          
-          <section>
-						<h2>Use custom element</h2>
+
+                <aside class="notes">
+                    <ul>
+                        <li>1er composant Polymer Dart</li>
+                        <li>Quasi similaire Polymer JS</li>
+                        <li>Import des composants Polymer</li>
+                        <li>Attribut noscript</li>
+                        <li>Composant le plus simple possible</li>
+                        <li>Sans script</li>
+                        <li>Slide suivant avec script Dart</li>
+                    </ul>
+                </aside>
+
+            </section>
+
+            <section>
+                <h2>Use custom element</h2>
 
             <pre><code data-trim class="html">
 &lt;html&gt;
@@ -461,20 +490,39 @@ class Point {
 &lt;/html&gt;
             </code></pre>
 
-            <div class="fragment strech result">
-              <hello-world></hello-world>
-            </div>
-          </section>          
+                <div class="fragment strech result">
+                    <hello-world></hello-world>
+                </div>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Proche du standard</li>
+                        <li>Import du script Dart Polymer</li>
+                        <li>Importe les Polyfills</li>
+                        <li>Initialise Polymer</li>
+                    </ul>
+                </aside>
+            </section>
 
         </section>
 
         <section id="bindings" data-background="img/binding.jpg">
-					<section>
-						<h1>Bindings</h1>
-          </section>
+            <section>
+                <h1>Bindings</h1>
 
-					<section>
-						<h2>Data binding</h2>
+                <aside class="notes">
+                    <ul>
+                        <li>Améliorer cet exemple avec Binding</li>
+                        <li>Lier MADAME Vue / Model</li>
+                        <li>Mutation Observer</li>
+                        <li>Notifie les changements de données</li>
+                        <li>MàJ de la vue</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Data binding</h2>
             
             <pre><code data-trim class="html">
 &lt;link rel="import" href="../../packages/polymer/polymer.html"&gt;
@@ -489,10 +537,19 @@ class Point {
   &lt;script type="application/dart" src="hello_world.dart"&gt;&lt;/script&gt;
 &lt;/polymer-element&gt;
             </code></pre>
-          </section>
 
-					<section>
-						<h2>Data binding</h2>
+                <ul>
+                    <li>Reprenons exemple Hello World</li>
+                    <li>Affiche valeur your name</li>
+                    <li>One-way data binding</li>
+                    <li>Modifie valeur your name</li>
+                    <li>Two-way data binding</li>
+                    <li>Associe script Dart</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Data binding</h2>
             
             <pre><code data-trim class="dart">
 import 'package:polymer/polymer.dart';
@@ -505,14 +562,21 @@ class HelloWorld extends PolymerElement {
 }
             </code></pre>
 
-            <div class="fragment strech result no-transition">
-              <hello-world-binding></hello-world-binding>
-            </div>
+                <div class="fragment strech result no-transition">
+                    <hello-world-binding></hello-world-binding>
+                </div>
 
-            <aside class="notes">
-							Attention ! Ne pas utiliser les raccourcis Reveal.js !
-						</aside>
-          </section>
+                <aside class="notes">
+                    <ul>
+                        <li>Déclare classe</li>
+                        <li>Hérite PolymerElement</li>
+                        <li>Annotée CustomTag précise le nom</li>
+                        <li>@observable sur your name</li>
+                        <li>Pour observer les changements</li>
+                        <li style="color: red;">Ecrire DAD</li>
+                    </ul>
+                </aside>
+            </section>
 
 					<section>
 						<h2>Custom attribute</h2>
