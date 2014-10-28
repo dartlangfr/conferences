@@ -97,7 +97,8 @@
                         <aside class="notes">
                             <ul>
                                 <li>1er Principe</li>
-                                <li>Déclarer une nouvelle composant</li>
+                                <li>Déclare</li>
+                                <li>Nouveau composant</li>
                                 <li>Nouvelle balise HTML</li>
                             </ul>
                         </aside>
@@ -141,46 +142,71 @@
 
                     <section>
                         <h2>Vanilla JS Web Component</h2>
-            <pre><code data-trim class="html">
-                &lt;template&gt;
-                &lt;p&gt;Hello World!&lt;/p&gt;
-                &lt;/template&gt;
-                &lt;script&gt;(function() {
-                var thisDoc = document.currentScript.ownerDocument;
 
-                var element = Object.create(HTMLElement.prototype);
+<pre><code data-trim class="html">
+&lt;template&gt;
+    &lt;p&gt;Hello World!&lt;/p&gt;
+&lt;/template&gt;
+&lt;script&gt;(function() {
+    var thisDoc = document.currentScript.ownerDocument;
 
-                element.createdCallback = function() {
-                var template = thisDoc.querySelector('template').content;
-                var clone = document.importNode(template, true);
-                this.createShadowRoot().appendChild(clone);
-                };
+    var element = Object.create(HTMLElement.prototype);
+    element.createdCallback = function() {
+        var template = thisDoc.querySelector('template').content;
+        // TEMPLATE
+        var clone = document.importNode(template, true);
+        // SHADOW DOM
+        this.createShadowRoot().appendChild(clone);
+    };
+    // CUSTOM ELEMENT
+    document.registerElement('hello-world', { prototype: element });
+})();&lt;/script&gt;
+</code></pre>
 
-                document.registerElement('hello-world', { prototype: element });
-                })();&lt;/script&gt;
-            </code></pre>
+                        <aside class="notes">
+                            <ul>
+                                <li>Déclarer en pur JavaScript</li>
+                                <li>Exemple simple Hello World</li>
+                                <li>Déclaration complexe</li>
+                                <li>Utilise 3 des Principes</li>
+                                <li>Custom Element - registerElement</li>
+                                <li>Template - importNode</li>
+                                <li>Shadow DOM - createShadowRoot</li>
+                            </ul>
+                        </aside>
                     </section>
 
                     <section>
                         <h2>Vanilla JS Web Component</h2>
 
-            <pre><code data-trim class="html">
-                &lt;html&gt;
-                &lt;head&gt;
-                <!-- Importing Custom Elements -->
-                &lt;link rel="import" href="hello-world.html"&gt;
-                &lt;/head&gt;
+<pre><code data-trim class="html">
+&lt;html&gt;
+    &lt;head&gt;
+        <!-- Importing Custom Elements -->
+        &lt;link rel="import" href="hello-world.html"&gt;
+    &lt;/head&gt;
 
-                &lt;body&gt;
-                <!-- Using Custom Elements -->
-                &lt;hello-world&gt;&lt;/hello-world&gt;
-                &lt;/body&gt;
-                &lt;/html>
-            </code></pre>
+    &lt;body&gt;
+        <!-- Using Custom Elements -->
+        &lt;hello-world&gt;&lt;/hello-world&gt;
+    &lt;/body&gt;
+&lt;/html>
+</code></pre>
 
                         <div class="fragment strech result">
                             <hello-world></hello-world>
                         </div>
+
+                        <aside class="notes">
+                            <ul>
+                                <li>Utilisation simple</li>
+                                <li>Import du composant</li>
+                                <li>Balise link import</li>
+                                <li>Utilise la balise déclarée</li>
+                                <li>hello-world</li>
+                                <li>En vrai</li>
+                            </ul>
+                        </aside>
                     </section>
                 </section>
 
