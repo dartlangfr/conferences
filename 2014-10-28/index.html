@@ -659,7 +659,13 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
             </div>
 
             <aside class="notes">
-							balise shadow
+							Il est aussi possible d'étendre des composants html classique comme un bouton.
+              Dans sa déclaration, on note un extends. On retrouve le ckick handler.
+              Comme Dart est un langage objet, extends ButtonElement. Le with permet d'indiquer que l'on va utiliser des mixins Polymer et Observable. 
+              Sans rentrer dans les détails, un mixin est une alternative à l'héritage multiple qui permet d'utiliser des comportemtns de l'objet.
+              Coté constructeur petite contrainte, on va devoir apppeler, la méthode 'polymerCreated' qui fait partie du cycle de vie d'un composant polymer.
+              A part ça, rien de nouveau.
+              Et enfin, dans son utilisation, là on a une différence importante : on l'utilise comme un bouton classique à la différence de l'attribut is.
 						</aside>
           </section>
         </section>
