@@ -876,12 +876,24 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
         </section>
 
         <section id="styling" data-background="img/styling.jpg">
-					<section>
-						<h1>Styling elements</h1>
-          </section>
+            <section>
+                <h1>Styling elements</h1>
 
-					<section id="styling_host">
-						<h2>:host</h2>
+                <aside class="notes">
+                    <ul>
+                        <li>Définition de style</li>
+                        <li>A l'intérieur du composant</li>
+                        <li>A l'extérieur sur la balisé utilisée</li>
+                        <li>Mais à cause du Shadow DOM</li>
+                        <li>Elements à l'intérieur isolés</li>
+                        <li>Pas impacter par les styles extérieurs</li>
+                        <li>Polymer respecte standards</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section id="styling_host">
+                <h2>:host</h2>
             
             <pre><code data-trim class="html">
 &lt;polymer-element name="post-card" noscript&gt;
@@ -911,6 +923,14 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
                 <p>Feels like the future!</p>
               </post-card>
             </div>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Mot-clé host</li>
+                        <li>Pré-défini le style de la balise</li>
+                        <li>Ici post-card</li>
+                    </ul>
+                </aside>
           </section>
 
 					<section>
@@ -941,6 +961,15 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
                 <p>Feels like the future!</p>
               </post-card>
             </div>
+
+            <aside class="notes">
+                <ul>
+                    <li>Mot-clé host</li>
+                    <li>Peut prendre un sélecteur CSS</li>
+                    <li>Pré-défini le style de la balise</li>
+                    <li>Lorsque l'état de la balise le respecte</li>
+                </ul>
+            </aside>
           </section>
 
 					<section>
@@ -974,6 +1003,15 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
                 <p>Feels like the future!</p>
               </post-card>
             </div>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Mot-clé shadow</li>
+                        <li>Impacte le premier niveau de Shadow DOM</li>
+                        <li>De l'exterieur du composant</li>
+                        <li>Juste div dans l'exemple</li>
+                    </ul>
+                </aside>
           </section>
 
 					<section>
@@ -1007,6 +1045,14 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
                 <p>Feels like the future!</p>
               </post-card>
             </div>
+
+            <aside class="notes">
+                <ul>
+                    <li>Mot-clé deep</li>
+                    <li>Tous les niveaux de Shadow DOM</li>
+                    <li>div mais aussi LightDom des insertion points</li>
+                </ul>
+            </aside>
           </section>
         </section>
 
@@ -1014,11 +1060,20 @@ class ClickCounter extends ButtonElement with Polymer, Observable {
 					<h1><img alt="Dart" src="img/dart.svg" style="height: 1.1em;"> vs <img alt="Javascript" src="img/javascript.svg" style="height: 1em;"></h1>
           <ul>
             <li class="fragment">Readability</li>
-            <li class="fragment">Class</li>
-            <li class="fragment">@nnotation</li>
             <li class="fragment">IDE</li>
+            <li class="fragment">Modularity</li>
             <li class="fragment">Performance</li>
           </ul>
+
+                    <aside class="notes">
+                        <ul>
+                            <li>Classe</li>
+                            <li>Annotation</li>
+                            <li>Développement - Autocompletion</li>
+                            <li>Modularity - Librairie</li>
+                            <li>Performance meilleur que JS</li>
+                        </ul>
+                    </aside>
         </section>
 
 				<section id="thanks">
