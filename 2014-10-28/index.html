@@ -701,15 +701,22 @@ class HexNumber extends PolymerElement {
                 Par exemple, la transformation d'un nombre en sa représentation hexadécimale.
             </aside>
           </section>
-        </section>        
+        </section>
 
         <section data-background="img/event.jpg">
-					<section>
-						<h1>Events</h1>
-          </section>
+            <section>
+                <h1>Events</h1>
 
-					<section>
-						<h2>Handle event</h2>
+                <aside class="notes">
+                    <ul>
+                        <li>Gérer évenements du DOM</li>
+                        <li>Créer ses propres événements</li>
+                    </ul>
+                </aside>
+            </section>
+
+            <section>
+                <h2>Handle event</h2>
 
             <pre><code data-trim class="html">
 &lt;button on-click="{{increment}}"&gt; Click me: {{count}}&lt;/button&gt;
@@ -729,10 +736,18 @@ class ClickCounter extends PolymerElement {
               <click-counter></click-counter>
             </div>
 
-          </section>
+                <aside class="notes">
+                    <ul>
+                        <li>Associe événement on-click</li>
+                        <li>Avec un tiret</li>
+                        <li>Une fonction définie dans la classe</li>
+                        <li>Cette fonction incrément de 1 count</li>
+                    </ul>
+                </aside>
+            </section>
 
-					<section>
-						<h2>Custom event</h2>
+            <section>
+                <h2>Custom event</h2>
             
             <pre><code data-trim class="dart">
 @CustomTag('click-counter')
@@ -743,6 +758,7 @@ class ClickCounter extends PolymerElement {
   // ...
 }
             </code></pre>
+
             <pre class="fragment"><code data-trim class="html">
 &lt;click-counter on-count="{{countHandler}}"&gt;&lt;/click-counter&gt;      
             </code></pre>
@@ -755,7 +771,20 @@ class OtherElement extends PolymerElement {
 }
             </code></pre>
 
-          </section>
+                <aside class="notes">
+                    <ul>
+                        <li>Lancer son propre événement</li>
+                        <li>Appel à dispatchEvent</li>
+                        <li>Avec objet CustomEvent</li>
+                        <li>L'objet CustomEvent précise</li>
+                        <li>Nom de l'event</li>
+                        <li>Les données qu'il embarque</li>
+                        <li>Utilisation identique aux events classiques</li>
+                        <li>on-count</li>
+                    </ul>
+                </aside>
+
+            </section>
         </section>
 
         <section id="compose_elements" data-background="img/composable.jpg">
