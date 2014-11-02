@@ -64,7 +64,7 @@
           </aside>
         </section>
 
-				<section id="hello">
+				<section id="intro">
           <!-- TODO svg image for gcloud logo -->
           <h1><img alt="gcloud" src="img/gcloud.png" style="height: 1em;"> + <img alt="Dart" src="img/dart.svg" style="height: 1.1em;"></h1>
 
@@ -79,26 +79,50 @@
           </p>
           <aside class="notes">
               <ul>
-                  <li>Présenter Polymer.dart</li>
+                  <li>Intro sujet</li>
                   <li>Guillaume, développeur chez Sfeir / Ambassadeur Dart</li>
                   <li>Nicolas, ...</li>
-                  <li>Avant vif du sujet, rappel Web Components</li>
               </ul>
           </aside>
          </section>
 
-				<section id="thanks">
-					<h1 style="text-transform: none;">&lt;thank-you&gt;</h1>
-          <small>dartlangfr.net/conferences/2014-10-28/</small>
-					<h3>
-            BY <a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a>
-            <br>
-						AND <a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a>
-					</h3>
-					<h3>
-            <img alt="Dart" src="img/dartlangfr.svg" style="height: 1em; margin: 0;"> <a href="http://gplus.to/dartlangfr">gplus.to/dartlangfr</a>
-					</h3>
-				</section>
+         <section id="hello-from-server">
+           
+         </section>
+
+         <section id="cloud-service">
+           
+         </section>
+
+         <section id="cloud-storage">
+           <pre><code data-trim class="dart">
+@Kind()
+class Person extends db.Model {
+      @StringProperty(required: true)
+      String name;
+
+      @IntProperty()
+      int age;
+      
+      @DateTimeProperty()
+      DateTime dateOfBirth;
+}
+
+           </code></pre>
+         </section>
+
+  			 <section id="thanks">
+  			   <h1 style="text-transform: none;">&lt;thank-you&gt;</h1>
+            <small>dartlangfr.net/conferences/2014-10-28/</small>
+  				 <h3>
+             BY <a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a>
+             <br>
+  					AND <a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a>
+  				 </h3>
+  				 <h3>
+              <img alt="Dart" src="img/dartlangfr.svg" style="height: 1em; margin: 0;"> <a href="http://gplus.to/dartlangfr">gplus.to/dartlangfr</a>
+  				 </h3>
+  			</section>
 
 			</div>
 
