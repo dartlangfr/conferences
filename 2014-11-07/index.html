@@ -210,8 +210,8 @@ Adresses from a person
            <section id="storage-storage">
              <h1>Storage</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>String project = Platform.environment[PROJECT_ENV];
-String serviceKeyLocation = Platform.environment[SERVICE_KEY_LOCATION_ENV];
+<em><span class="remark">lang-dart</span></em>String project = Platform.environment['GCLOUD_E2E_TEST_PROJECT';];
+String serviceKeyLocation = Platform.environment['GCLOUD_E2E_TEST_KEY'];
 Storage storage = new Storage(client, project);
 storage.listBucketNames().listen(print);</pre> 
            </section>
