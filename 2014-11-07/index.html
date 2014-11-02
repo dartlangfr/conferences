@@ -222,8 +222,8 @@ storage.listBucketNames().listen(print);</pre>
 <em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
   if(!exist) {
     storage.createBucket('myBucket').then((Bucket bucket) {
-    print('bucket ${bucket.bucketName} is created');
-    bucket.write("Hello world");
+      print('bucket ${bucket.bucketName} is created');
+      bucket.write("Hello world");
     });
   }
 });
@@ -245,18 +245,26 @@ storage.listBucketNames().listen(print);</pre>
              <h1>Polymer</h1>
            </section>
 
-           <section id="web-component">
-              <h2>Web components</h2>
-           </section>
-
-           </section id="core-element">
+           <section id="web-components">
+             <h2><img alt="web components" src="img/webcomponents.svg" style="height: 1em;"></h2>
              <h2>Web components</h2>
            </section>
 
-           <section id="paper-component">
+           <section id="core-elements">
+             <h2>Core elements</h2>
+           </section>
+
+           <section id="paper-elements">
              <h2>Paper elements</h2>
            </section>
 
+         </section>
+
+         <section>
+            <section id="chrome-dev-editor">
+              <h1><img alt="chrome-dev-editor" src="img/chrome-dev-editor.png" style="height: 1em;"></h1>
+              <h1>Chrome Dev Editor</h1>
+           </section>
          </section>
 
   			 <section id="thanks">
