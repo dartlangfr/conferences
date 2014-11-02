@@ -1,5 +1,6 @@
 import 'package:gcloud/datastore.dart';
 import 'package:gcloud/db.dart';
+import 'package:gcloud/common.dart';
 
 @Kind()
 class Person extends Model {
@@ -28,5 +29,8 @@ void runOperation(final Datastore datastore) {
   });
 
   //TODO
-  // datastore.query()
+  var findQuery = new Query(kind: 'Person');
+  datastore.query(findQuery).then((Page<Entity> page){
+    print('Found ${page.items.length} items');
+  });
 }

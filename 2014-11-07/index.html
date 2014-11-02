@@ -92,7 +92,14 @@
          </section>
 
          <section id="cloud-services">
-
+            <h1>Initial services</h1>
+            <ul>
+              <li>Cloud Datastore<li>
+              <li>Cloud Storage<li>
+              <li>Users<li>
+              <li>Logging<li>
+              <li>Mem cache<li>
+            </ul>
          </section>
 
           <section id="compute engine">
@@ -143,6 +150,7 @@ void main(){
            </section>
 
            <section>
+            <h1>Modelize data</h1>
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>@Kind()
 class Person extends db.Model {
@@ -157,6 +165,30 @@ class Person extends db.Model {
 }
 </pre>
            </section>
+
+           <section>
+            <h1>Store data</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>final List&lt;Person&gt; persons  = [
+  new Person()..name = 'John Doe',
+  new Person()..name = 'Jane Doe'
+];
+
+datastore.commit(inserts: persons).then((_){
+  print('Data inserted');
+});
+</pre>
+           </section>
+
+           <section>
+            <h1>Query data</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>var findQuery = new Query(kind: 'Person');
+datastore.query(findQuery).then((Page&lt;Entity&gt; page){
+  print('Found ${page.items.length} items');
+});
+</pre>
+           </section>           
          </section>
 
         <section id="cloud-storage">
