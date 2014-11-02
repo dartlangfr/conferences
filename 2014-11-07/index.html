@@ -143,6 +143,20 @@ void main(){
            </section>
 
            <section>
+            <h1>Hello world with bucket</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
+  if(!exist) {
+    storage.createBucket('myBucket').then((Bucket bucket) {
+    print('bucket ${bucket.bucketName} is created');
+    bucket.write("Hello world");
+    });
+  }
+});
+</pre>    
+           </section>
+
+           <section>
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>@Kind()
 class Person extends db.Model {
