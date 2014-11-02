@@ -86,18 +86,44 @@
           </aside>
          </section>
 
-         <section id="hello-from-server">
-           
-         </section>
-
          <section id="cloud-services">
-           
+
          </section>
 
           <section id="compute engine">
             <section>
               <h1><img alt="compute engine" src="img/compute-logo.png"></h1>
               <h1>Compute Engine</h1>
+            </section>
+
+            <section id="hello-from-server">
+             <pre><code data-trim class="dart">
+import 'dart:io';
+
+void main() {
+  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080).then((server) {
+    server.listen((HttpRequest request) {
+      request.response
+       ..write("Hello world")
+       ..close();
+    });
+  });
+}
+             </code></pre>
+            </section>
+
+            <section id="hello-from-appengine">
+             <pre><code data-trim class="dart">
+import 'package:apppengine/apppengine.dart';
+
+void main(){
+  runAppengine(requestHander).then((_) {
+    request.response
+       ..write("Hello world")
+       ..close();
+    });
+}
+             </code></pre>
             </section>
            
          </section>
