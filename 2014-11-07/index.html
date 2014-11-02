@@ -102,8 +102,8 @@
             </ul>
          </section>
 
-          <section id="compute engine">
-            <section>
+          <section>
+            <section id="compute engine">
               <h1><img alt="compute engine" src="img/compute-logo.png"></h1>
               <h1>Compute Engine</h1>
             </section>
@@ -143,13 +143,22 @@ void main(){
            
          </section>
 
-         <section id="cloud-datastore">
-           <section>
+         <section>
+           <section id="cloud-datastore">
               <h1><img alt="cloud-datastore" src="img/datastore-logo.png"></h1>
               <h1>Cloud datastore</h1>
+          </section>
+
+          <section id="non-relational">
+            <h1>Store non relationnal data</h1>
+             <ul class="fragment">
+                <li>Fully managed, schemaless database</li>
+                <li>Dart mapping layer</li>
+                <li>Dart Low level API</li>
+              </ul>
            </section>
 
-           <section>
+           <section id="modelize-data">
             <h1>Modelize data</h1>
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>@Kind()
@@ -166,7 +175,7 @@ class Person extends db.Model {
 </pre>
            </section>
 
-           <section>
+           <section id="store-data">
             <h1>Store data</h1>
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>final List&lt;Person&gt; persons  = [
@@ -180,7 +189,7 @@ datastore.commit(inserts: persons).then((_){
 </pre>
            </section>
 
-           <section>
+           <section id="query-data">
             <h1>Query data</h1>
 Adresses from a person            
 <pre class="programlisting">
@@ -192,8 +201,8 @@ Adresses from a person
            </section>           
          </section>
 
-        <section id="cloud-storage">
-           <section>
+        <section>
+           <section id="cloud-storage">
              <h1><img alt="cloud-storage" src="img/storage-logo.png"></h1>
              <h1>Cloud storage</h1>
            </section>
@@ -223,8 +232,8 @@ storage.listBucketNames().listen(print);</pre>
 
          </section>  
 
-         <section id="managed-vm">
-            <section>
+         <section>
+            <section  id="managed-vm">
              <h1><img alt="managed-vm" src="img/appengine-logo.png"></h1>
              <h1>Managed VMs</h1>
            </section>
