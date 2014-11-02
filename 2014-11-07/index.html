@@ -22,6 +22,11 @@
 
     <link rel="shortcut icon" href="favicon.png">
 
+     <!--  For syntax highlighting from dartlang.org -->
+    <link rel="stylesheet" href="lib/css/dartlang.css">
+    <link rel="stylesheet" href="lib/css/dart-style.css">
+    <script src="lib/js/dartlang.js"></script>
+
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -97,8 +102,9 @@
             </section>
 
             <section id="hello-from-server">
-             <pre><code data-trim class="dart">
-import 'dart:io';
+              <h1>Classic hello from server</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>import 'dart:io';
 
 void main() {
   HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080).then((server) {
@@ -109,12 +115,13 @@ void main() {
     });
   });
 }
-             </code></pre>
+</pre>
             </section>
 
             <section id="hello-from-appengine">
-             <pre><code data-trim class="dart">
-import 'package:apppengine/apppengine.dart';
+              <h1>Classic hello from appengine</h1>            
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>import 'package:apppengine/apppengine.dart';
 
 void main(){
   runAppengine(requestHander).then((_) {
@@ -123,7 +130,7 @@ void main(){
        ..close();
     });
 }
-             </code></pre>
+</pre>
             </section>
            
          </section>
@@ -135,8 +142,8 @@ void main(){
            </section>
 
            <section>
-             <pre><code data-trim class="dart">
-@Kind()
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>@Kind()
 class Person extends db.Model {
       @StringProperty(required: true)
       String name;
@@ -147,8 +154,7 @@ class Person extends db.Model {
       @DateTimeProperty()
       DateTime dateOfBirth;
 }
-
-            </code></pre>
+</pre>
            </section>
          </section>
 
