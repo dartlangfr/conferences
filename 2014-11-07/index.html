@@ -7,7 +7,7 @@
 		<title>The Dart side of the moon, la face cachée du cloud</title>
 
     <meta name="description" content="Presentation for Nantes DevFest">
-    <meta name="keywords" content="dart, dartlang, polymer, WebComponent, Google Cloud, Managed VM">
+    <meta name="keywords" content="dart, dartlang, polymer, WebComponent, Google Cloud, Managed VM, datastore">
     <meta name="author" content="Dartlangfr">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
@@ -194,7 +194,7 @@ datastore.commit(inserts: persons).then((_){
 Adresses from a person            
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>  var findQuery = new Query(ancestorKey: personKey, kind: 'Adress');
-  datastore.query(findQuery).then((Page<Entity> page){
+  datastore.query(findQuery).then((Page&lt;Entity&gt; page){
     print('Found ${page.items.length} items');
   });
 </pre>
@@ -237,6 +237,26 @@ storage.listBucketNames().listen(print);</pre>
              <h1><img alt="managed-vm" src="img/appengine-logo.png"></h1>
              <h1>Managed VMs</h1>
            </section>
+         </section>
+
+         <section>
+           <section id="polymer">
+             <h1><img alt="Polymer" src="img/polymer.svg" style="height: 1em;"></h1>
+             <h1>Polymer</h1>
+           </section>
+
+           <section id="web-component">
+              <h2>Web components</h2>
+           </section>
+
+           </section id="core-element">
+             <h2>Web components</h2>
+           </section>
+
+           <section id="paper-component">
+             <h2>Paper elements</h2>
+           </section>
+
          </section>
 
   			 <section id="thanks">
