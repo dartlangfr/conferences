@@ -143,20 +143,6 @@ void main(){
            </section>
 
            <section>
-            <h1>Hello world with bucket</h1>
-<pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
-  if(!exist) {
-    storage.createBucket('myBucket').then((Bucket bucket) {
-    print('bucket ${bucket.bucketName} is created');
-    bucket.write("Hello world");
-    });
-  }
-});
-</pre>    
-           </section>
-
-           <section>
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>@Kind()
 class Person extends db.Model {
@@ -179,6 +165,21 @@ class Person extends db.Model {
              <h1>Cloud storage</h1>
            </section>
 
+          <section>
+            <h1>Bucket</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
+  if(!exist) {
+    storage.createBucket('myBucket').then((Bucket bucket) {
+    print('bucket ${bucket.bucketName} is created');
+    bucket.write("Hello world");
+    });
+  }
+});
+</pre>    
+           </section>
+
+         </section>  
 
   			 <section id="thanks">
   			   <h1 style="text-transform: none;">&lt;thank-you&gt;</h1>
