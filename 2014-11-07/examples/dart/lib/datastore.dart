@@ -22,9 +22,11 @@ void runOperation(final Datastore datastore) {
 
   //Entity
 
+  // TODO fix
   datastore.commit(inserts: persons).then((_){
     print('Data inserted');
   });
 
-  datastore.query()
+  //TODO
+  // datastore.query()
 }
