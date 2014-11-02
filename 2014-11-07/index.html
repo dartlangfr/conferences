@@ -182,11 +182,12 @@ datastore.commit(inserts: persons).then((_){
 
            <section>
             <h1>Query data</h1>
+Adresses from a person            
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>var findQuery = new Query(kind: 'Person');
-datastore.query(findQuery).then((Page&lt;Entity&gt; page){
-  print('Found ${page.items.length} items');
-});
+<em><span class="remark">lang-dart</span></em>  var findQuery = new Query(ancestorKey: personKey, kind: 'Adress');
+  datastore.query(findQuery).then((Page<Entity> page){
+    print('Found ${page.items.length} items');
+  });
 </pre>
            </section>           
          </section>
@@ -221,6 +222,13 @@ storage.listBucketNames().listen(print);</pre>
            </section>
 
          </section>  
+
+         <section id="managed-vm">
+            <section>
+             <h1><img alt="managed-vm" src="img/appengine-logo.png"></h1>
+             <h1>Managed VMs</h1>
+           </section>
+         </section>
 
   			 <section id="thanks">
   			   <h1 style="text-transform: none;">&lt;thank-you&gt;</h1>

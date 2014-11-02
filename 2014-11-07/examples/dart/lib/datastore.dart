@@ -21,15 +21,13 @@ void runOperation(final Datastore datastore) {
     new Person()..name = 'Jane Doe'
   ];
 
-  //Entity
-
   // TODO fix
   datastore.commit(inserts: persons).then((_){
     print('Data inserted');
   });
 
   //TODO
-  var findQuery = new Query(kind: 'Person');
+  var findQuery = new Query(ancestorKey: personKey, kind: 'Adress');
   datastore.query(findQuery).then((Page<Entity> page){
     print('Found ${page.items.length} items');
   });

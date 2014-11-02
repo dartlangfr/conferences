@@ -19,7 +19,6 @@ void helloWorldBucket(Storage storage, String bucketName){
         });
       }
   });
-  storage.
 }
 /*
 void helloACL(Storage storage, Bucket bucket){
