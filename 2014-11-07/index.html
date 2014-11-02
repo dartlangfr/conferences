@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>he Dart side of the moon, la face cachée du cloud</title>
+
+    <meta name="description" content="Presentation for Nantes DevFest">
+    <meta name="keywords" content="dart, dartlang, polymer, WebComponent, Google Cloud, Managed VM">
+    <meta name="author" content="Dartlangfr">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href='http://fonts.googleapis.com/css?family=Asset|Lobster|Monofett|Press+Start+2P' rel='stylesheet' type='text/css'>
+    
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <link rel="shortcut icon" href="favicon.png">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/slides.css">
+    
+    <!-- Importing Web Component's Polyfill -->
+    <script src="bower_components/platform/platform.js"></script>
+
+    <link rel="import" href="elements.html">
+    
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        <section id="sponsors" data-background="img/sponsors.png">
+          
+          <aside class="notes">
+            <ul>
+              <li>Bonjour et bienvenue</li>
+              <li>Merci aux sponsors</li>
+            </ul>
+          </aside>
+        </section>
+
+				<section id="hello">
+          <!-- TODO svg image for gcloud logo -->
+          <h1><img alt="gcloud" src="img/gcloud.png" style="height: 1em;"> + <img alt="Dart" src="img/dart.svg" style="height: 1.1em;"></h1>
+
+          <h1>The Dart side of the moon</h1>
+
+          <h2>La face cachée du cloud</h2>
+
+          <p>
+              <small><a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a></small>
+              <br>
+              <small><a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a></small>
+          </p>
+          <aside class="notes">
+              <ul>
+                  <li>Présenter Polymer.dart</li>
+                  <li>Guillaume, développeur chez Sfeir / Ambassadeur Dart</li>
+                  <li>Nicolas, ...</li>
+                  <li>Avant vif du sujet, rappel Web Components</li>
+              </ul>
+          </aside>
+         </section>
+
+				<section id="thanks">
+					<h1 style="text-transform: none;">&lt;thank-you&gt;</h1>
+          <small>dartlangfr.net/conferences/2014-10-28/</small>
+					<h3>
+            BY <a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a>
+            <br>
+						AND <a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a>
+					</h3>
+					<h3>
+            <img alt="Dart" src="img/dartlangfr.svg" style="height: 1em; margin: 0;"> <a href="http://gplus.to/dartlangfr">gplus.to/dartlangfr</a>
+					</h3>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+    
+        //keyboard: false,
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+      
+      /*Reveal.configure({
+        keyboard: {
+          13: 'next', // go to the next slide when the ENTER key is pressed
+          27: function() {}, // do something custom when ESC is pressed
+          32: null // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+        }
+      });*/
+
+		</script>
+
+	</body>
+</html>
