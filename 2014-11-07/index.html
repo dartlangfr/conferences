@@ -223,27 +223,29 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
            </section>
 
            <section id="storage-storage">
-             <h1>Storage</h1>
+             <h1>List and create buckets</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>String project = Platform.environment["GCLOUD_E2E_TEST_PROJECT"];
-String serviceKeyLocation = Platform.environment["GCLOUD_E2E_TEST_KEY"];
-final Storage storage = new Storage(serviceKeyLocation, project);
-storage.listBucketNames().listen(print);
+<em><span class="remark">lang-dart</span></em>storage.listBucketNames().listen(print);</pre>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
+  if(!exist) {
+    storage.createBucket(bucketName).then((Bucket bucket) {
+      print('bucket ${bucket.bucketName} is created');
+    });
+  }
+});
 </pre> 
            </section>
 
           <section id="storage-bucket">
-            <h1>Bucket</h1>
+            <h1>Read and write in documents</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
-  if(!exist) {
-    storage.createBucket('myBucket').then((Bucket bucket) {
-      print('bucket ${bucket.bucketName} is created');
-      bucket.writeBytes("HelloWorldDocument", "Hello World".codeUnits).then((ObjectInfo info){
-        print('${info.name} created.  You can dowload it at ${info.downloadLink}}');
-      });
-    });
-  }
+<em><span class="remark">lang-dart</span></em>final bucket = storage.bucket(bucketName);</pre> 
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>bucket.read(docName).listen(print);</pre>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>bucket.writeBytes(docName, "Hello World".codeUnits).then((ObjectInfo info){
+  print('${info.name} created.');
 });
 </pre>    
            </section>
