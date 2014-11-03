@@ -141,15 +141,14 @@ void main() {
             <section id="hello-from-appengine">
               <h1>Hello from appengine</h1>            
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>import 'dart:io';
-import 'package:apppengine/apppengine.dart';
+<em><span class="remark">lang-dart</span></em>import 'package:appengine/appengine.dart';
 
 void main(){
-  runAppengine(requestHander).then((_) {
-    request.response
-       ..write("Hello world")
-       ..close();
-    });
+  runAppEngine((requestHander) {
+    requestHander.response
+      ..write("Hello world")
+      ..close();
+  });
 }
 </pre>
             </section>
