@@ -1,21 +1,21 @@
 import 'package:gcloud/datastore.dart';
-import 'package:gcloud/db.dart' as db;
+import 'package:gcloud/db.dart' hide Query;
 import 'package:gcloud/common.dart';
 
-@db.Kind()
-class Person extends db.Model {
-  @db.StringProperty(required: true)
+@Kind()
+class Person extends Model {
+  @StringProperty(required: true)
   String name;
 
-  @db.IntProperty()
+  @IntProperty()
   int age;
 
-  @db.DateTimeProperty()
+  @DateTimeProperty()
   DateTime dateOfBirth;
 }
 
 
-void runOperations(final db.DatastoreDB datastoreDb) {
+void runOperations(final DatastoreDB datastoreDb) {
   final john = new Person()..name = 'John Doe';
   final jane = new Person()..name = 'Jane Doe';
   final List<Person> persons  = [john, jane];
