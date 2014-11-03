@@ -1,11 +1,11 @@
+import 'dart:io';
 import 'package:gcloud/storage.dart';
 
 
-
 void listBuckets(){
-  String project = Platform.environment[PROJECT_ENV];
-  String serviceKeyLocation = Platform.environment[SERVICE_KEY_LOCATION_ENV];
-  final Storage storage = new Storage(client, project);
+  String project = Platform.environment["GCLOUD_E2E_TEST_PROJECT"];
+  String serviceKeyLocation = Platform.environment["GCLOUD_E2E_TEST_KEY"];
+  final Storage storage = new Storage(serviceKeyLocation, project);
   storage.listBucketNames().listen(print);
 }
 
@@ -14,14 +14,10 @@ void helloWorldBucket(Storage storage, String bucketName){
       if(!exist) {
         storage.createBucket('myBucket').then((Bucket bucket) {
           print('bucket ${bucket.bucketName} is created');
-          bucket.write("Hello world");
-          bucket.
+          bucket.writeBytes("HelloWorldDocument", "Hello World".codeUnits).then((ObjectInfo info){
+            print('${info.name} created.  You can dowload it at ${info.downloadLink}}');
+          });
         });
       }
   });
 }
-/*
-void helloACL(Storage storage, Bucket bucket){
-  storage.bucketI
-}
-*/

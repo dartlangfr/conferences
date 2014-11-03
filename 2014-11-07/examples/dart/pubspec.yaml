@@ -1,5 +1,4 @@
 name: dart-cloud-samples
 description: Dart in the cloud samples
 dependencies:
-    gcloud:
-      git: https://github.com/dart-lang/gcloud.git
+    gcloud: any
