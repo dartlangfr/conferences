@@ -112,6 +112,7 @@
 void main() {
   HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080).then((server) {
     server.listen((HttpRequest request) {
+      print("Server started...")
       request.response
        ..write("Hello world")
        ..close();
@@ -145,6 +146,7 @@ void main() {
 
 void main(){
   runAppEngine((requestHander) {
+    context.services.logging.info("AppEngine started...");
     requestHander.response
       ..write("Hello world")
       ..close();
