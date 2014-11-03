@@ -190,12 +190,13 @@ class Person extends db.Model {
            <section id="store-data">
             <h1>Store data</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>final List&lt;Person&gt; persons  = [
-  new Person()..name = 'John Doe',
-  new Person()..name = 'Jane Doe'
-];
+<em><span class="remark">lang-dart</span></em>final john = new Person()..name = 'John Doe';
+final jane = new Person()..name = 'Jane Doe';
+final List&lt;Person&gt; persons  = [john, jane];
 
-datastore.commit(inserts: persons).then((_){
+final List&lt;Entity&gt; entities = persons.map(datastoreDb.modelDB.toDatastoreEntity);
+
+datastoreDb.datastore.commit(inserts: entities).then((_){
   print('Data inserted');
 });
 </pre>
@@ -203,14 +204,14 @@ datastore.commit(inserts: persons).then((_){
 
            <section id="query-data">
             <h1>Query data</h1>
-Adresses from a person            
+Adresses from a person
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>  var findQuery = new Query(ancestorKey: personKey, kind: 'Adress');
-  datastore.query(findQuery).then((Page&lt;Entity&gt; page){
+<em><span class="remark">lang-dart</span></em>final findQuery = new Query(ancestorKey: entities.first.key, kind: 'Adress');
+datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
     print('Found ${page.items.length} items');
-  });
+});
 </pre>
-           </section>           
+           </section>
          </section>
 
         <section>
@@ -222,7 +223,7 @@ Adresses from a person
            <section id="storage-storage">
              <h1>Storage</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>  String project = Platform.environment["GCLOUD_E2E_TEST_PROJECT"];
+<em><span class="remark">lang-dart</span></em>String project = Platform.environment["GCLOUD_E2E_TEST_PROJECT"];
 String serviceKeyLocation = Platform.environment["GCLOUD_E2E_TEST_KEY"];
 final Storage storage = new Storage(serviceKeyLocation, project);
 storage.listBucketNames().listen(print);
