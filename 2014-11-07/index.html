@@ -122,6 +122,50 @@ void main() {
 </pre>
             </section>
 
+            <section id="create-gce-instance">
+              <h2>Create instance</h2>
+              <ul>
+                 <li>Instance name</li>
+                 <li>Operating System</li>
+                 <li>Machine type</li>
+                 <li>Zone</li>
+              </ul> 
+<pre class="programlisting">
+<em><span class="remark">lang-sh</span></em>gcloud compute instances create "dart-demo" --zone "europe-west1-b" --machine-type "n1-standard-1" --image "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20141021"
+</pre>
+<pre class="programlisting">
+<em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-demo" --zone "europe-west1-b" 
+</pre>
+            </section>
+
+            <section id="gce-deployment">
+              <h2>Deployment</h2>
+              <ul>
+                <li>Update debian repositories for Dart</li>
+                <li>Install Dart and git</li>
+                <li>Clone project</li>
+                <li>Run it</li> 
+              </ul>
+<pre class="programlisting">
+<em><span class="remark">lang-sh</span></em># Update repository
+sudo apt-get update
+sudo apt-get install apt-transport-https -y
+sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
+sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
+sudo apt-get update
+
+# Install dart and git
+sudo apt-get install dart
+sudo apt-get install git -y
+
+# Clone and start appp
+git clone https://github.com/nfrancois/dart-hello
+cd dart-hello
+dart bin/server.dart &
+</pre>
+
+            </section>
+
          </section>
 
          <section>
