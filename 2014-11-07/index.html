@@ -129,9 +129,16 @@ void main() {
                  <li>Operating System</li>
                  <li>Machine type</li>
                  <li>Zone</li>
+                 <li>Firewall rules</li>
               </ul> 
 <pre class="programlisting">
-<em><span class="remark">lang-sh</span></em>gcloud compute instances create "dart-demo" --zone "europe-west1-b" --machine-type "n1-standard-1" --image "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20141021"
+<em><span class="remark">lang-sh</span></em>gcloud compute instances create "dart-demo" \
+          --machine-type "f1-micro" \
+          --image "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20141021" \
+          --zone "europe-west1-b" 
+
+ gcloud compute firewall-rules create $VM_NAME-server \
+          --allow tcp:8080         
 </pre>
 <pre class="programlisting">
 <em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-demo" --zone "europe-west1-b" 
