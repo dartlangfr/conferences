@@ -7,8 +7,8 @@ class Person extends Model {
   @StringProperty(required: true)
   String name;
 
-  @IntProperty()
-  int age;
+  @StringProperty()
+  String urlProfile;
 
   @DateTimeProperty()
   DateTime dateOfBirth;
