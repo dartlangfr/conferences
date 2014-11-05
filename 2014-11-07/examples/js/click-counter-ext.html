@@ -1,0 +1,11 @@
+<polymer-element name="click-counter-ext" extends="button" on-click="{{increment}}">
+    <template>
+        Click me: {{count}}
+    </template>
+    <script>
+        Polymer({
+          count: 0,
+          increment: function() { this.count++; }
+        });
+    </script>    
+</polymer-element>
