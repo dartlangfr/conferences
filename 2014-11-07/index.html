@@ -177,13 +177,6 @@ handleRequest(HttpRequest request){
 
             <section id="create-gce-instance">
               <h2>Create instance</h2>
-              <ul>
-                 <li class="fragment">Instance name</li>
-                 <li class="fragment">Zone</li>
-                 <li class="fragment">Machine type</li>
-                 <li class="fragment">Operating System</li>
-                 <li class="fragment">Allow http</li>
-              </ul> 
 <pre class="programlisting fragment">
 <em><span class="remark">lang-sh</span></em>gcloud compute instances create "dart-gce-demo" \
             --zone "europe-west1-b" \
@@ -198,25 +191,18 @@ handleRequest(HttpRequest request){
 
             <section id="gce-deployment">
               <h2>Deployment</h2>
-              <ul>
-                <li class="fragment">Update debian repositories for Dart</li>
-                <li class="fragment">Install Dart and git</li>
-                <li class="fragment">Clone project</li>
-                <li class="fragment">Run it</li> 
-              </ul>
 <pre class="programlisting fragment">
 <em><span class="remark">lang-sh</span></em># Update repository
-sudo apt-get update
-sudo apt-get install apt-transport-https -y
-sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -'
-sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list'
-sudo apt-get update
+apt-get update && apt-get install apt-transport-https -y && sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list' && apt-get update
+</pre>
 
-# Install dart and git
-sudo apt-get install dart
-sudo apt-get install git -y
+<pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em># Install dart and git
+apt-get install dart git -y
+</pre>
 
-# Clone and start appp
+<pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em># Clone and start appp
 git clone https://github.com/nfrancois/dart-hello
 cd dart-hello
 dart bin/server.dart &
