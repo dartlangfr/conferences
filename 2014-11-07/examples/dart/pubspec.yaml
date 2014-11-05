@@ -1,4 +1,4 @@
-name: dart-cloud-samples
+name: dart_cloud_samples
 description: Dart in the cloud samples
 dependencies:
     gcloud: any

@@ -242,19 +242,19 @@ void main() {
 }
 </pre>
 
-                <ul>
+                <ul class="fragment">
                    <li>/_ah/health</li>
                    <li>/_ah/start</li>
                    <li>/_ah/stop</li>
-               </ul>
+                </ul>
             </section>
 
            <section id="cloud-services">
                <h1>Dart Runtime support</h1>
                <ul>
                    <li>Datastore</li>
+                   <li>Storage</li>
                    <li>Memcache</li>
-                   <li>Task Queues</li>
                    <li>Logging</li>
                    <li>Users</li>
                </ul>
@@ -388,17 +388,97 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
            <section id="web-components">
              <h2><img alt="web components" src="img/webcomponents.svg" style="height: 1em;"></h2>
-             <h2>Web components</h2>
+             <h2>Polymer Polyfills - Web components</h2>
+             
+             <ul>
+              <li class="fragment">Custom element</li>
+              <li class="fragment">HTML Import</li>
+              <li class="fragment">Template</li>
+              <li class="fragment">Shadow DOM</li>
+             </ul>
            </section>
 
-           <section id="core-elements">
-             <h2>Core elements</h2>
+           <section id="web-details">
+             <h2><img alt="web components" src="img/polymer.svg" style="height: 1em;"></h2>
+             <h2>Polymer core</h2>
+             
+             <ul>
+              <li class="fragment">Declarative definition</li>
+              <li class="fragment">MDV</li>
+              <li class="fragment">Data binding</li>
+             </ul>
            </section>
 
-           <section id="paper-elements">
-             <h2>Paper elements</h2>
-           </section>
+          <section id="polymer-elements">
+            <h2>Polymer's material design elements</h2>
+            
+            <div id="paperexamples" horizontal="" layout="">
+              <div flex>
 
+                <div>
+                  <paper-tabs selected="0">
+                  <paper-tab class="core-selected" active>paper-tab 1</paper-tab>
+                  <paper-tab>paper-tab 2</paper-tab>
+                  <paper-tab>paper-tab 3</paper-tab>
+                 </paper-tabs>
+                </div>
+
+                <div>
+                  <paper-button role="button" tabindex="0" aria-label="paper-button">paper-button</paper-button>
+                  <paper-button raised role="button" tabindex="0" aria-label="raised button">raised button</paper-button>
+                </div>
+
+                <p layout horizontal center>
+                  <paper-toggle-button checked style="margin-right:2em;" touch-action="pan-y" role="button" aria-pressed="true" tabindex="0"></paper-toggle-button>
+                  <paper-checkbox label="Check me" role="checkbox" tabindex="0" aria-checked="false" aria-label="Check me"></paper-checkbox>
+                </p>
+
+                <div layout horizontal center>
+                  <paper-radio-group selected="2" style="margin-right:2em;" role="radiogroup">
+                    <paper-radio-button label="Yes" role="radio" tabindex="0" aria-checked="false" aria-label="Yes"></paper-radio-button>
+                    <paper-radio-button label="No" role="radio" tabindex="0" aria-checked="false" aria-label="No"></paper-radio-button>
+                  </paper-radio-group>
+                  <paper-fab focused icon="cloud-upload" role="button" tabindex="0" class="paper-shadow-animate-z-1-z-2"></paper-fab>
+                </div>
+
+                <div layout horizontal center>
+                  <p style="margin-right:2em;">
+                    <paper-progress value="800" min="100" max="1000"></paper-progress><br>
+                    <paper-progress class="pink" value="40" secondaryprogress="80"></paper-progress>
+                  </p>
+                  <paper-slider pin max="10" step="1" value="5"></paper-slider>
+                </div>
+
+                <paper-button style="font-size:20px;" raised onclick="document.querySelector('#paperexamples').classList.toggle('on');" role="button" tabindex="0" aria-label="Toggle batman">Toggle batman</paper-button>
+
+              </div>
+
+              <div flex>
+
+                <div layout horizontal center>
+                  <core-toolbar layout horizontal center>
+                    <paper-icon-button icon="menu" role="button" tabindex="0"></paper-icon-button>
+                    <span flex style="font-size:25px;">core-toolbar</span>
+                    <paper-icon-button icon="refresh" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="add" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="search" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="cloud-upload" role="button" tabindex="0"></paper-icon-button>
+                  </core-toolbar>
+                </div>
+
+                <div layout horizontal center>
+                  <paper-input floatinglabel label="Type numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
+                </div>
+              </div>
+
+            </div>
+
+            <aside class="notes">
+              On retrouve déjà 2 bibliothèques qui se base sur Polymer :
+              - Paper Element, ensemble de composants qui s'inscrit dans la lignée du Material Design.
+              - Core Element, des composants plus basique, et pas que visuel, on retrouve aussi des outils comme router ou appel ajax.
+            </aside>
+          </section>
          </section>
 
          <section>
