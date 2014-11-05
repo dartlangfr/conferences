@@ -193,45 +193,72 @@ dart bin/server.dart &
              </section>
 
              <section id="managed-vm-dockerfile">
-                <h2>Dockerfile</h2>
+                <h2>Custom runtime</h2>
+                <h6>Dockerfile</h6>
 
                 <pre><code data-trim class="text">
                     FROM google/dart-runtime
                 </code></pre>
 
                  <ul>
-                     <li>pubspec.yaml and pubspec.lock</li>
-                     <li>bin/server.dart</li>
-                     <li>8080</li>
+                     <li class="fragment">pubspec.yaml and pubspec.lock</li>
+                     <li class="fragment">bin/server.dart</li>
+                     <li class="fragment">8080</li>
                  </ul>
              </section>
 
-             <section id="cloud-services">
-                 <h1>Runtime support</h1>
-                 <ul>
-                     <li>Datastore</li>
-                     <li>Memcache</li>
-                     <li>Task Queues</li>
-                     <li>Logging</li>
-                     <li>Users</li>
-                 </ul>
-             </section>
+             <section id="managed-vm-configuration">
+                <h2>Configuring a Managed VM</h2>
+                <h6>app.yaml</h6>
 
+<pre class="programlisting"><em><span class="remark">lang-yaml</span></em>module: default
+version: 1
+runtime: custom
+vm: true
+api_version: 1
+
+manual_scaling:
+  instances: 1
+</pre>
+             </section>
             <section id="hello-from-appengine">
-              <h1>Hello from appengine</h1>            
+              <h2>Hello from appengine</h2>      
+              
+              <h6>bin/server.dart</h6>
+              
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>import 'package:appengine/appengine.dart';
+<em><span class="remark">lang-dart</span></em>import 'dart:io';
+import 'package:appengine/appengine.dart';
 
-void main(){
-  runAppEngine((requestHander) {
-    context.services.logging.info("AppEngine started...");
-    requestHander.response
-      ..write("Hello world")
+void main() {
+  runAppEngine((HttpRequest request) {
+    request.response
+      ..write('Hello, world!')
       ..close();
+  }).then((_) {
+    // Server running.
+    context.services.logging.info("AppEngine started...");
   });
 }
 </pre>
+
+                <ul>
+                   <li>/_ah/health</li>
+                   <li>/_ah/start</li>
+                   <li>/_ah/stop</li>
+               </ul>
             </section>
+
+           <section id="cloud-services">
+               <h1>Dart Runtime support</h1>
+               <ul>
+                   <li>Datastore</li>
+                   <li>Memcache</li>
+                   <li>Task Queues</li>
+                   <li>Logging</li>
+                   <li>Users</li>
+               </ul>
+           </section>
            
          </section>   
          
