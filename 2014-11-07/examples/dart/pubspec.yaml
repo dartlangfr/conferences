@@ -3,3 +3,7 @@ description: Dart in the cloud samples
 dependencies:
     gcloud: any
     appengine: any
+    polymer: any
+transformers:
+- polymer:
+    entry_points: web/index.html

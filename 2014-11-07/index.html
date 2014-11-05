@@ -249,6 +249,16 @@ void main() {
                 </ul>
             </section>
 
+           <section id="managed-vm-deploy">
+              <h2>Run</h2>
+               
+              <pre class="programlisting"><em><span class="remark">lang-sh</span></em>gcloud preview app run .</pre>
+
+              <h2 class="fragment" data-fragment-index="1">Deploy</h2>
+               
+              <pre class="fragment programlisting" data-fragment-index="1"><em><span class="remark">lang-sh</span></em>gcloud preview app deploy --server preview.appengine.google.com .</pre>
+            </section>
+
            <section id="cloud-services">
                <h1>Dart Runtime support</h1>
                <ul>
@@ -387,8 +397,7 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
            </section>
 
            <section id="web-components">
-             <h2><img alt="web components" src="img/webcomponents.svg" style="height: 1em;"></h2>
-             <h2>Polymer Polyfills - Web components</h2>
+             <h2><img alt="web components" src="img/webcomponents.svg" style="height: 0.72em;"> Polyfills</h2>
              
              <ul>
               <li class="fragment">Custom element</li>
@@ -398,14 +407,14 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
              </ul>
            </section>
 
-           <section id="web-details">
-             <h2><img alt="web components" src="img/polymer.svg" style="height: 1em;"></h2>
-             <h2>Polymer core</h2>
+           <section id="polymer-core">
+             <h2><img alt="web components" src="img/polymer.svg" style="height: 0.72em;"> Core</h2>
              
              <ul>
-              <li class="fragment">Declarative definition</li>
-              <li class="fragment">MDV</li>
-              <li class="fragment">Data binding</li>
+              <li class="fragment">Data-binding</li>
+              <li class="fragment">Syntatic sugar</li>
+              <li class="fragment">Change watchers</li>
+              <li class="fragment">Published properties</li>
              </ul>
            </section>
 
@@ -479,6 +488,10 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
               - Core Element, des composants plus basique, et pas que visuel, on retrouve aussi des outils comme router ou appel ajax.
             </aside>
           </section>
+
+            <section id="polymer-example">
+              <h2>Example</h2>
+           </section>
          </section>
 
          <section>

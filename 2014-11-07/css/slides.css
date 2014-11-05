@@ -44,6 +44,10 @@
   box-shadow: none;
 }
 
+.reveal section h2 img {
+  margin: 0;
+}
+
 .reveal /deep/ input, .reveal /deep/ button {
   font-size: 1em;
 }
