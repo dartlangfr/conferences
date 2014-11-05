@@ -91,6 +91,46 @@
           </aside>
          </section>
 
+        <section id="dart">
+          <section>
+            <h1>Dart</h1>
+
+            <img class="stretch" alt="Dart" src="img/dart.svg">
+          </section>
+           
+         <section>
+            <h1>Language</h1>
+            <ul>
+              <li class="fragment">Class based and object oriented</li>
+              <li class="fragment">Familiar syntax</li>
+              <li class="fragment">Improve maintainability of web applications</li>
+              <li class="fragment">Open Source</li>
+              <li class="fragment">Ecma Standard 408</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h1>Platform</h1>
+            <ul>
+              <li class="fragment">Client and server</li>
+              <li class="fragment">Virtuals Machines</li>
+              <li class="fragment">Dependency manager</li>
+              <li class="fragment">Javascript transpiler</li>
+              <li class="fragment">IDE plugins</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Plateforme de développement complète</li>
+              </ul>
+            </aside>
+          </section>  
+
+         </section>
 
          <section id="cloud-platform">
            <h1>Google Platform for Dart</h1>
@@ -375,9 +415,9 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
            <section id="storage-storage">
              <h1>List and create buckets</h1>
-<pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>storage.listBucketNames().listen(print);</pre>
-<pre class="programlisting">
+<pre class="programlisting fragment">
+<em><span class="remark fragment">lang-dart</span></em>storage.listBucketNames().listen(print);</pre>
+<pre class="programlisting fragment">
 <em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
   if(!exist) {
     storage.createBucket(bucketName).then((Bucket bucket) {
@@ -390,12 +430,12 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
           <section id="storage-bucket">
             <h1>Read and write in documents</h1>
-<pre class="programlisting">
+<pre class="programlisting fragment">
 <em><span class="remark">lang-dart</span></em>final bucket = storage.bucket(bucketName);</pre> 
-<pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>bucket.read(docName).listen(print);</pre>
-<pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>bucket.writeBytes(docName, "Hello World".codeUnits).then((ObjectInfo info){
+<pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em>bucket.read(userName).listen(print);</pre>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em>bucket.writeBytes(userName, avatar).then((ObjectInfo info){
   print('${info.name} created.');
 });
 </pre>    

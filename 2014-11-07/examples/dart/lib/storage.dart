@@ -12,10 +12,10 @@ void listBuckets(Storage storage, String bucketName){
   });
 }
 
-void writeToBucket(Storage storage, String bucketName, String docName){
+void writeToBucket(Storage storage, String bucketName, String userName, List<int> avatar){
   final bucket = storage.bucket(bucketName);
-  bucket.writeBytes(docName, "Hello World".codeUnits).then((ObjectInfo info){
+  bucket.writeBytes(userName, avatar).then((ObjectInfo info){
     print('${info.name} created. Access link: ${info.downloadLink}}');
   });
-  bucket.read(docName).listen(print);
+  bucket.read(userName).listen(print);
 }
