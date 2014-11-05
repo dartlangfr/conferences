@@ -110,7 +110,7 @@
 <em><span class="remark">lang-dart</span></em>import 'dart:io';
 
 void main() {
-  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 8080).then((server) {
+  HttpServer.bind('0.0.0.O', 80).then((server) {
     server.listen((HttpRequest request) {
       print("Server started...")
       request.response
@@ -129,19 +129,17 @@ void main() {
                  <li>Operating System</li>
                  <li>Machine type</li>
                  <li>Zone</li>
-                 <li>Firewall rules</li>
+                 <li>Allow http</li>
               </ul> 
 <pre class="programlisting">
-<em><span class="remark">lang-sh</span></em>gcloud compute instances create "dart-demo" \
-          --machine-type "f1-micro" \
-          --image "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20141021" \
-          --zone "europe-west1-b" 
-
- gcloud compute firewall-rules create $VM_NAME-server \
-          --allow tcp:8080         
+<em><span class="remark">lang-sh</span></em>gcloud compute instances create "dart-gce-demo" \
+            --zone "europe-west1-b" \
+            --machine-type "f1-micro" \
+            --image "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20141021" \
+            --tags "http-server"
 </pre>
 <pre class="programlisting">
-<em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-demo" --zone "europe-west1-b" 
+<em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-gce-demo" --zone "europe-west1-b" 
 </pre>
             </section>
 
