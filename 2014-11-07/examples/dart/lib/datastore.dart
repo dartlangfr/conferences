@@ -2,18 +2,7 @@ import 'package:gcloud/datastore.dart';
 import 'package:gcloud/db.dart' hide Query;
 import 'package:gcloud/common.dart';
 
-@Kind()
-class Person extends Model {
-  @StringProperty(required: true)
-  String name;
-
-  @StringProperty()
-  String urlProfile;
-
-  @DateTimeProperty()
-  DateTime dateOfBirth;
-}
-
+import 'entity.dart';
 
 void runOperations(final DatastoreDB datastoreDb) {
   final john = new Person()..name = 'John Doe';

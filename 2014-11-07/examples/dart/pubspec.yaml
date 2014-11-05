@@ -1,9 +1,10 @@
 name: dart_cloud_samples
 description: Dart in the cloud samples
 dependencies:
-    gcloud: any
-    appengine: any
-    polymer: any
+  appengine: any
+  gcloud: any
+  intl: any
+  polymer: any
 transformers:
 - polymer:
     entry_points: web/index.html
