@@ -147,26 +147,33 @@
             <section id="hello-from-server">
               <h1>Hello from classic server</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>const CONTACTS = '['
-'{name":"John Doe","urlProfile":"/img/nopic.jpg","dateOfBirth":"01-01-1970"}'
-']';
-
-main(List&lt;String&gt; args) {
+<em><span class="remark">lang-dart</span></em>main(List&lt;String&gt; args) {
   runZoned(() {
     HttpServer.bind('0.0.0.0', 80).then((server) {
-      print("server started...");
-      server.listen(handleRequest);
+      server.listen((request){
+         request.response..write("Hello world")
+                         ..close();        
+      });
     });
   }, onError: (e) => print("An error occurred $e"));
 }
+</pre>
+            </section>
+
+            <section>
+              <h2>Handle requests</h2>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>final CONTACTS = [{"name": "John Doe",      
+                  "urlProfile": "/img/nopic.jpg", 
+                  "dateOfBirth": "01-01-1970"}];
 
 handleRequest(HttpRequest request){
   if (request.uri.path == '/') {
     request.response..write("Hello world")
                     ..close();        
   } else if (request.uri.path == "/contacts") {
-    request.response..write(CONTACTS)
-                    ..close(); 
+    request.response..write(JSON.encode(CONTACTS))
+                    ..close();  
   } else {
     request.response..statusCode = HttpStatus.NOT_FOUND
                     ..close();
@@ -346,12 +353,15 @@ class Person extends Model {
            <section id="store-data">
             <h1>Store data</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>final john = new Person()..name = 'John Doe';
+<em><span class="remark">lang-dart</span></em>// Declare list of persons
+final john = new Person()..name = 'John Doe';
 final jane = new Person()..name = 'Jane Doe';
 final List&lt;Person&gt; persons  = [john, jane];
 
+// Transforms persons as entities
 final List&lt;Entity&gt; entities = persons.map(datastoreDb.modelDB.toDatastoreEntity);
 
+// Insert entities into Datastore
 datastoreDb.datastore.commit(inserts: entities).then((_){
   print('Data inserted');
 });
@@ -360,9 +370,9 @@ datastoreDb.datastore.commit(inserts: entities).then((_){
 
            <section id="query-data">
             <h1>Query data</h1>
-Adresses from a person
+Addresses from a person
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>final findQuery = new Query(ancestorKey: entities.first.key, kind: 'Adress');
+<em><span class="remark">lang-dart</span></em>final findQuery = new Query(ancestorKey: person.key, kind: 'Address');
 datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
     print('Found ${page.items.length} items');
 });
