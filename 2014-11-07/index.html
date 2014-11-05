@@ -174,19 +174,48 @@ dart bin/server.dart &
          </section>
 
          <section>
-            <section  id="managed-vm">
-             <h1><img alt="managed-vm" src="img/appengine-logo.png"></h1>
-             <h1>Managed VMs</h1>
-           </section>
+             <section id="managed-vm">
+                 <h1><img alt="managed-vm" src="img/appengine-logo.png"></h1>
 
-           <section id="cloud-services">
-            <h1>Initial services</h1>
-            <ul>
-              <li>Users</li>
-              <li>Logging</li>
-              <li>Mem cache</li>
-            </ul>
-         </section> 
+                 <h1>Managed VMs</h1>
+             </section>
+
+             <section id="managed-vm-standard-runtime">
+                 <h2>Standard runtime</h2>
+
+                 <img class="stretch" alt="managed-vm-standard-runtime" src="img/managed-vm-standard-runtime.png">
+             </section>
+
+             <section id="managed-vm-custom-runtime">
+                 <h2>Custom runtime</h2>
+
+                 <img class="fragment stretch" alt="Docker" src="img/docker.svg">
+             </section>
+
+             <section id="managed-vm-dockerfile">
+                <h2>Dockerfile</h2>
+
+                <pre><code data-trim class="text">
+                    FROM google/dart-runtime
+                </code></pre>
+
+                 <ul>
+                     <li>pubspec.yaml and pubspec.lock</li>
+                     <li>bin/server.dart</li>
+                     <li>8080</li>
+                 </ul>
+             </section>
+
+             <section id="cloud-services">
+                 <h1>Runtime support</h1>
+                 <ul>
+                     <li>Datastore</li>
+                     <li>Memcache</li>
+                     <li>Task Queues</li>
+                     <li>Logging</li>
+                     <li>Users</li>
+                 </ul>
+             </section>
 
             <section id="hello-from-appengine">
               <h1>Hello from appengine</h1>            
