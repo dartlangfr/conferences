@@ -90,7 +90,7 @@
                   <li>Dart de bout en bout</li>
                   <li>Du serveur au client</li>
                   <li>Guillaume, développeur chez Sfeir / Ambassadeur Dart</li>
-                  <li>Nicolas, ...</li>
+                  <li>Nicolas, c/c</li>
                   <li>Avant vif du sujet</li>
                   <li>Rappel langage Dart</li>
               </ul>
@@ -115,7 +115,7 @@
             </ul>
             <aside class="notes">
               <ul>
-
+                <lu>Rappel de la philo</lu>
               </ul>
             </aside>
           </section>
@@ -159,6 +159,12 @@
 }
 </pre>
             </section>
+            <aside class="notes">
+              <ul>
+                <li>HttpServer bind future</li>
+                <li>runZoned</li
+              </ul>
+            </aside>
 
             <section>
               <h2>Handle requests</h2>
@@ -181,6 +187,13 @@ handleRequest(HttpRequest request){
 }
 </pre>
             </section>
+            <aside class="notes">
+              <ul>
+                <li>url par défaut</li>
+                <li>contact + json</li>
+                <li>Not found</li>
+              </ul>
+            </aside>
 
             <section id="create-gce-instance">
               <h2>Create instance</h2>
@@ -194,6 +207,11 @@ handleRequest(HttpRequest request){
 <pre class="programlisting fragment">
 <em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-gce-demo" --zone "europe-west1-b" 
 </pre>
+            <aside class="notes">
+              <ul>
+                <li>LANCER LE SCRIPT AVANT</li>
+              </ul>              
+            </aside>
             </section>
 
             <section id="gce-deployment">
@@ -219,6 +237,11 @@ dart bin/server.dart &
 </pre>
 
             </section>
+            <aside class="notes">
+              <ul> 
+                <li>ALLER VOIR RESULTAT</li>
+              </ul>              
+            </aside>
 
          </section>
 
@@ -428,7 +451,7 @@ void main() {
           <section id="non-relational">
             <h2>Store non relationnal data</h2>
              <ul>
-                <li class="fragment">Fully managed, schemaless database</li>
+                <li class="fragment">Schemaless database</li>
                 <li class="fragment">Dart mapping layer</li>
                 <li class="fragment">Dart Low level API</li>
               </ul>
@@ -450,6 +473,15 @@ class Person extends Model {
 }
 </pre>
            </section>
+           <aside class="notes">
+            <ul>
+              <li>api mapping</li>
+              <li>Disclamer api mouvante</li>
+              <li>extends Model pour avoir un id, et une clé</li>
+              <li>annotation kind pour signaler que c'est un objet géré par le datastore</li>
+              <li>annotation par type</li>
+            </ul>
+           </aside>
 
            <section id="store-data">
             <h1>Store data</h1>
@@ -467,6 +499,9 @@ datastoreDb.datastore.commit(inserts: entities).then((_){
   print('Data inserted');
 });
 </pre>
+           <aside class="notes">
+
+           </aside>
            </section>
 
            <section id="query-data">
@@ -488,12 +523,20 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
            </section>
 
            <section id="concept">
-             <h2>Concept</h2> 
+             <h2>Concepts</h2> 
              <ul>
               <li class="fragment">Service to store data in Google's cloud.</li>
               <li class="fragment">High Capacity and Scalability.</li>
-              <li class="fragment">Strong Data Consistency.</li>
+              <li class="fragment">Accessible from all instances.</li>
              </ul>
+             <ul>
+             <aside class="notes">
+               <ul>
+                   <li>C'est le service de stockage de données de Google</li>
+                   <li>Grande capacité (&lt;5To docment) et hautement scalable</li>
+                   <li>données accessibles depuis instances (backup, script, ...)</li>
+               </ul>
+               </aside>
            </section>
 
            <section id="terminology">
@@ -502,12 +545,23 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
               <li class="fragment">Buckets are the basic containers that hold your data.</li>
               <li class="fragment">Objects are the individual pieces of data that you store.</li>
              </ul>
+             <aside class="notes">
+                           
             </section>
 
             <section id="access">
               <h2>Access</h2>
-              <div>g://&lt;bucket&gt;/&lt;object&gt;</div>
-              <div> g://images/nopic.jpg</div>
+              <div class="fragment">gs://&lt;bucket&gt;/&lt;object&gt;</div>
+              <div class="fragment">gs://&lt;bucket&gt;/&lt;directory&gt;/&lt;object&gt;</div>
+              <pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em>gs://my_bucker_123/images/nopic.jpg
+</pre>
+
+              <aside class="notes">
+                <ul>
+                  <ul>bucket unique pour tous les projets</ul>
+                </ul>
+              </aside>
            </section>
 
            <section id="storage-storage">
@@ -799,7 +853,7 @@ class PostCard extends PolymerElement {
                      <li>Tourne sous navigateur Chrome</li>
                      <li>Explorateur de fichiers</li>
                      <li>Auto-completion</li>
-                     <li>Git</li>
+                     <li>Git </li>
                  </ul>
              </aside>
          </section>
