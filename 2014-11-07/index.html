@@ -84,9 +84,15 @@
           </p>
           <aside class="notes">
               <ul>
-                  <li>Intro sujet</li>
+                  <li>Dart dans le cloud</li>
+                  <li>Jusque là Dart orienté navigateur</li>
+                  <li>Depuis peu Dart dans Cloud Google</li>
+                  <li>Dart de bout en bout</li>
+                  <li>Du serveur au client</li>
                   <li>Guillaume, développeur chez Sfeir / Ambassadeur Dart</li>
                   <li>Nicolas, ...</li>
+                  <li>Avant vif du sujet</li>
+                  <li>Rappel langage Dart</li>
               </ul>
           </aside>
          </section>
@@ -221,7 +227,12 @@ dart bin/server.dart &
 
                  <aside class="notes">
                      <ul>
-                         <li></li>
+                         <li>Déclinaison AppEngine</li>
+                         <li>Customiser Runtime</li>
+                         <li>Conserve scalabilité et services</li>
+                         <li>Deux types de Runtime</li>
+                         <li>Standard</li>
+                         <li>Custom</li>
                      </ul>
                  </aside>
              </section>
@@ -233,7 +244,13 @@ dart bin/server.dart &
 
                  <aside class="notes">
                      <ul>
-                         <li></li>
+                         <li>Machine virtuelle</li>
+                         <li>Contrairement AppEngine: Sandbox</li>
+                         <li>Customise les runtimes</li>
+                         <li>Avec packages supplémentaires</li>
+                         <li>3 Runtime Standard</li>
+                         <li>Java, Go, Python</li>
+                         <li>Pas ce qui nous interesse</li>
                      </ul>
                  </aside>
              </section>
@@ -245,7 +262,12 @@ dart bin/server.dart &
 
                  <aside class="notes">
                      <ul>
-                         <li></li>
+                         <li>Docker</li>
+                         <li>Managed VMs basées sur Machine Virtuelles et Docker</li>
+                         <li>Containeur d'applications linux</li>
+                         <li>Isole les applications et leurs dépendances</li>
+                         <li>+ léger que les Machines Virtuelles</li>
+                         <li>Profite du noyau de l'OS</li>
                      </ul>
                  </aside>
              </section>
@@ -266,7 +288,15 @@ dart bin/server.dart &
 
                  <aside class="notes">
                      <ul>
-                         <li></li>
+                         <li>Comment construire une image déployable sur les Managed VMS ?</li>
+                         <li>Simple: deux fichiers à définir</li>
+                         <li>Dockerfile</li>
+                         <li>Définit le runtime</li>
+                         <li><i>Peut rajouter d'autres packages si on veut</i></li>
+                         <li>Runtime Dart s'attend à</li>
+                         <li>Dépendances de l'appli Dart</li>
+                         <li>Script dart qui lance le serveur</li>
+                         <li>Serveur sur 8080</li>
                      </ul>
                  </aside>
              </section>
@@ -275,11 +305,9 @@ dart bin/server.dart &
                 <h2>Configuring a Managed VM</h2>
                 <h6>app.yaml</h6>
 
-<pre class="programlisting"><em><span class="remark">lang-yaml</span></em>module: default
-version: 1
+<pre class="programlisting"><em><span class="remark">lang-yaml</span></em>version: 1
 runtime: custom
 vm: true
-api_version: 1
 
 manual_scaling:
   instances: 1
@@ -287,7 +315,12 @@ manual_scaling:
 
                  <aside class="notes">
                      <ul>
-                         <li></li>
+                         <li>Deuxième fichier pour AppEngine</li>
+                         <li>Version</li>
+                         <li>Champs obligatoires</li>
+                         <li>runtime: custom, java, go, ou python</li>
+                         <li>vm à true</li>
+                         <li>Scalabilité: manuel ou automatique</li>
                      </ul>
                  </aside>
              </section>
@@ -321,7 +354,12 @@ void main() {
 
                 <aside class="notes">
                     <ul>
-                        <li></li>
+                        <li>Script s'appuit sur package appengine</li>
+                        <li>Fournit unr fonction runAppEngine</li>
+                        <li>Lance serveur 8080</li>
+                        <li>Traite les erreurs retourne 500</li>
+                        <li>Définit API Rest</li>
+                        <li>Nécessaire au bon fonctionnement sur AppEngine</li>
                     </ul>
                 </aside>
             </section>
@@ -337,7 +375,7 @@ void main() {
 
                <aside class="notes">
                    <ul>
-                       <li></li>
+                       <li>Simple pour lancer et déployer</li>
                    </ul>
                </aside>
             </section>
@@ -354,7 +392,15 @@ void main() {
 
                <aside class="notes">
                    <ul>
-                       <li></li>
+                       <li>Services accessibles avec les API Dart</li>
+                       <li>Package appengine et gcloud</li>
+                       <li>Disponible depuis le début de semaine</li>
+                       <li>Datastorage: BDD non relationnelle</li>
+                       <li>Storage: stockage de contenu tel que fichier</li>
+                       <li>Memcache: mémoire cache distribuée</li>
+                       <li>Logging: log</li>
+                       <li>Users: authentification</li>
+                       <li style="color: red;">Voir en détail Datastorage et Storage</li>
                    </ul>
                </aside>
            </section>
