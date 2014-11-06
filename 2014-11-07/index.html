@@ -99,9 +99,9 @@
 
         <section id="dart">
           <section>
-            <h1>Dart</h1>
+            <h1><img class="stretch" alt="Dart" src="img/dart.svg" style="height: 256px"></h1>
 
-            <img class="stretch" alt="Dart" src="img/dart.svg">
+            <h1>Dart</h1>
           </section>
            
          <section>
@@ -200,12 +200,15 @@ handleRequest(HttpRequest request){
               <h2>Deployment</h2>
 <pre class="programlisting fragment">
 <em><span class="remark">lang-sh</span></em># Update repository
-apt-get update && apt-get install apt-transport-https -y && sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' && sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list' && apt-get update
+apt-get update && apt-get install -y apt-transport-https
+curl 'https://dl-ssl.google.com/linux/linux_signing_key.pub' | apt-key add -
+curl 'https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list' > /etc/apt/sources.list.d/dart_stable.list
+apt-get update
 </pre>
 
 <pre class="programlisting fragment">
 <em><span class="remark">lang-sh</span></em># Install dart and git
-apt-get install dart git -y
+apt-get install -y dart git
 </pre>
 
 <pre class="programlisting fragment">
@@ -531,7 +534,7 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
          <section>
            <section id="polymer">
-             <h1><img alt="Polymer" src="img/polymer.svg" style="height: 1em;"></h1>
+             <h1><img alt="Polymer" src="img/polymer.svg" style="height: 256px;"></h1>
              <h1>Polymer</h1>
 
                <aside class="notes">
@@ -777,7 +780,7 @@ class PostCard extends PolymerElement {
 
          <section>
             <section id="chrome-dev-editor">
-              <h1><img alt="chrome-dev-editor" src="img/chrome-dev-editor.png" style="height: 1em;"></h1>
+              <h1><img alt="chrome-dev-editor" src="img/chrome-dev-editor.png" style="height: 256px;"></h1>
               <h1>Chrome Dev Editor</h1>
            </section>
 

@@ -75,3 +75,7 @@ post-card.blue /deep/ * {
   background-color: #009999;
   color: white;
 }
+
+.reveal section#intro h1 {
+    font-size: 3.2em;
+}
