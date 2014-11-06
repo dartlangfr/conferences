@@ -85,7 +85,7 @@
           <aside class="notes">
               <ul>
                   <li>Dart dans le cloud</li>
-                  <li>Jusque là Dart orienté navigateur</li>
+                  <li>Jusque là Dart orienté client léger dans navigateur</li>
                   <li>Depuis peu Dart dans Cloud Google</li>
                   <li>Dart de bout en bout</li>
                   <li>Du serveur au client</li>
@@ -249,7 +249,7 @@ dart bin/server.dart &
                      <ul>
                          <li>Machine virtuelle</li>
                          <li>Contrairement AppEngine: Sandbox</li>
-                         <li>Customise les runtimes</li>
+                         <li>Customiser les runtimes</li>
                          <li>Avec packages supplémentaires</li>
                          <li>3 Runtime Standard</li>
                          <li>Java, Go, Python</li>
@@ -300,16 +300,22 @@ dart bin/server.dart &
                          <li>Runtime Dart s'attend à</li>
                          <li>Dépendances de l'appli Dart</li>
                          <li>Script dart qui lance le serveur</li>
-                         <li>Serveur sur 8080</li>
+                         <li>Serveur écoute sur 8080</li>
                      </ul>
                  </aside>
              </section>
 
              <section id="managed-vm-configuration">
                 <h2>Configuring a Managed VM</h2>
-                <h6>app.yaml</h6>
+                <h6>Minimal app.yaml</h6>
 
-<pre class="programlisting"><em><span class="remark">lang-yaml</span></em>version: 1
+<pre class="programlisting"><em><span class="remark">lang-yaml</span></em>runtime: custom
+vm: true</pre>
+
+                <h6 class="fragment" data-fragment-index-"1">Detailed app.yaml</h6>
+
+<pre class="fragment programlisting" data-fragment-index-"1"><em><span class="remark">lang-yaml</span></em>module: default
+version: 1
 runtime: custom
 vm: true
 
@@ -320,10 +326,12 @@ manual_scaling:
                  <aside class="notes">
                      <ul>
                          <li>Deuxième fichier pour AppEngine</li>
-                         <li>Version</li>
-                         <li>Champs obligatoires</li>
+                         <li>2 Champs obligatoires</li>
                          <li>runtime: custom, java, go, ou python</li>
                          <li>vm à true</li>
+                         <li>Configuration plus poussée</li>
+                         <li>Module</li>
+                         <li>Version</li>
                          <li>Scalabilité: manuelle ou automatique</li>
                      </ul>
                  </aside>
@@ -586,9 +594,9 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
                        <li>Couche Core: vision de Google sur Web Components</li>
                        <li>Data-binding: associe données et vue</li>
                        <li>Moustache Angular</li>
-                       <li>Syntatic sugar: facilite la création de composant</li>
+                       <li>Sucre syntaxique: facilite la création de composant</li>
                        <li>Change watchers: surveille Modifications Données et met à jour Vue</li>
-                       <li>Published properties: propre attribut sur son composant</li>
+                       <li>Custome properties: propre attribut sur son composant</li>
                    </ul>
                </aside>
            </section>
@@ -683,7 +691,7 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
       &lt;img alt="Avatar" src="{{person.avatarUrl}}"&gt;
       &lt;h2&gt;{{person.name}}&lt;/h2&gt;
     &lt;/div&gt;
-    {{person.dateOfBirth | dateToString}}
+    &lt;p&gt;{{person.dateOfBirth | dateToString}}&lt;/p&gt;
   &lt;/template&gt;
   &lt;script type="application/dart" src="post_card.dart"&gt;&lt;/script&gt;
 &lt;/polymer-element&gt;
@@ -739,11 +747,11 @@ class PostCard extends PolymerElement {
               <h2>Use custom element</h2>
 <pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;html&gt;
   &lt;head&gt;
-    &lt;!-- import the hello-world --&gt;
-    &lt;link rel="import" href="packages/dart/hello_world.html"&gt;
+    &lt;!-- import the post-card --&gt;
+    &lt;link rel="import" href="packages/my_package/post_card.html"&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;!-- use hello-world element --&gt;
+    &lt;!-- use post-card element --&gt;
     &lt;post-card&gt;&lt;/post-card&gt;
 
     &lt;!-- bootstrap polymer --&gt;
@@ -786,7 +794,12 @@ class PostCard extends PolymerElement {
 
              <aside class="notes">
                  <ul>
-                     <li></li>
+                     <li>Constater possibilités de Polymer</li>
+                     <li>Démo application chrome</li>
+                     <li>Tourne sous navigateur Chrome</li>
+                     <li>Explorateur de fichiers</li>
+                     <li>Auto-completion</li>
+                     <li>Git</li>
                  </ul>
              </aside>
          </section>
