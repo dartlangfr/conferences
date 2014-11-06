@@ -262,8 +262,9 @@ dart bin/server.dart &
 
                  <aside class="notes">
                      <ul>
-                         <li>Docker</li>
-                         <li>Managed VMs basées sur Machine Virtuelles et Docker</li>
+                         <li>Managed VMs basées sur</li>
+                         <li>Machine Virtuelles</li>
+                         <li>Aussi Docker</li>
                          <li>Containeur d'applications linux</li>
                          <li>Isole les applications et leurs dépendances</li>
                          <li>+ léger que les Machines Virtuelles</li>
@@ -292,7 +293,7 @@ dart bin/server.dart &
                          <li>Simple: deux fichiers à définir</li>
                          <li>Dockerfile</li>
                          <li>Définit le runtime</li>
-                         <li><i>Peut rajouter d'autres packages si on veut</i></li>
+                         <li><i>Peut rajouter d'autres instructions si on veut</i></li>
                          <li>Runtime Dart s'attend à</li>
                          <li>Dépendances de l'appli Dart</li>
                          <li>Script dart qui lance le serveur</li>
@@ -320,7 +321,7 @@ manual_scaling:
                          <li>Champs obligatoires</li>
                          <li>runtime: custom, java, go, ou python</li>
                          <li>vm à true</li>
-                         <li>Scalabilité: manuel ou automatique</li>
+                         <li>Scalabilité: manuelle ou automatique</li>
                      </ul>
                  </aside>
              </section>
@@ -355,7 +356,7 @@ void main() {
                 <aside class="notes">
                     <ul>
                         <li>Script s'appuit sur package appengine</li>
-                        <li>Fournit unr fonction runAppEngine</li>
+                        <li>Fournit une fonction runAppEngine</li>
                         <li>Lance serveur 8080</li>
                         <li>Traite les erreurs retourne 500</li>
                         <li>Définit API Rest</li>
@@ -535,7 +536,9 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
                <aside class="notes">
                    <ul>
-                       <li></li>
+                       <li>Bibliothèque Javascript porté en Dart</li>
+                       <li>Constuire des WebComponents</li>
+                       <li>Composée de trois couches</li>
                    </ul>
                </aside>
            </section>
@@ -552,7 +555,15 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
                <aside class="notes">
                    <ul>
-                       <li></li>
+                       <li>Polyfills</li>
+                       <li>Comble les manques des navigateurs</li>
+                       <li>Implémentation Web Components</li>
+                       <li>Web Components Standard HTML5 en Draft</li>
+                       <li>Composé de 4 principes</li>
+                       <li>Custom element: Créer ses propres tag HTML</li>
+                       <li>HTML Import: Importer composants et les utiliser</li>
+                       <li>Template: Définir et Dupliquer code HTML</li>
+                       <li>Shadow DOM: isole du code HTML en cachant l'implémentation et + encore</li>
                    </ul>
                </aside>
            </section>
@@ -569,7 +580,12 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
                <aside class="notes">
                    <ul>
-                       <li></li>
+                       <li>Couche Core: vision de Google sur Web Components</li>
+                       <li>Data-binding: associe données et vue</li>
+                       <li>Moustache Angular</li>
+                       <li>Syntatic sugar: facilite la création de composant</li>
+                       <li>Change watchers: surveille Modifications Données et met à jour Vue</li>
+                       <li>Published properties: propre attribut sur son composant</li>
                    </ul>
                </aside>
            </section>
@@ -639,9 +655,17 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
             </div>
 
             <aside class="notes">
-              On retrouve déjà 2 bibliothèques qui se base sur Polymer :
-              - Paper Element, ensemble de composants qui s'inscrit dans la lignée du Material Design.
-              - Core Element, des composants plus basique, et pas que visuel, on retrouve aussi des outils comme router ou appel ajax.
+                <ul>
+                    <li>Dernière couche</li>
+                    <li>Composants réutilisable</li>
+                    <li>Deux librairies</li>
+                    <li>Core elements</li>
+                    <li>Composants de base visuel ou non</li>
+                    <li>Router, AJAX</li>
+                    <li>Paper elements</li>
+                    <li>Composants plus évolués</li>
+                    <li>Basés sur Material Design</li>
+                </ul>
             </aside>
           </section>
 
@@ -665,7 +689,13 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
 
                 <aside class="notes">
                     <ul>
-                        <li></li>
+                        <li>Création composant Polymer</li>
+                        <li>Déclaration via balise polymer-element</li>
+                        <li>Attribut name</li>
+                        <li>Contenu - Template</li>
+                        <li>Data-binding: moustache</li>
+                        <li>Filtre pour formater la date</li>
+                        <li>Définition dans Script Dart</li>
                     </ul>
                 </aside>
               </section>
@@ -692,7 +722,12 @@ class PostCard extends PolymerElement {
 
                 <aside class="notes">
                     <ul>
-                        <li></li>
+                        <li>Déclare classe</li>
+                        <li>Hérite PolymerElement</li>
+                        <li>Annotée CustomTag associe le nom</li>
+                        <li>@observable sur person</li>
+                        <li>Pour observer les changements</li>
+                        <li>Filtre simplement une fonction</li>
                     </ul>
                 </aside>
               </section>
@@ -726,7 +761,13 @@ class PostCard extends PolymerElement {
 
                 <aside class="notes">
                     <ul>
-                        <li></li>
+                        <li>Utilisation simple</li>
+                        <li>Balise link import</li>
+                        <li>Utilise la balise déclarée</li>
+                        <li>post-card</li>
+                        <li>Import du script Dart Polymer</li>
+                        <li>Importe les Polyfills</li>
+                        <li>En vrai</li>
                     </ul>
                 </aside>
 
