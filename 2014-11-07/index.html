@@ -494,11 +494,8 @@ final john = new Person()..name = 'John Doe';
 final jane = new Person()..name = 'Jane Doe';
 final List&lt;Person&gt; persons  = [john, jane];
 
-// Transforms persons as entities
-final List&lt;Entity&gt; entities = persons.map(datastoreDb.modelDB.toDatastoreEntity);
-
 // Insert entities into Datastore
-datastoreDb.datastore.commit(inserts: entities).then((_){
+datastoreDb.datastore.commit(inserts: persons).then((_){
   print('Data inserted');
 });
 </pre>
@@ -512,7 +509,7 @@ datastoreDb.datastore.commit(inserts: entities).then((_){
 Addresses from a person
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>final findQuery = new Query(ancestorKey: person.key, kind: 'Address');
-datastoreDb.datastore.query(findQuery).then((Page&lt;Entity&gt; page){
+datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
     print('Found ${page.items.length} items');
 });
 </pre>
