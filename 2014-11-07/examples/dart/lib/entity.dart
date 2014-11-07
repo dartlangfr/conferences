@@ -13,3 +13,14 @@ class Person extends Model {
   @DateTimeProperty()
   DateTime dateOfBirth;
 }
+
+personToJson(Person p) => {
+  "name": p.name,
+  "avatarUrl": p.avatarUrl,
+  "dateOfBirth": p.dateOfBirth.toIso8601String()
+};
+
+personFromJson(Map m) => new Person()
+  ..name = m["name"]
+  ..avatarUrl = m["avatarUrl"]
+  ..dateOfBirth = DateTime.parse(m["dateOfBirth"]);

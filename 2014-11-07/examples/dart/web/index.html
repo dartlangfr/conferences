@@ -5,41 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Polymer.dart</title>
 
-    <style>
-      post-card.green::shadow * {
-        background-color: #86B32D;
-        color: white;
-      }
-      post-card.blue /deep/ * {
-        background-color: #009999;
-        color: white;
-      }
-    </style>
-
     <!-- import the click-counter -->
-    <link rel="import" href="packages/dart_cloud_samples/post_card.html">
+    <link rel="import" href="content.html">
   </head>
   <body unresolved>
-    <post-card>
-      <img src="img/avatar.png">
-      <h2>Crazy Developer</h2>
-      <p>Feels like the future!</p>
-    </post-card>
-    <post-card class="red">
-      <img src="img/avatar.png">
-      <h2>Crazy Developer</h2>
-      <p>Feels like the future!</p>
-    </post-card>
-    <post-card class="green">
-      <img src="img/avatar.png">
-      <h2>Crazy Developer</h2>
-      <p>Feels like the future!</p>
-    </post-card>
-    <post-card class="blue">
-      <img src="img/avatar.png">
-      <h2>Crazy Developer</h2>
-      <p>Feels like the future!</p>
-    </post-card>
+    <post-card-list></post-card-list>
 
     <!-- bootstrap polymer -->
     <script type="application/dart">export 'package:polymer/init.dart';</script>

@@ -16,7 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link href='http://fonts.googleapis.com/css?family=Asset|Lobster|Monofett|Press+Start+2P' rel='stylesheet' type='text/css'>
-    
+
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
 
@@ -31,12 +31,12 @@
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
     <link rel="stylesheet" href="css/slides.css">
-    
+
     <!-- Importing Web Component's Polyfill -->
     <script src="bower_components/platform/platform.js"></script>
 
     <link rel="import" href="elements.html">
-    
+
 		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
 		<script>
 			if( window.location.search.match( /print-pdf/gi ) ) {
@@ -60,7 +60,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
         <section id="sponsors" data-background="img/sponsors.png">
-          
+
           <aside class="notes">
             <ul>
               <li>Bonjour et bienvenue</li>
@@ -106,7 +106,7 @@
 
             <h1>Dart</h1>
           </section>
-           
+
          <section>
             <h1>Language</h1>
             <ul>
@@ -137,7 +137,7 @@
                 <li>Plateforme de développement complète</li>
               </ul>
             </aside>
-          </section>  
+          </section>
 
          </section>
 
@@ -155,7 +155,7 @@
     HttpServer.bind('0.0.0.0', 80).then((server) {
       server.listen((request){
          request.response..write("Hello world")
-                         ..close();        
+                         ..close();
       });
     });
   }, onError: (e) => print("An error occurred $e"));
@@ -172,21 +172,21 @@
             <section>
               <h2>Handle requests</h2>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>final CONTACTS = [{"name": "John Doe",      
-                  "urlProfile": "/img/nopic.jpg", 
+<em><span class="remark">lang-dart</span></em>final CONTACTS = [{"name": "John Doe",
+                  "urlProfile": "/img/nopic.jpg",
                   "dateOfBirth": "01-01-1970"}];
 
 handleRequest(HttpRequest request){
   if (request.uri.path == '/') {
     request.response..write("Hello world")
-                    ..close();        
+                    ..close();
   } else if (request.uri.path == "/contacts") {
     request.response..write(JSON.encode(CONTACTS))
-                    ..close();  
+                    ..close();
   } else {
     request.response..statusCode = HttpStatus.NOT_FOUND
                     ..close();
-  }    
+  }
 }
 </pre>
             </section>
@@ -208,12 +208,12 @@ handleRequest(HttpRequest request){
             --tags "http-server"
 </pre>
 <pre class="programlisting fragment">
-<em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-gce-demo" --zone "europe-west1-b" 
+<em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-gce-demo" --zone "europe-west1-b"
 </pre>
             <aside class="notes">
               <ul>
                 <li>LANCER LE SCRIPT AVANT</li>
-              </ul>              
+              </ul>
             </aside>
             </section>
 
@@ -241,9 +241,9 @@ dart bin/server.dart &
 
             </section>
             <aside class="notes">
-              <ul> 
+              <ul>
                 <li>ALLER VOIR RESULTAT</li>
-              </ul>              
+              </ul>
             </aside>
 
          </section>
@@ -341,9 +341,10 @@ vm: true</pre>
                 <h6 class="fragment" data-fragment-index-"1">Detailed app.yaml</h6>
 
 <pre class="fragment programlisting" data-fragment-index-"1"><em><span class="remark">lang-yaml</span></em>module: default
-version: 1
 runtime: custom
 vm: true
+api_version: 1
+threadsafe: true
 
 manual_scaling:
   instances: 1
@@ -364,10 +365,10 @@ manual_scaling:
              </section>
 
             <section id="hello-from-appengine">
-              <h2>Hello from appengine</h2>      
-              
+              <h2>Hello from appengine</h2>
+
               <h6>bin/server.dart</h6>
-              
+
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>import 'dart:io';
 import 'package:appengine/appengine.dart';
@@ -377,9 +378,6 @@ void main() {
     request.response
       ..write('Hello, world!')
       ..close();
-  }).then((_) {
-    // Server running.
-    context.services.logging.info("AppEngine started...");
   });
 }
 </pre>
@@ -404,12 +402,12 @@ void main() {
 
            <section id="managed-vm-deploy">
               <h2>Run</h2>
-               
+
               <pre class="programlisting"><em><span class="remark">lang-sh</span></em>gcloud preview app run app.yaml</pre>
 
               <h2 class="fragment" data-fragment-index="1">Deploy</h2>
-               
-              <pre class="fragment programlisting" data-fragment-index="1"><em><span class="remark">lang-sh</span></em>gcloud preview app deploy --server preview.appengine.google.com app.yaml</pre>
+
+              <pre class="fragment programlisting" data-fragment-index="1"><em><span class="remark">lang-sh</span></em>gcloud preview app deploy app.yaml</pre>
 
                <aside class="notes">
                    <ul>
@@ -442,9 +440,9 @@ void main() {
                    </ul>
                </aside>
            </section>
-           
-         </section>   
-         
+
+         </section>
+
          <section>
            <section id="cloud-datastore">
               <h1><img alt="cloud-datastore" src="img/datastore-logo.png"></h1>
@@ -523,7 +521,7 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
            </section>
 
            <section id="concept">
-             <h2>Concepts</h2> 
+             <h2>Concepts</h2>
              <ul>
               <li class="fragment">Service to store data in Google's cloud.</li>
               <li class="fragment">High Capacity and Scalability.</li>
@@ -540,13 +538,13 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
            </section>
 
            <section id="terminology">
-             <h2>Terminology</h2> 
+             <h2>Terminology</h2>
              <ul>
               <li class="fragment">Buckets are the basic containers that hold your data.</li>
               <li class="fragment">Objects are the individual pieces of data that you store.</li>
              </ul>
              <aside class="notes">
-                           
+
             </section>
 
             <section id="access">
@@ -576,23 +574,23 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
     });
   }
 });
-</pre> 
+</pre>
            </section>
 
           <section id="storage-bucket">
             <h1>Read and write in documents</h1>
 <pre class="programlisting fragment">
-<em><span class="remark">lang-dart</span></em>final bucket = storage.bucket(bucketName);</pre> 
+<em><span class="remark">lang-dart</span></em>final bucket = storage.bucket(bucketName);</pre>
 <pre class="programlisting fragment">
 <em><span class="remark">lang-dart</span></em>bucket.read(userName).listen(print);</pre>
 <pre class="programlisting fragment">
 <em><span class="remark">lang-dart</span></em>bucket.writeBytes(userName, avatar).then((ObjectInfo info){
   print('${info.name} created.');
 });
-</pre>    
+</pre>
            </section>
 
-         </section>  
+         </section>
 
          <section>
            <section id="polymer">
@@ -610,7 +608,7 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
 
            <section id="web-components">
              <h2><img alt="web components" src="img/webcomponents.svg" style="height: 0.72em;"> Polyfills</h2>
-             
+
              <ul>
               <li class="fragment">Custom element</li>
               <li class="fragment">HTML Import</li>
@@ -635,7 +633,7 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
 
            <section id="polymer-core">
              <h2><img alt="web components" src="img/polymer.svg" style="height: 0.72em;"> Core</h2>
-             
+
              <ul>
               <li class="fragment">Data-binding</li>
               <li class="fragment">Syntatic sugar</li>
@@ -657,7 +655,7 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
 
           <section id="polymer-elements">
             <h2>Polymer's material design elements</h2>
-            
+
             <div id="paperexamples" horizontal="" layout="">
               <div flex>
 
@@ -778,9 +776,9 @@ class PostCard extends PolymerElement {
     ..name = "John Lennon"
     ..avatarUrl = "img/avatar.jpg"
     ..dateOfBirth = new DateTime(1940, 10, 9);
-  
+
   PostCard.created() : super.created();
-  
+
   String dateToString(DateTime date) =&gt; new DateFormat.yMd().format(date);
 }
 </pre>
@@ -890,7 +888,7 @@ class PostCard extends PolymerElement {
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-    
+
         //keyboard: false,
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
@@ -906,7 +904,7 @@ class PostCard extends PolymerElement {
 					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
-      
+
       /*Reveal.configure({
         keyboard: {
           13: 'next', // go to the next slide when the ENTER key is pressed

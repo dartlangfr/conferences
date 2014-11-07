@@ -1,8 +1,5 @@
-module: default
-version: 1
+module: devfest
 runtime: custom
 vm: true
 api_version: 1
-
-manual_scaling:
-  instances: 1
+threadsafe: true
