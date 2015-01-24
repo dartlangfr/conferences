@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>The Dart side of disruption</title>
+
+    <meta name="description" content="Presentation for Paris DevFest">
+    <meta name="keywords" content="dart, dartlang, polymer, WebComponent, Risk">
+    <meta name="author" content="Dartlangfr">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href='http://fonts.googleapis.com/css?family=Asset|Lobster|Monofett|Press+Start+2P' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+
+    <link rel="shortcut icon" href="favicon.png">
+
+     <!--  For syntax highlighting from dartlang.org -->
+    <link rel="stylesheet" href="lib/css/dartlang.css">
+    <link rel="stylesheet" href="lib/css/dart-style.css">
+    <script src="lib/js/dartlang.js"></script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/slides.css">
+
+    <!-- Importing Web Component's Polyfill -->
+    <script src="bower_components/platform/platform.js"></script>
+
+    <link rel="import" href="elements.html">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section id="intro">
+          <!-- TODO svg image for gcloud logo -->
+          <h1><img alt="Dart" src="img/dart.svg" style="height: 1.1em;"></h1>
+
+          <h1>The Dart side of disruption</h1>
+
+          <p>
+              <small><a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a></small>
+              <br>
+              <small><a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a></small>
+              <br>
+              <img alt="sfeir" src="img/sfeir_logo.png">
+
+          </p>
+          <aside class="notes">
+              <ul>
+
+              </ul>
+          </aside>
+         </section>
+
+        <section id="intro">
+          <section>
+            <h1>Avant de commencer</h1>
+          </section>
+
+         <section>
+            <h1>Pourquoi ?</h1>
+            <ul>
+              <li class="fragment">Nouveau langage pour le web</li>
+              <li class="fragment">Répond aux problématiques d'aujourd'hui</li>
+              <li class="fragment">Performance</li>
+              <li class="fragment">Moderne</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+             
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h1>Disruptif ?</h1>
+            <blockquote class="fragment" cite="http://fr.wikipedia.org/wiki/Technologie_de_rupture">Une technologie de rupture, également connue comme « rupture technologique », est une
+                    innovation technologique qui porte sur un produit ou un service et qui finit par remplacer une
+                    technologie dominante sur un marché. <b>(Wikipedia)</b></blockquote>
+
+            <img src="img/earlyadopters.png" class="fragment">
+            <aside class="notes">
+              <ul>
+             
+              </ul>
+            </aside>
+          </section>
+        </section>
+
+        <section id="objectif">
+          
+          <section>
+            <h1>Objectif de l'atelier</h1>
+            <p>Etre capable de développer une application web moderne</p>
+          </section>    
+        </section>
+
+        <section>
+          
+          <section>
+            <h1>Introduction au langage</h1>
+          </section>
+
+          <section>
+            <h1>Hello world</h1>
+                            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> void main(){
+     var hello = "Hello DevFest Paris";
+     print(hello);
+ }
+</pre>
+<br>
+<pre class="fragment">
+Hello DevFest Paris
+</pre>
+          </section>
+
+          <section>
+            
+               <h1>Fonction top level</h1>
+                <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> void main(){
+     var who = "Hello DevFest Paris";
+     print(sayHello(who));
+ }
+
+ String sayHello(String name) =>  "Hello $name"
+</pre>
+<br>
+<pre class="fragment">
+Hello DevFest Paris
+</pre>
+
+          </section>
+
+          <section>
+                            <h1>Ma 1ère classe</h1>
+                            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> class MaClasse {
+
+ }
+</pre>
+                <br/>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> var classe = new MaClasse();
+ MaClasse unAutreClasse = new MaClasse();
+</pre>
+
+          </section>
+
+          <section>
+                        <h1>Classe complète</h1>
+                            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> import 'dart:math';
+
+ class Point {
+   final int x, y;
+   Point(this.x, this.y);
+   num distanceTo(Point other) {
+     var dx = x - other.x;
+     var dy = y - other.y;
+     return sqrt(dx * dx + dy * dy);
+   }
+   String toString() => "($x, $y)";
+ }
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> var p = new Point(2, 3);
+ print(p);// Affiche '(2, 3)'
+ var x = p.x;
+ var distance = p.distanceTo(new Point(5, 5));
+</pre>            
+          </section>
+
+          <section>
+                            <h1>Héritage</h1>
+                            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> class Person {
+   Person.fromJson(Map data) {
+     print('in Person');
+   }
+ }
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> class Employee extends Person {
+   // Person n'a pas de constructeur par défaut
+   // Il faut appeler super.fromJson(data).
+   Employee.fromJson(Map data) : x.fromJson(data) {
+     print('in Employee');
+   }
+ }
+</pre>
+          </section>
+
+          <section>
+          <h1>Constructeur nommé</h1>
+                                <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> import 'dart:math';
+
+ class Point {
+   num x, y;
+   Point(this.x, this.y);
+   Point.zero() : x = 0, y = 0;
+   Point.polar(num theta, num radius) {
+     x = cos(theta) * radius;
+     y = sin(theta) * radius;
+   }
+ }
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> Point p1 = new Point.zero();
+ Point p2 = new Point.polar(0, 1);
+</pre>        
+          </section>
+
+          <section>
+                            <h1>List</h1>
+            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> // Creation de listes
+ var vegetables = [] // == new List();
+ var fruits = ['apples', 'oranges'];
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> // Ajout d'éléments
+ fruits.add('kiwis');
+ fruits.addAll(['grapes', 'bananas']);
+ assert(fruits.length == 5);
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> // Tri
+ fruits.sort();
+ assert(fruits[0] == 'apples');
+</pre>
+          </section>
+
+          <section>
+                            <h1>Map</h1>
+            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> var gifts = {
+   // Keys       Values
+   'first'  : 'partridge',
+   'second' : 'turtledoves',
+   'fifth'  : 'golden rings'
+ };
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> gifts['fourth'] = 'calling birds';    // Add a key-value pair
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> assert(gifts['first'] == 'partridge')
+ assert(gifts.length == 4);
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> var keys = gifts.keys;
+ var values = gifts.values;
+</pre>
+          </section>
+
+          <section>
+                            <h1>Lamdba</h1>
+            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> var teas = ['green', 'black', 'chamomile', 'earl grey'];
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> // Affichage en majuscule
+ var loudTeas = teas.map((tea) => tea.toUpperCase());
+ loudTeas.forEach(print);
+</pre>
+                                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> // La camomille n'est pas caéfinée.
+ bool isDecaffeinated(String teaName) => teaName == 'chamomile';
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> // Filtrage
+ var decaffeinatedTeas = teas.where(isDecaffeinated);
+</pre>
+                            <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> // Construction map
+ var decaffeinatedTeasMap =
+    new Map.fromIterable(teas, value: isDecaffeinated);
+</pre>
+          </section>
+
+          <section>
+                             <h1>Future</h1>
+            <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> Future result = costlyQuery();
+
+ // Enchainer méthodes
+ return result.then((value) => expensiveWork())
+              .then((value) => lengthyComputation())
+              .then((value) => print('done!'))
+              // Gestion erreur
+              .catchError((exception) => print('DOH!'))
+</pre>
+             </section>
+          </section>
+
+        </section>
+
+        <section>
+          
+          <section>
+            <h1>Polymer</h1>
+          </section>
+
+          <section>
+            <h1>Vue d'ensemble</h1>
+            <img src="img/polymer-architecture.jpg">
+          </section>
+
+          <section>
+            <h1>Custom Elements</h1>
+ <pre class="programlisting">
+<em><span class="remark">lang-html</span></em>&lt;x-click-counter&gt;&lt;/x-click-counter&gt;
+</pre>
+                <br>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-html</span></em>&lt;element name="x-click-counter"&gt;
+  &lt;template&gt;
+    &lt;style&gt;
+        /* Css */
+    &lt;/style&gt;
+    &lt;-- Html --&gt;
+  &lt;/template&gt;
+  &lt;-- Code Dart --&gt;
+  &lt;script src="click_counter.dart"&gt;&lt;/script&gt;
+&lt;/element&gt;
+</pre>            
+          </section>
+
+          <section>
+            <h1>HTML Template</h1>
+            <pre class="programlisting">
+<em><span class="remark">lang-html</span></em>&lt;template id="monTemplate"&gt;
+  &lt;div class="mon-style" &gt;
+  &lt;/div&gt;
+  &lt!-- Code html --&gt;
+&lt;/template&gt;
+</pre>
+<br>
+ <pre class="programlisting fragment">
+<em><span class="remark">lang-html</span></em>&lt;template if="{{maCondition}}"&gt;
+</pre>
+<br>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-html</span></em>&lt;template repeat="{{maList}}"&gt;
+</pre>            
+          </section>  
+
+          <section>
+                <h1>Shadow DOM</h1>
+ <pre class="programlisting">
+<em><span class="remark">lang-html</span></em>&lt;video controls src="/ma/video"&gt;&lt;/video&gt;
+</pre>
+                <br>
+ <pre class="programlisting fragment">
+<em><span class="remark">lang-html</span></em>&lt;video controls="" height="300" src="/ma/video"&gt;
+  <em>#shadow-root</em>
+  &lt;div&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;input type="button"&gt;
+        &lt;input type="range" precision="float" max="596.48"&gt;
+        &lt;div style="display: none;"&gt;0:00&lt;/div&gt;&lt;div&gt;9:56&lt;/div&gt;
+          &lt;input type="button"&gt;
+          &lt;input type="range" precision="float" max="1" style=""&gt;
+          &lt;input type="button" style="display: none;"&gt;
+          &lt;input type="button" style=""&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/video&gt;
+</pre>            
+
+          </section>
+
+          <section>
+                <h1>HTML Import</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-html</span></em>
+&lt;link rel="import" href="/components/click_counter.html"&gt;
+</pre>
+            </section>
+
+            <!-- Observer -->
+            <section>
+                <h1>Observer</h1>
+
+                <pre class="programlisting">
+<em><span class="remark">lang-html</span></em>&lt;div&gt;
+  {{name}}
+&lt;/div&gt;
+</pre>
+                <br>
+                <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> @observable String name;
+</pre>            
+          </section>
+
+       <section>
+           <h1>Communication serveur</h1>
+                               <pre class="programlisting">
+<em><span class="remark">lang-dart</span></em> HttpRequest.getString('myUrl')
+            .then((String fileContents) {
+               //..
+             });
+</pre>
+           </section>          
+
+        </section>
+
+        <section> 
+          <section>
+            <h1>Explication de l'atelier</h1>
+          </section>
+
+          <section>
+            <h1>Votre mission</h1>
+            <img src="img/risk.jpg">
+            <a href="http://goo.gl/l7Oxy1" target="_blank">goo.gl/l7Oxy1</a>
+          </section>
+
+          <section>
+            <h1>Architecture</h1>
+            <img src="img/archi_codelab.png">
+          </section>
+
+        </section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        //keyboard: false,
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+      /*Reveal.configure({
+        keyboard: {
+          13: 'next', // go to the next slide when the ENTER key is pressed
+          27: function() {}, // do something custom when ESC is pressed
+          32: null // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+        }
+      });*/
+
+		</script>
+
+	</body>
+</html>

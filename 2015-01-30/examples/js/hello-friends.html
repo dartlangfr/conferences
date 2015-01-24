@@ -1,0 +1,14 @@
+<polymer-element name="hello-friends">
+  <template>
+    <ul>
+      <template repeat="{{friend in friends}}">
+        <li>Hello {{friend}}!</li>
+      </template>
+    </ul>
+  </template>
+  <script>
+    Polymer({
+      friends: ['John Doe', 'Jane Doe', 'Mister X']
+    });
+  </script>
+</polymer-element>

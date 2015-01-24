@@ -1,0 +1,36 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+
+<polymer-element name="post-card">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background-color: #f9f9f9;
+        border: solid 1px #ccc;
+        width: 300px;
+        padding: 20px;
+      }
+      .card-header {
+        margin-bottom: 10px;
+      }
+      img {
+        height: 4em;
+        border-radius: 2em;
+      }
+      h2 {
+        margin-left: 1em;
+      }
+      :host(.red) {
+        background-color: #BF3030;
+        color: white;
+      }
+    </style>
+
+    <div class="card-header" layout horizontal center>
+      <img alt="Avatar" _src="{{person.avatarUrl}}">
+      <h2>{{person.name}}</h2>
+    </div>
+    <p>{{person.dateOfBirth | dateToString}}</p>
+  </template>
+  <script type="application/dart" src="post_card.dart"></script>
+</polymer-element>
