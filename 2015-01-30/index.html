@@ -71,7 +71,9 @@
               <br>
               <small><a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a></small>
               <br>
-              <img alt="sfeir" src="img/sfeir_logo.png">
+              <a href="http://www.sfeir.com">
+                <img alt="sfeir" src="img/sfeir_logo.png">
+              </a>
 
           </p>
           <aside class="notes">
@@ -223,27 +225,6 @@ Hello DevFest Paris
           </section>
 
           <section>
-          <h1>Constructeur nommé</h1>
-                                <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em> import 'dart:math';
-
- class Point {
-   num x, y;
-   Point(this.x, this.y);
-   Point.zero() : x = 0, y = 0;
-   Point.polar(num theta, num radius) {
-     x = cos(theta) * radius;
-     y = sin(theta) * radius;
-   }
- }
-</pre>
-                            <pre class="programlisting fragment">
-<em><span class="remark">lang-dart</span></em> Point p1 = new Point.zero();
- Point p2 = new Point.polar(0, 1);
-</pre>        
-          </section>
-
-          <section>
                             <h1>List</h1>
             <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em> // Creation de listes
@@ -343,11 +324,11 @@ Hello DevFest Paris
           <section>
             <h1>Custom Elements</h1>
  <pre class="programlisting">
-<em><span class="remark">lang-html</span></em>&lt;x-click-counter&gt;&lt;/x-click-counter&gt;
+<em><span class="remark">lang-html</span></em>&lt;click-counter&gt;&lt;/click-counter&gt;
 </pre>
                 <br>
 <pre class="programlisting fragment">
-<em><span class="remark">lang-html</span></em>&lt;element name="x-click-counter"&gt;
+<em><span class="remark">lang-html</span></em>&lt;element name="click-counter"&gt;
   &lt;template&gt;
     &lt;style&gt;
         /* Css */
@@ -429,16 +410,6 @@ Hello DevFest Paris
 </pre>            
           </section>
 
-       <section>
-           <h1>Communication serveur</h1>
-                               <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em> HttpRequest.getString('myUrl')
-            .then((String fileContents) {
-               //..
-             });
-</pre>
-           </section>          
-
         </section>
 
         <section> 
@@ -450,11 +421,6 @@ Hello DevFest Paris
             <h1>Votre mission</h1>
             <img src="img/risk.jpg">
             <a href="http://goo.gl/l7Oxy1" target="_blank">goo.gl/l7Oxy1</a>
-          </section>
-
-          <section>
-            <h1>Architecture</h1>
-            <img src="img/archi_codelab.png">
           </section>
 
         </section>
