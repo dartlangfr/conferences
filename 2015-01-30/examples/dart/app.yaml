@@ -1,5 +1,0 @@
-module: devfest
-runtime: custom
-vm: true
-api_version: 1
-threadsafe: true
