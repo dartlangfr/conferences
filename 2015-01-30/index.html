@@ -357,6 +357,14 @@ Hello DevFest Paris
           </section>
 
           <section>
+                <h1>HTML Import</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-html</span></em>
+&lt;link rel="import" href="/components/click_counter.html"&gt;
+</pre>
+            </section>
+
+          <section>
             <h1>HTML Template</h1>
             <pre class="programlisting">
 <em><span class="remark">lang-html</span></em>&lt;template id="monTemplate"&gt;
@@ -374,6 +382,21 @@ Hello DevFest Paris
 <em><span class="remark">lang-html</span></em>&lt;template repeat="{{maList}}"&gt;
 </pre>            
           </section>  
+
+            <!-- Observer -->
+            <section>
+                <h1>Observer</h1>
+
+                <pre class="programlisting">
+<em><span class="remark">lang-html</span></em>&lt;div&gt;
+  {{name}}
+&lt;/div&gt;
+</pre>
+                <br>
+                <pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em> @observable String name;
+</pre>            
+          </section>
 
           <section>
                 <h1>Shadow DOM</h1>
@@ -400,29 +423,6 @@ Hello DevFest Paris
 &lt;/video&gt;
 </pre>            
 
-          </section>
-
-          <section>
-                <h1>HTML Import</h1>
-<pre class="programlisting">
-<em><span class="remark">lang-html</span></em>
-&lt;link rel="import" href="/components/click_counter.html"&gt;
-</pre>
-            </section>
-
-            <!-- Observer -->
-            <section>
-                <h1>Observer</h1>
-
-                <pre class="programlisting">
-<em><span class="remark">lang-html</span></em>&lt;div&gt;
-  {{name}}
-&lt;/div&gt;
-</pre>
-                <br>
-                <pre class="programlisting fragment">
-<em><span class="remark">lang-dart</span></em> @observable String name;
-</pre>            
           </section>
 
         </section>
