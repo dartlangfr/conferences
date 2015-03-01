@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>The Dart side of the moon, la face cachée du cloud</title>
+
+    <meta name="description" content="Presentation for Nantes DevFest">
+    <meta name="keywords" content="dart, dartlang, polymer, WebComponent, Google Cloud, Managed VM, datastore">
+    <meta name="author" content="Dartlangfr">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link href='http://fonts.googleapis.com/css?family=Asset|Lobster|Monofett|Press+Start+2P' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sfeir.css" id="theme">
+
+    <link rel="shortcut icon" href="favicon.png">
+
+     <!--  For syntax highlighting from dartlang.org -->
+    <link rel="stylesheet" href="lib/css/dartlang.css">
+    <link rel="stylesheet" href="lib/css/dart-style.css">
+    <script src="lib/js/dartlang.js"></script>
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <link rel="stylesheet" href="css/slides.css">
+
+    <!-- Importing Web Component's Polyfill -->
+    <script src="bower_components/platform/platform.js"></script>
+
+    <link rel="import" href="elements.html">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+      <div id="footer">
+          <span id="hashtag">#dartlang #GDG</span>
+          <span id="link"><a href="http://goo.gl/AJ4EPD">http://goo.gl/AJ4EPD</a></span>
+      </div>
+			<div class="slides">
+        <!--
+        <section id="sponsors" data-background="img/sponsors.png">
+
+          <aside class="notes">
+            <ul>
+              <li>Bonjour et bienvenue</li>
+              <li>Merci aux sponsors</li>
+            </ul>
+          </aside>
+        </section>
+        -->
+
+				<section id="intro">
+          <!-- TODO svg image for gcloud logo -->
+          <h1><img alt="gcloud" src="img/gcloud.png" style="height: 1em;"> + <img alt="Dart" src="img/dart.svg" style="height: 1.1em;"></h1>
+
+          <h1>The Dart side of the moon</h1>
+
+          <h2>La face cachée du cloud</h2>
+
+          <p>
+              <small><a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a></small>
+              <br>
+              
+                <small><del><a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a><del></small>
+              
+              <br>
+              <img alt="sfeir" src="img/sfeir_logo.png">
+
+          </p>
+          <aside class="notes">
+              <ul>
+                  <li>Dart dans le cloud</li>
+                  <li>Jusque là Dart orienté client léger dans navigateur</li>
+                  <li>Depuis peu Dart dans Cloud Google</li>
+                  <li>Dart de bout en bout</li>
+                  <li>Du serveur au client</li>
+                  <li>Guillaume, développeur chez Sfeir / Ambassadeur Dart</li>
+                  <li>Nicolas, c/c</li>
+                  <li>Avant vif du sujet</li>
+                  <li>Rappel langage Dart</li>
+              </ul>
+          </aside>
+         </section>
+
+        <section id="dart">
+          <section>
+            <h1><img class="stretch" alt="Dart" src="img/dart.svg" style="height: 256px"></h1>
+
+            <h1>Dart</h1>
+          </section>
+
+         <section>
+            <h1>Language</h1>
+            <ul>
+              <li class="fragment">Class based and object oriented</li>
+              <li class="fragment">Familiar syntax</li>
+              <li class="fragment">Improve maintainability of web applications</li>
+              <li class="fragment">Open Source</li>
+              <li class="fragment">Ecma Standard 408</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <lu>Rappel de la philo</lu>
+              </ul>
+            </aside>
+          </section>
+
+          <section>
+            <h1>Platform</h1>
+            <ul>
+              <li class="fragment">Client and server</li>
+              <li class="fragment">Virtuals Machines</li>
+              <li class="fragment">Dependency manager</li>
+              <li class="fragment">Javascript transpiler</li>
+              <li class="fragment">IDE plugins</li>
+            </ul>
+            <aside class="notes">
+              <ul>
+                <li>Plateforme de développement complète</li>
+              </ul>
+            </aside>
+          </section>
+
+         </section>
+
+          <section>
+            <section id="compute engine">
+              <h1><img alt="compute engine" src="img/compute-logo.png"></h1>
+              <h1>Compute Engine</h1>
+            </section>
+
+            <section id="hello-from-server">
+              <h1>Hello from classic server</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>main(List&lt;String&gt; args) {
+  runZoned(() {
+    HttpServer.bind('0.0.0.0', 80).then((server) {
+      server.listen((request){
+         request.response..write("Hello world")
+                         ..close();
+      });
+    });
+  }, onError: (e) => print("An error occurred $e"));
+}
+</pre>
+            </section>
+            <aside class="notes">
+              <ul>
+                <li>HttpServer bind future</li>
+                <li>runZoned</li
+              </ul>
+            </aside>
+
+            <section>
+              <h2>Handle requests</h2>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>final CONTACTS = [{"name": "John Doe",
+                  "urlProfile": "/img/nopic.jpg",
+                  "dateOfBirth": "01-01-1970"}];
+
+handleRequest(HttpRequest request){
+  if (request.uri.path == '/') {
+    request.response..write("Hello world")
+                    ..close();
+  } else if (request.uri.path == "/contacts") {
+    request.response..write(JSON.encode(CONTACTS))
+                    ..close();
+  } else {
+    request.response..statusCode = HttpStatus.NOT_FOUND
+                    ..close();
+  }
+}
+</pre>
+            </section>
+            <aside class="notes">
+              <ul>
+                <li>url par défaut</li>
+                <li>contact + json</li>
+                <li>Not found</li>
+              </ul>
+            </aside>
+
+            <section id="create-gce-instance">
+              <h2>Create instance</h2>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em>gcloud compute instances create "dart-gce-demo" \
+            --zone "europe-west1-b" \
+            --machine-type "f1-micro" \
+            --image "https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/debian-7-wheezy-v20141021" \
+            --tags "http-server"
+</pre>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em>gcloud compute ssh "dart-gce-demo" --zone "europe-west1-b"
+</pre>
+            <aside class="notes">
+              <ul>
+                <li>LANCER LE SCRIPT AVANT</li>
+              </ul>
+            </aside>
+            </section>
+
+            <section id="gce-deployment">
+              <h2>Deployment</h2>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em># Update repository
+apt-get update && apt-get install -y apt-transport-https
+curl 'https://dl-ssl.google.com/linux/linux_signing_key.pub' | apt-key add -
+curl 'https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list' > /etc/apt/sources.list.d/dart_stable.list
+apt-get update
+</pre>
+
+<pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em># Install dart and git
+apt-get install -y dart git
+</pre>
+
+<pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em># Clone and start appp
+git clone https://github.com/nfrancois/dart-hello
+cd dart-hello
+dart bin/server.dart &
+</pre>
+
+            </section>
+            <aside class="notes">
+              <ul>
+                <li>ALLER VOIR RESULTAT</li>
+              </ul>
+            </aside>
+
+         </section>
+
+         <section>
+             <section id="managed-vm">
+                 <h1><img alt="managed-vm" src="img/appengine-logo.png"></h1>
+
+                 <h1>Managed VMs</h1>
+
+                 <aside class="notes">
+                     <ul>
+                         <li>Déclinaison AppEngine</li>
+                         <li>Customiser Runtime</li>
+                         <li>Conserve scalabilité et services</li>
+                         <li>Deux types de Runtime</li>
+                         <li>Standard</li>
+                         <li>Custom</li>
+                     </ul>
+                 </aside>
+             </section>
+
+             <section id="managed-vm-standard-runtime">
+                 <h2>Standard runtime</h2>
+
+                 <img class="stretch" alt="managed-vm-standard-runtime" src="img/managed-vm-standard-runtime.png">
+
+                 <aside class="notes">
+                     <ul>
+                         <li>Machine virtuelle</li>
+                         <li>Contrairement AppEngine: Sandbox</li>
+                         <li>Customiser les runtimes</li>
+                         <li>Avec packages supplémentaires</li>
+                         <li>3 Runtime Standard</li>
+                         <li>Java, Go, Python</li>
+                         <li>Pas ce qui nous interesse</li>
+                     </ul>
+                 </aside>
+             </section>
+
+             <section id="managed-vm-custom-runtime">
+                 <h2>Custom runtime</h2>
+
+                 <img class="fragment stretch" alt="Docker" src="img/docker.svg">
+
+                 <aside class="notes">
+                     <ul>
+                         <li>Managed VMs basées sur</li>
+                         <li>Machine Virtuelles</li>
+                         <li>Aussi Docker</li>
+                         <li>Containeur d'applications linux</li>
+                         <li>Isole les applications et leurs dépendances</li>
+                         <li>+ léger que les Machines Virtuelles</li>
+                         <li>Profite du noyau de l'OS</li>
+                     </ul>
+                 </aside>
+             </section>
+
+             <section id="managed-vm-dockerfile">
+                <h2>Custom runtime</h2>
+                <h6>Dockerfile</h6>
+
+                <pre><code data-trim class="text">
+                    FROM google/dart-runtime
+                </code></pre>
+
+                 <ul>
+                     <li class="fragment">pubspec.yaml and pubspec.lock</li>
+                     <li class="fragment">bin/server.dart</li>
+                     <li class="fragment">8080</li>
+                 </ul>
+
+                 <aside class="notes">
+                     <ul>
+                         <li>Comment construire une image déployable sur les Managed VMS ?</li>
+                         <li>Simple: deux fichiers à définir</li>
+                         <li>Dockerfile</li>
+                         <li>Définit le runtime</li>
+                         <li><i>Peut rajouter d'autres instructions si on veut</i></li>
+                         <li>Runtime Dart s'attend à</li>
+                         <li>Dépendances de l'appli Dart</li>
+                         <li>Script dart qui lance le serveur</li>
+                         <li>Serveur écoute sur 8080</li>
+                     </ul>
+                 </aside>
+             </section>
+
+             <section id="managed-vm-configuration">
+                <h2>Configuring a Managed VM</h2>
+                <h6>Minimal app.yaml</h6>
+
+<pre class="programlisting"><em><span class="remark">lang-yaml</span></em>runtime: custom
+vm: true</pre>
+
+                <h6 class="fragment" data-fragment-index-"1">Detailed app.yaml</h6>
+
+<pre class="fragment programlisting" data-fragment-index-"1"><em><span class="remark">lang-yaml</span></em>module: default
+runtime: custom
+vm: true
+api_version: 1
+threadsafe: true
+
+manual_scaling:
+  instances: 1
+</pre>
+
+                 <aside class="notes">
+                     <ul>
+                         <li>Deuxième fichier pour AppEngine</li>
+                         <li>2 Champs obligatoires</li>
+                         <li>runtime: custom, java, go, ou python</li>
+                         <li>vm à true</li>
+                         <li>Configuration plus poussée</li>
+                         <li>Module</li>
+                         <li>Version</li>
+                         <li>Scalabilité: manuelle ou automatique</li>
+                     </ul>
+                 </aside>
+             </section>
+
+            <section id="hello-from-appengine">
+              <h2>Hello from appengine</h2>
+
+              <h6>bin/server.dart</h6>
+
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>import 'dart:io';
+import 'package:appengine/appengine.dart';
+
+void main() {
+  runAppEngine((HttpRequest request) {
+    request.response
+      ..write('Hello, world!')
+      ..close();
+  });
+}
+</pre>
+
+                <ul class="fragment">
+                   <li>/_ah/health</li>
+                   <li>/_ah/start</li>
+                   <li>/_ah/stop</li>
+                </ul>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Script s'appuit sur package appengine</li>
+                        <li>Fournit une fonction runAppEngine</li>
+                        <li>Lance serveur 8080</li>
+                        <li>Traite les erreurs retourne 500</li>
+                        <li>Définit API Rest</li>
+                        <li>Nécessaire au bon fonctionnement sur AppEngine</li>
+                    </ul>
+                </aside>
+            </section>
+
+           <section id="managed-vm-deploy">
+              <h2>Run</h2>
+
+              <pre class="programlisting"><em><span class="remark">lang-sh</span></em>gcloud preview app run app.yaml</pre>
+
+              <h2 class="fragment" data-fragment-index="1">Deploy</h2>
+
+              <pre class="fragment programlisting" data-fragment-index="1"><em><span class="remark">lang-sh</span></em>gcloud preview app deploy app.yaml</pre>
+
+               <aside class="notes">
+                   <ul>
+                       <li>Simple pour lancer et déployer</li>
+                   </ul>
+               </aside>
+            </section>
+
+           <section id="cloud-services">
+               <h1>Dart Runtime support</h1>
+               <ul>
+                   <li>Datastore</li>
+                   <li>Storage</li>
+                   <li>Memcache</li>
+                   <li>Logging</li>
+                   <li>Users</li>
+               </ul>
+
+               <aside class="notes">
+                   <ul>
+                       <li>Services accessibles avec les API Dart</li>
+                       <li>Package appengine et gcloud</li>
+                       <li>Disponible depuis le début de semaine</li>
+                       <li>Datastorage: BDD non relationnelle</li>
+                       <li>Storage: stockage de contenu tel que fichier</li>
+                       <li>Memcache: mémoire cache distribuée</li>
+                       <li>Logging: log</li>
+                       <li>Users: authentification</li>
+                       <li style="color: red;">Voir en détail Datastorage et Storage</li>
+                   </ul>
+               </aside>
+           </section>
+
+         </section>
+
+         <section>
+           <section id="cloud-datastore">
+              <h1><img alt="cloud-datastore" src="img/datastore-logo.png"></h1>
+              <h1>Cloud datastore</h1>
+          </section>
+
+          <section id="non-relational">
+            <h2>Store non relationnal data</h2>
+             <ul>
+                <li class="fragment">Schemaless database</li>
+                <li class="fragment">Dart mapping layer</li>
+                <li class="fragment">Dart Low level API</li>
+              </ul>
+           </section>
+
+           <section id="modelize-data">
+            <h1>Modelize data</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>@Kind()
+class Person extends Model {
+  @StringProperty(required: true)
+  String name;
+
+  @StringProperty()
+  String avatarUrl;
+
+  @DateTimeProperty()
+  DateTime dateOfBirth;
+}
+</pre>
+           </section>
+           <aside class="notes">
+            <ul>
+              <li>api mapping</li>
+              <li>Disclamer api mouvante</li>
+              <li>extends Model pour avoir un id, et une clé</li>
+              <li>annotation kind pour signaler que c'est un objet géré par le datastore</li>
+              <li>annotation par type</li>
+            </ul>
+           </aside>
+
+           <section id="store-data">
+            <h1>Store data</h1>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>// Declare list of persons
+final john = new Person()..name = 'John Doe';
+final jane = new Person()..name = 'Jane Doe';
+final List&lt;Person&gt; persons  = [john, jane];
+
+// Insert entities into Datastore
+datastoreDb.datastore.commit(inserts: persons).then((_){
+  print('Data inserted');
+});
+</pre>
+           <aside class="notes">
+
+           </aside>
+           </section>
+
+           <section id="query-data">
+            <h1>Query data</h1>
+Addresses from a person
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>final findQuery = new Query(ancestorKey: person.key, kind: 'Address');
+datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
+    print('Found ${page.items.length} items');
+});
+</pre>
+           </section>
+         </section>
+
+        <section>
+           <section id="cloud-storage">
+             <h1><img alt="cloud-storage" src="img/storage-logo.png"></h1>
+             <h1>Cloud storage</h1>
+           </section>
+
+           <section id="concept">
+             <h2>Concepts</h2>
+             <ul>
+              <li class="fragment">Service to store data in Google's cloud.</li>
+              <li class="fragment">High Capacity and Scalability.</li>
+              <li class="fragment">Accessible from all instances.</li>
+             </ul>
+             <ul>
+             <aside class="notes">
+               <ul>
+                   <li>C'est le service de stockage de données de Google</li>
+                   <li>Grande capacité (&lt;5To docment) et hautement scalable</li>
+                   <li>données accessibles depuis instances (backup, script, ...)</li>
+               </ul>
+               </aside>
+           </section>
+
+           <section id="terminology">
+             <h2>Terminology</h2>
+             <ul>
+              <li class="fragment">Buckets are the basic containers that hold your data.</li>
+              <li class="fragment">Objects are the individual pieces of data that you store.</li>
+             </ul>
+             <aside class="notes">
+
+            </section>
+
+            <section id="access">
+              <h2>Access</h2>
+              <div class="fragment">gs://&lt;bucket&gt;/&lt;object&gt;</div>
+              <div class="fragment">gs://&lt;bucket&gt;/&lt;directory&gt;/&lt;object&gt;</div>
+              <pre class="programlisting fragment">
+<em><span class="remark">lang-sh</span></em>gs://my_bucker_123/images/nopic.jpg
+</pre>
+
+              <aside class="notes">
+                <ul>
+                  <ul>bucket unique pour tous les projets</ul>
+                </ul>
+              </aside>
+           </section>
+
+           <section id="storage-storage">
+             <h1>List and create buckets</h1>
+<pre class="programlisting fragment">
+<em><span class="remark fragment">lang-dart</span></em>storage.listBucketNames().listen(print);</pre>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em>storage.bucketExists(bucketName).then((exist){
+  if(!exist) {
+    storage.createBucket(bucketName).then((Bucket bucket) {
+      print('bucket ${bucket.bucketName} is created');
+    });
+  }
+});
+</pre>
+           </section>
+
+          <section id="storage-bucket">
+            <h1>Read and write in documents</h1>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em>final bucket = storage.bucket(bucketName);</pre>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em>bucket.read(userName).listen(print);</pre>
+<pre class="programlisting fragment">
+<em><span class="remark">lang-dart</span></em>bucket.writeBytes(userName, avatar).then((ObjectInfo info){
+  print('${info.name} created.');
+});
+</pre>
+           </section>
+
+         </section>
+
+         <section>
+           <section id="polymer">
+             <h1><img alt="Polymer" src="img/polymer.svg" style="height: 256px;"></h1>
+             <h1>Polymer</h1>
+
+               <aside class="notes">
+                   <ul>
+                       <li>Bibliothèque Javascript porté en Dart</li>
+                       <li>Constuire des WebComponents</li>
+                       <li>Composée de trois couches</li>
+                   </ul>
+               </aside>
+           </section>
+
+           <section id="web-components">
+             <h2><img alt="web components" src="img/webcomponents.svg" style="height: 0.72em;"> Polyfills</h2>
+
+             <ul>
+              <li class="fragment">Custom element</li>
+              <li class="fragment">HTML Import</li>
+              <li class="fragment">Template</li>
+              <li class="fragment">Shadow DOM</li>
+             </ul>
+
+               <aside class="notes">
+                   <ul>
+                       <li>Polyfills</li>
+                       <li>Comble les manques des navigateurs</li>
+                       <li>Implémentation Web Components</li>
+                       <li>Web Components Standard HTML5 en Draft</li>
+                       <li>Composé de 4 principes</li>
+                       <li>Custom element: Créer ses propres tag HTML</li>
+                       <li>HTML Import: Importer composants et les utiliser</li>
+                       <li>Template: Définir et Dupliquer code HTML</li>
+                       <li>Shadow DOM: isole du code HTML en cachant l'implémentation et + encore</li>
+                   </ul>
+               </aside>
+           </section>
+
+           <section id="polymer-core">
+             <h2><img alt="web components" src="img/polymer.svg" style="height: 0.72em;"> Core</h2>
+
+             <ul>
+              <li class="fragment">Data-binding</li>
+              <li class="fragment">Syntatic sugar</li>
+              <li class="fragment">Change watchers</li>
+              <li class="fragment">Published properties</li>
+             </ul>
+
+               <aside class="notes">
+                   <ul>
+                       <li>Couche Core: vision de Google sur Web Components</li>
+                       <li>Data-binding: associe données et vue</li>
+                       <li>Moustache Angular</li>
+                       <li>Sucre syntaxique: facilite la création de composant</li>
+                       <li>Change watchers: surveille Modifications Données et met à jour Vue</li>
+                       <li>Custome properties: propre attribut sur son composant</li>
+                   </ul>
+               </aside>
+           </section>
+
+          <section id="polymer-elements">
+            <h2>Polymer's material design elements</h2>
+
+            <div id="paperexamples" horizontal="" layout="">
+              <div flex>
+
+                <div>
+                  <paper-tabs selected="0">
+                  <paper-tab class="core-selected" active>paper-tab 1</paper-tab>
+                  <paper-tab>paper-tab 2</paper-tab>
+                  <paper-tab>paper-tab 3</paper-tab>
+                 </paper-tabs>
+                </div>
+
+                <div>
+                  <paper-button role="button" tabindex="0" aria-label="paper-button">paper-button</paper-button>
+                  <paper-button raised role="button" tabindex="0" aria-label="raised button">raised button</paper-button>
+                </div>
+
+                <p layout horizontal center>
+                  <paper-toggle-button checked style="margin-right:2em;" touch-action="pan-y" role="button" aria-pressed="true" tabindex="0"></paper-toggle-button>
+                  <paper-checkbox label="Check me" role="checkbox" tabindex="0" aria-checked="false" aria-label="Check me"></paper-checkbox>
+                </p>
+
+                <div layout horizontal center>
+                  <paper-radio-group selected="2" style="margin-right:2em;" role="radiogroup">
+                    <paper-radio-button label="Yes" role="radio" tabindex="0" aria-checked="false" aria-label="Yes"></paper-radio-button>
+                    <paper-radio-button label="No" role="radio" tabindex="0" aria-checked="false" aria-label="No"></paper-radio-button>
+                  </paper-radio-group>
+                  <paper-fab focused icon="cloud-upload" role="button" tabindex="0" class="paper-shadow-animate-z-1-z-2"></paper-fab>
+                </div>
+
+                <div layout horizontal center>
+                  <p style="margin-right:2em;">
+                    <paper-progress value="800" min="100" max="1000"></paper-progress><br>
+                    <paper-progress class="pink" value="40" secondaryprogress="80"></paper-progress>
+                  </p>
+                  <paper-slider pin max="10" step="1" value="5"></paper-slider>
+                </div>
+
+                <paper-button style="font-size:20px;" raised onclick="document.querySelector('#paperexamples').classList.toggle('on');" role="button" tabindex="0" aria-label="Toggle batman">Toggle batman</paper-button>
+
+              </div>
+
+              <div flex>
+
+                <div layout horizontal center>
+                  <core-toolbar layout horizontal center>
+                    <paper-icon-button icon="menu" role="button" tabindex="0"></paper-icon-button>
+                    <span flex style="font-size:25px;">core-toolbar</span>
+                    <paper-icon-button icon="refresh" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="add" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="search" role="button" tabindex="0"></paper-icon-button>
+                    <paper-icon-button icon="cloud-upload" role="button" tabindex="0"></paper-icon-button>
+                  </core-toolbar>
+                </div>
+
+                <div layout horizontal center>
+                  <paper-input floatinglabel label="Type numbers..." validate="^[0-9]*$" error="Input is not a number!"></paper-input>
+                </div>
+              </div>
+
+            </div>
+
+            <aside class="notes">
+                <ul>
+                    <li>Dernière couche</li>
+                    <li>Composants réutilisable</li>
+                    <li>Deux librairies</li>
+                    <li>Core elements</li>
+                    <li>Composants de base visuel ou non</li>
+                    <li>Router, AJAX</li>
+                    <li>Paper elements</li>
+                    <li>Composants plus évolués</li>
+                    <li>Basés sur Material Design</li>
+                </ul>
+            </aside>
+          </section>
+
+            <section id="polymer-example-html">
+              <h2>Create polymer element</h2>
+
+<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;link rel="import" href="../../packages/polymer/polymer.html"&gt;
+
+&lt;polymer-element name="post-card"&gt;
+  &lt;template&gt;
+    &lt;div class="card-header" layout horizontal center&gt;
+      &lt;img alt="Avatar" src="{{person.avatarUrl}}"&gt;
+      &lt;h2&gt;{{person.name}}&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;p&gt;{{person.dateOfBirth | dateToString}}&lt;/p&gt;
+  &lt;/template&gt;
+  &lt;script type="application/dart" src="post_card.dart"&gt;&lt;/script&gt;
+&lt;/polymer-element&gt;
+</pre>
+
+
+                <aside class="notes">
+                    <ul>
+                        <li>Création composant Polymer</li>
+                        <li>Déclaration via balise polymer-element</li>
+                        <li>Attribut name</li>
+                        <li>Contenu - Template</li>
+                        <li>Data-binding: moustache</li>
+                        <li>Filtre pour formater la date</li>
+                        <li>Définition dans Script Dart</li>
+                    </ul>
+                </aside>
+              </section>
+
+            <section id="polymer-example-dart">
+              <h2>Create polymer element</h2>
+
+<pre class="programlisting"><em><span class="remark">lang-dart</span></em>import 'package:polymer/polymer.dart';
+import 'package:intl/intl.dart';
+import 'entity.dart';
+
+@CustomTag('post-card')
+class PostCard extends PolymerElement {
+  @observable Person person = new Person()
+    ..name = "John Lennon"
+    ..avatarUrl = "img/avatar.jpg"
+    ..dateOfBirth = new DateTime(1940, 10, 9);
+
+  PostCard.created() : super.created();
+
+  String dateToString(DateTime date) =&gt; new DateFormat.yMd().format(date);
+}
+</pre>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Déclare classe</li>
+                        <li>Hérite PolymerElement</li>
+                        <li>Annotée CustomTag associe le nom</li>
+                        <li>@observable sur person</li>
+                        <li>Pour observer les changements</li>
+                        <li>Filtre simplement une fonction</li>
+                    </ul>
+                </aside>
+              </section>
+
+            <section id="polymer-example-use">
+              <h2>Use custom element</h2>
+<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;html&gt;
+  &lt;head&gt;
+    &lt;!-- import the post-card --&gt;
+    &lt;link rel="import" href="packages/my_package/post_card.html"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- use post-card element --&gt;
+    &lt;post-card&gt;&lt;/post-card&gt;
+
+    &lt;!-- bootstrap polymer --&gt;
+    &lt;script type="application/dart"&gt;export 'package:polymer/init.dart';&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+             <div class="fragment strech result">
+                 <post-card>
+                     <img src="img/avatar.jpg">
+
+                     <h2>John Lennon</h2>
+
+                     <p>9/10/1940</p>
+                 </post-card>
+             </div>
+
+                <aside class="notes">
+                    <ul>
+                        <li>Utilisation simple</li>
+                        <li>Balise link import</li>
+                        <li>Utilise la balise déclarée</li>
+                        <li>post-card</li>
+                        <li>Import du script Dart Polymer</li>
+                        <li>Importe les Polyfills</li>
+                        <li>En vrai</li>
+                    </ul>
+                </aside>
+
+            </section>
+         </section>
+
+
+         <section>
+            <section id="chrome-dev-editor">
+              <h1><img alt="chrome-dev-editor" src="img/chrome-dev-editor.png" style="height: 256px;"></h1>
+              <h1>Chrome Dev Editor</h1>
+           </section>
+
+             <aside class="notes">
+                 <ul>
+                     <li>Constater possibilités de Polymer</li>
+                     <li>Démo application chrome</li>
+                     <li>Tourne sous navigateur Chrome</li>
+                     <li>Explorateur de fichiers</li>
+                     <li>Auto-completion</li>
+                     <li>Git </li>
+                 </ul>
+             </aside>
+         </section>
+
+  			 <section id="thanks">
+  			   <h1 style="text-transform: none;">&lt;thank-you&gt;</h1>
+            <small>dartlangfr.net/conferences/2014-11-07/</small>
+  				 <h3>
+             BY <a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a>
+             <br>
+  					AND <a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a>
+  				 </h3>
+  				 <h3>
+              <img alt="Dart" src="img/dartlangfr.svg" style="height: 1em; margin: 0;"> <a href="http://gplus.to/dartlangfr">gplus.to/dartlangfr</a>
+  				 </h3>
+  			</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        //keyboard: false,
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+      /*Reveal.configure({
+        keyboard: {
+          13: 'next', // go to the next slide when the ENTER key is pressed
+          27: function() {}, // do something custom when ESC is pressed
+          32: null // don't do anything when SPACE is pressed (i.e. disable a reveal.js default binding)
+        }
+      });*/
+
+		</script>
+
+	</body>
+</html>

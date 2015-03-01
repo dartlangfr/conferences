@@ -1,0 +1,12 @@
+<link rel="import" href="../../packages/polymer/polymer.html">
+
+<link rel="import" href="packages/dart_cloud_samples/post_card.html">
+
+<polymer-element name="post-card-list">
+  <template>
+      <template repeat="{{person in persons}}">
+        <post-card person="{{person}}"></post-card>
+      </template>
+  </template>
+  <script type="application/dart" src="content.dart"></script>
+</polymer-element>
