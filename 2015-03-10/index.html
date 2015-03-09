@@ -149,6 +149,13 @@
 
          </section>
 
+
+         <section>
+          <h1>Todos</h1>
+          <img src="img/todos.png">
+
+         </section>
+
           <section>
             <section id="compute engine">
               <h1><img alt="compute engine" src="img/compute-logo.png"></h1>
@@ -180,15 +187,16 @@
             <section>
               <h2>Handle requests</h2>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>final CONTACTS = [{"name": "John Doe",
-                  "urlProfile": "/img/nopic.jpg",
-                  "dateOfBirth": "01-01-1970"}];
+<em><span class="remark">lang-dart</span></em>final TODOS = [
+  {"name": "Buy milk", "done": false, "since": "07-03-2015"},
+  {"name": "Stop the hoover", "done": true, "since": "28-02-2015"}
+];
 
 handleRequest(HttpRequest request){
   if (request.uri.path == '/') {
-    request.response..write("Hello world")
+    request.response..write("Welcome to my todos")
                     ..close();
-  } else if (request.uri.path == "/contacts") {
+  } else if (request.uri.path == "/api/todos") {
     request.response..write(JSON.encode(CONTACTS))
                     ..close();
   } else {
@@ -242,8 +250,8 @@ apt-get install -y dart git
 
 <pre class="programlisting fragment">
 <em><span class="remark">lang-sh</span></em># Clone and start appp
-git clone https://github.com/nfrancois/dart-hello
-cd dart-hello
+git clone https://github.com/nfrancois/todos
+cd todos
 dart bin/server.dart &
 </pre>
 
@@ -373,7 +381,7 @@ manual_scaling:
              </section>
 
             <section id="hello-from-appengine">
-              <h2>Hello from appengine</h2>
+              <h2>Welcome to my todos</h2>
 
               <h6>bin/server.dart</h6>
 
@@ -384,7 +392,7 @@ import 'package:appengine/appengine.dart';
 void main() {
   runAppEngine((HttpRequest request) {
     request.response
-      ..write('Hello, world!')
+      ..write('Welcome to my todos')
       ..close();
   });
 }
@@ -406,6 +414,46 @@ void main() {
                         <li>Nécessaire au bon fonctionnement sur AppEngine</li>
                     </ul>
                 </aside>
+            </section>
+
+            <section>
+              <h2>Shelf</h2>
+              <ul>
+                <li class="fragment">Light server</li>
+                <li class="fragment">Modular and extensible</li>
+                <li class="fragment">Communauty modules on pub repository</li>
+              </ul>
+
+            </section>
+
+            <section>
+              <h2>My todos with Shelf</h2>
+<pre class="programlisting">
+<em><span class="remark">lang-dart</span></em>import 'package:shelf/shelf.dart';
+import 'package:shelf_appengine/shelf_appengine.dart';
+import 'package:shelf_route/shelf_route.dart';
+
+final itemsUrl = new UriParser(new UriTemplate('/api/todos'));
+final oneItemUrl = new UriParser(new UriTemplate('/api/todos/{todoId}'));
+final pingUrl = new UriParser(new UriTemplate('/api/ping'));
+
+void main() {
+  var apiRouter = router()
+        ..post(itemsUrl, createTodo)
+        ..get(ping, (request) => new Response.ok("PONG"))
+        ..delete(oneItemUrl, (request) { 
+          deleteItem(int.parse(getPathParameter(request, todoId));
+          return new Response(204);
+        });
+   
+  var cascade = new Cascade()
+    .add(apiRouter.handler)
+    .add(assetHandler(directoryIndexServeMode: DirectoryIndexServeMode.REDIRECT));
+  
+  serve(cascade.handler);
+}
+</pre>              
+
             </section>
 
            <section id="managed-vm-deploy">
@@ -470,15 +518,15 @@ void main() {
             <h1>Modelize data</h1>
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>@Kind()
-class Person extends Model {
+class Todo extends Model {
   @StringProperty(required: true)
   String name;
 
-  @StringProperty()
-  String avatarUrl;
+  @BoolProperty()
+  bool done;
 
   @DateTimeProperty()
-  DateTime dateOfBirth;
+  DateTime since;
 }
 </pre>
            </section>
@@ -495,13 +543,13 @@ class Person extends Model {
            <section id="store-data">
             <h1>Store data</h1>
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>// Declare list of persons
-final john = new Person()..name = 'John Doe';
-final jane = new Person()..name = 'Jane Doe';
-final List&lt;Person&gt; persons  = [john, jane];
+<em><span class="remark">lang-dart</span></em>// Declare list of todos
+final action1 = new Todo()..name = 'Buy the milk';
+final action2 = new Todo()..name = 'Stop the hoover'..done=true;
+final List&lt;Todo&gt; todos  = [action1, action2];
 
 // Insert entities into Datastore
-datastoreDb.datastore.commit(inserts: persons).then((_){
+datastore.commit(inserts: todos).then((_){
   print('Data inserted');
 });
 </pre>
@@ -514,10 +562,9 @@ datastoreDb.datastore.commit(inserts: persons).then((_){
             <h1>Query data</h1>
 Addresses from a person
 <pre class="programlisting">
-<em><span class="remark">lang-dart</span></em>final findQuery = new Query(ancestorKey: person.key, kind: 'Address');
-datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
-    print('Found ${page.items.length} items');
-});
+<em><span class="remark">lang-dart</span></em>Key get todoRoot => datastore.emptyKey.append(Todo, id: 1);
+var query = datastore.query(Todo, ancestorKey: todoRoot)..order('name');
+return query.run().toList();
 </pre>
            </section>
          </section>
@@ -661,6 +708,18 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
                </aside>
            </section>
 
+           <section>
+              <h2>Polymer object</h2>
+                          <h2>Polymer's material design elements</h2>
+<pre class="programlisting"><em><span class="remark">lang-html</span></em>class Item extends Object with Observable {
+  @observable
+  String name;
+  @observable
+  bool done;
+}
+</pre>    
+           </section>
+
           <section id="polymer-elements">
             <h2>Polymer's material design elements</h2>
 
@@ -743,20 +802,27 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
             <section id="polymer-example-html">
               <h2>Create polymer element</h2>
 
-<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;link rel="import" href="../../packages/polymer/polymer.html"&gt;
+<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;link rel="import" href="/packages/polymer/polymer.html"&gt;
+&lt;link rel="import" href="packages/core_elements/core_label.html"&gt;
+&lt;link rel="import" href="packages/paper_elements/paper_checkbox.html"&gt;
+&lt;link rel="import" href="packages/paper_elements/paper_shadow.html"&gt;
+&lt;link rel="import" href="packages/paper_elements/paper_input.html"&gt;
+&lt;link rel="import" href="packages/paper_elements/paper_item.html"&gt;
 
-&lt;polymer-element name="post-card"&gt;
-  &lt;template&gt;
-    &lt;div class="card-header" layout horizontal center&gt;
-      &lt;img alt="Avatar" src="{{person.avatarUrl}}"&gt;
-      &lt;h2&gt;{{person.name}}&lt;/h2&gt;
-    &lt;/div&gt;
-    &lt;p&gt;{{person.dateOfBirth | dateToString}}&lt;/p&gt;
+&lt;polymer-element name="todo-item"&gt;
+  &lt;template&gt;  
+    &lt;paper-shadow&gt;
+      &lt;paper-item&gt;
+        &lt;core-label horizontal layout&gt;
+          &lt;paper-checkbox checked="{{todo.done}}" for&gt;&lt;/paper-checkbox&gt;
+          &lt;h4&gt;{{todo.name}}&lt;/h4&gt;
+        &lt;/core-label&gt;
+       &lt;/paper-item&gt;
+     &lt;/paper-shadow&gt;    
   &lt;/template&gt;
-  &lt;script type="application/dart" src="post_card.dart"&gt;&lt;/script&gt;
+  &lt;script type="application/dart" src="todo_item.dart"&gt;&lt;/script&gt;
 &lt;/polymer-element&gt;
 </pre>
-
 
                 <aside class="notes">
                     <ul>
@@ -775,21 +841,20 @@ datastoreDb.datastore.query(findQuery).then((Page&lt;Person&gt; page){
               <h2>Create polymer element</h2>
 
 <pre class="programlisting"><em><span class="remark">lang-dart</span></em>import 'package:polymer/polymer.dart';
-import 'package:intl/intl.dart';
-import 'entity.dart';
+import 'package:todos/model.dart';
 
-@CustomTag('post-card')
-class PostCard extends PolymerElement {
-  @observable Person person = new Person()
-    ..name = "John Lennon"
-    ..avatarUrl = "img/avatar.jpg"
-    ..dateOfBirth = new DateTime(1940, 10, 9);
+@CustomTag('todo-item')
+class TodoItem extends PolymerElement {
+  
+  @published Item todo; 
+  
+  TodoItem.created() : super.created();
 
-  PostCard.created() : super.created();
-
-  String dateToString(DateTime date) =&gt; new DateFormat.yMd().format(date);
 }
 </pre>
+
+
+            <img src="img/item.png" class="fragment">
 
                 <aside class="notes">
                     <ul>
@@ -805,30 +870,10 @@ class PostCard extends PolymerElement {
 
             <section id="polymer-example-use">
               <h2>Use custom element</h2>
-<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;html&gt;
-  &lt;head&gt;
-    &lt;!-- import the post-card --&gt;
-    &lt;link rel="import" href="packages/my_package/post_card.html"&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;!-- use post-card element --&gt;
-    &lt;post-card&gt;&lt;/post-card&gt;
-
-    &lt;!-- bootstrap polymer --&gt;
-    &lt;script type="application/dart"&gt;export 'package:polymer/init.dart';&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
+<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;template repeat="{{todo in todos}}"&gt;
+  &lt;todo-item todo="{{todo}}"&gt;&lt;/todo-item&gt;
+&lt;/template&gt;
 </pre>
-
-             <div class="fragment strech result">
-                 <post-card>
-                     <img src="img/avatar.jpg">
-
-                     <h2>John Lennon</h2>
-
-                     <p>9/10/1940</p>
-                 </post-card>
-             </div>
 
                 <aside class="notes">
                     <ul>
@@ -866,7 +911,7 @@ class PostCard extends PolymerElement {
 
   			 <section id="thanks">
   			   <h1 style="text-transform: none;">&lt;thank-you&gt;</h1>
-            <small>dartlangfr.net/conferences/2014-11-07/</small>
+            <small>dartlangfr.net/conferences/2015-03-10/</small>
   				 <h3>
              BY <a href="https://google.com/+NicolasFrancois">+NicolasFrancois</a> / <a href="https://twitter.com/nicofrancois">@nicofrancois</a>
              <br>
