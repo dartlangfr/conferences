@@ -59,21 +59,10 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
       <div id="footer">
-          <span id="hashtag">#dartlang #GDG</span>
+          <span id="hashtag">#dartlang #GDG #sfeir</span>
           <span id="link"><a href="http://goo.gl/AJ4EPD">http://goo.gl/AJ4EPD</a></span>
       </div>
 			<div class="slides">
-        <!--
-        <section id="sponsors" data-background="img/sponsors.png">
-
-          <aside class="notes">
-            <ul>
-              <li>Bonjour et bienvenue</li>
-              <li>Merci aux sponsors</li>
-            </ul>
-          </aside>
-        </section>
-        -->
 
 				<section id="intro">
           <!-- TODO svg image for gcloud logo -->
@@ -90,7 +79,15 @@
                 <small><del><a href="https://google.com/+GuillaumeGirou">+GuillaumeGirou</a> / <a href="https://twitter.com/GirouGuillaume">@GirouGuillaume</a><del></small>
               
               <br>
-              <img alt="sfeir" src="img/sfeir_logo.png">
+              <div>
+                <span>
+                  <img alt="gdg" src="img/gdg_paris.jpeg" class="logo">
+                </span>
+                <span>
+                  <img alt="sfeir" src="img/sfeir_logo.png" class="logo">
+                </span>
+                <small>10 mars 2015</small>
+              </div>
 
           </p>
           <aside class="notes">
@@ -169,7 +166,7 @@
   runZoned(() {
     HttpServer.bind('0.0.0.0', 80).then((server) {
       server.listen((request){
-         request.response..write("Hello world")
+         request.response..write("Welcome to my todos")
                          ..close();
       });
     });
@@ -252,6 +249,7 @@ apt-get install -y dart git
 <em><span class="remark">lang-sh</span></em># Clone and start appp
 git clone https://github.com/nfrancois/todos
 cd todos
+pub get
 dart bin/server.dart &
 </pre>
 
@@ -472,6 +470,14 @@ void main() {
                </aside>
             </section>
 
+
+           <section id="dev-manager">
+              <h2>Dev Manager</h2>
+
+              <img src="img/vm-dev-manager.png">
+
+           </section> 
+
            <section id="cloud-services">
                <h1>Dart Runtime support</h1>
                <ul>
@@ -486,7 +492,7 @@ void main() {
                    <ul>
                        <li>Services accessibles avec les API Dart</li>
                        <li>Package appengine et gcloud</li>
-                       <li>Disponible depuis le début de semaine</li>
+                       <li>Disponible depuis novembre</li>
                        <li>Datastorage: BDD non relationnelle</li>
                        <li>Storage: stockage de contenu tel que fichier</li>
                        <li>Memcache: mémoire cache distribuée</li>
@@ -544,7 +550,7 @@ class Todo extends Model {
             <h1>Store data</h1>
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>// Declare list of todos
-final action1 = new Todo()..name = 'Buy the milk';
+final action1 = new Todo()..name = 'Buy milk';
 final action2 = new Todo()..name = 'Stop the hoover'..done=true;
 final List&lt;Todo&gt; todos  = [action1, action2];
 
@@ -560,7 +566,7 @@ datastore.commit(inserts: todos).then((_){
 
            <section id="query-data">
             <h1>Query data</h1>
-Addresses from a person
+List all todos
 <pre class="programlisting">
 <em><span class="remark">lang-dart</span></em>Key get todoRoot => datastore.emptyKey.append(Todo, id: 1);
 var query = datastore.query(Todo, ancestorKey: todoRoot)..order('name');
@@ -711,11 +717,13 @@ return query.run().toList();
            <section>
               <h2>Polymer object</h2>
                           <h2>Polymer's material design elements</h2>
-<pre class="programlisting"><em><span class="remark">lang-html</span></em>class Item extends Object with Observable {
+<pre class="programlisting"><em><span class="remark">lang-dart</span></em>class Item extends Object with Observable {
   @observable
   String name;
   @observable
   bool done;
+
+  DateTime since;
 }
 </pre>    
            </section>
@@ -861,7 +869,7 @@ class TodoItem extends PolymerElement {
                         <li>Déclare classe</li>
                         <li>Hérite PolymerElement</li>
                         <li>Annotée CustomTag associe le nom</li>
-                        <li>@observable sur person</li>
+                        <li>@observable sur item</li>
                         <li>Pour observer les changements</li>
                         <li>Filtre simplement une fonction</li>
                     </ul>
@@ -870,9 +878,21 @@ class TodoItem extends PolymerElement {
 
             <section id="polymer-example-use">
               <h2>Use custom element</h2>
-<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;template repeat="{{todo in todos}}"&gt;
-  &lt;todo-item todo="{{todo}}"&gt;&lt;/todo-item&gt;
-&lt;/template&gt;
+<pre class="programlisting"><em><span class="remark">lang-html</span></em>&lt;head&gt;
+ // ....
+ &lt;link rel="import" href="todo_item.html"&gt
+
+ &lt;script type="application/dart"&gt;export 'package:polymer/init.dart';&lt;/script&gt;
+ // ....
+&lt;/head&gt;
+&lt;body&gt;
+ // ....
+ &lt;template repeat="{{todo in todos}}"&gt;
+   &lt;todo-item todo="{{todo}}"&gt;&lt;/todo-item&gt;
+ &lt;/template&gt;
+ // ....
+
+&lt;/body&gt;
 </pre>
 
                 <aside class="notes">
